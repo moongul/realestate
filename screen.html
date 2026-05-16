@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EstateIntel | Data-Driven Real Estate Insights</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#4ae183",
+                      "on-error-container": "#93000a",
+                      "surface-container-low": "#f5f3f4",
+                      "surface-container": "#efedef",
+                      "primary": "#041627",
+                      "secondary-fixed-dim": "#92ccff",
+                      "on-secondary-container": "#00476e",
+                      "outline": "#74777d",
+                      "secondary-fixed": "#cce5ff",
+                      "on-secondary": "#ffffff",
+                      "surface-dim": "#dbd9db",
+                      "primary-fixed": "#d2e4fb",
+                      "on-tertiary-fixed-variant": "#005228",
+                      "tertiary": "#001a08",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed": "#6bfe9c",
+                      "on-surface": "#1b1c1d",
+                      "surface-tint": "#4f6073",
+                      "on-surface-variant": "#44474c",
+                      "inverse-on-surface": "#f2f0f2",
+                      "inverse-surface": "#303032",
+                      "on-tertiary-fixed": "#00210c",
+                      "error": "#ba1a1a",
+                      "primary-fixed-dim": "#b7c8de",
+                      "on-background": "#1b1c1d",
+                      "inverse-primary": "#b7c8de",
+                      "surface-container-high": "#e9e7e9",
+                      "on-secondary-fixed-variant": "#004b73",
+                      "on-error": "#ffffff",
+                      "outline-variant": "#c4c6cd",
+                      "surface": "#fbf9fa",
+                      "secondary-container": "#5cb8fd",
+                      "primary-container": "#1a2b3c",
+                      "on-primary-fixed": "#0b1d2d",
+                      "error-container": "#ffdad6",
+                      "surface-container-highest": "#e4e2e3",
+                      "on-primary-container": "#8192a7",
+                      "on-tertiary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "tertiary-container": "#003115",
+                      "background": "#fbf9fa",
+                      "surface-variant": "#e4e2e3",
+                      "surface-bright": "#fbf9fa",
+                      "on-primary-fixed-variant": "#38485a",
+                      "on-secondary-fixed": "#001d31",
+                      "secondary": "#006397",
+                      "on-tertiary-container": "#00a656"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "article-max": "720px",
+                      "stack-md": "1.5rem",
+                      "gutter": "1.5rem",
+                      "stack-lg": "3rem",
+                      "container-max": "1280px",
+                      "margin-mobile": "1rem",
+                      "stack-sm": "0.5rem"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "headline-sm": ["Source Serif 4"],
+                      "headline-lg": ["Source Serif 4"],
+                      "headline-md": ["Source Serif 4"],
+                      "display-lg": ["Source Serif 4"],
+                      "headline-lg-mobile": ["Source Serif 4"],
+                      "body-md": ["Inter"],
+                      "caption": ["Inter"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "30px", "fontWeight": "400"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+        .chart-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 3s linear forwards;
+        }
+        @keyframes dash {
+            to { stroke-dashoffset: 0; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-gutter w-full h-16 bg-surface/90 backdrop-blur-sm border-b border-outline-variant">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-bold text-primary">EstateIntel</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="font-label-md text-label-md text-secondary border-b-2 border-secondary pb-1 cursor-pointer active:opacity-70" href="#">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors duration-200 cursor-pointer active:opacity-70" href="#">Blog</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors duration-200 cursor-pointer active:opacity-70" href="#">About</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-surface-container-low px-3 py-1.5 rounded border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md p-0 w-40" placeholder="Search insights..." type="text"/>
+</div>
+<button class="material-symbols-outlined md:hidden text-primary" data-icon="menu">menu</button>
+</div>
+</header>
+<main class="w-full">
+<!-- Hero Section -->
+<section class="relative bg-primary-container py-24 px-gutter overflow-hidden">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, #8192a7 1px, transparent 0); background-size: 40px 40px;"></div>
+</div>
+<div class="max-w-container-max mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-6">
+<span class="inline-block bg-secondary-container text-on-secondary-container px-3 py-1 rounded-sm text-caption uppercase tracking-wider font-bold">Institutional Grade Analysis</span>
+<h1 class="text-on-primary font-display-lg text-display-lg md:leading-tight">Data-Driven Real Estate Insights</h1>
+<p class="text-on-primary-container font-body-lg text-body-lg max-w-xl">
+                        Unlocking institutional-quality market data and predictive analytics for professional real estate investors. Navigate complex global markets with vetted research.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="bg-secondary text-on-secondary px-6 py-3 font-label-md rounded flex items-center gap-2 hover:opacity-90 transition-all">
+                            Latest Reports
+                            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="border border-outline-variant text-on-primary px-6 py-3 font-label-md rounded hover:bg-white/5 transition-all">
+                            Our Methodology
+                        </button>
+</div>
+</div>
+<div class="hidden lg:block">
+<img alt="Modern Real Estate Development" class="w-full h-[500px] object-cover rounded-lg shadow-xl border border-white/10" data-alt="A clean, minimalist high-angle shot of a contemporary office complex featuring large glass facades and structural steel beams. The lighting is early morning soft blue, emphasizing the professional and calm institutional atmosphere. The scene represents stability and growth in commercial real estate with a corporate modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpKVwHslOVmRLm_8UCLjVIwIdTJu4KG26I_z94CWpWfrbqObQK1NmiQbDuh0PzLEcg3e8oIDDXTJWKNG-A7pXwxqy7AgojJ2p-OoWKb2rnihITGEB2SVmH91RH9bMexxMqKngW1WNEyqeknOAk7VJnvd6GuCxv5CvywmYayUwCg5QDyFY-YoF7WJ8XQEp0BEXfA4tG7ecA4YoUjjmrLyWs_hvRfpo0dJi7369l0e5GMSGnS6aC1nVoy9cKfqyyMfsVA9JwaOFFY9o7"/>
+</div>
+</div>
+</section>
+<!-- Market Trends Highlights (Bento Style) -->
+<section class="py-stack-lg px-gutter max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-10">
+<div class="space-y-2">
+<h2 class="font-headline-lg text-headline-lg text-primary">Market Trends</h2>
+<p class="text-on-surface-variant font-body-md">Q3 2024 Performance Indicators</p>
+</div>
+<button class="text-secondary font-label-md flex items-center gap-1 hover:underline">
+                    Live Dashboard <span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+</button>
+</div>
+<div class="bento-grid">
+<!-- Large Chart Card -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest p-8 border border-outline-variant rounded-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-6">
+<h3 class="font-headline-sm text-headline-sm text-primary">Yield Compression Trends</h3>
+<div class="bg-tertiary-fixed-dim/20 text-on-tertiary-fixed-variant px-2 py-1 rounded text-caption font-bold">+1.2% Momentum</div>
+</div>
+<div class="h-64 flex items-end gap-1 w-full relative">
+<!-- Mock Visualization -->
+<svg class="w-full h-full" viewbox="0 0 800 250">
+<path class="chart-line" d="M0,200 Q150,180 250,150 T500,80 T800,20" fill="none" stroke="#006397" stroke-width="3"></path>
+<path d="M0,200 Q150,180 250,150 T500,80 T800,20 L800,250 L0,250 Z" fill="url(#grad1)" opacity="0.1"></path>
+<defs>
+<lineargradient id="grad1" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#006397;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#006397;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-4 pt-8 border-t border-outline-variant mt-6">
+<div>
+<p class="text-caption text-on-surface-variant uppercase">Industrial</p>
+<p class="font-headline-sm text-primary">4.2%</p>
+</div>
+<div>
+<p class="text-caption text-on-surface-variant uppercase">Multifamily</p>
+<p class="font-headline-sm text-primary">3.8%</p>
+</div>
+<div>
+<p class="text-caption text-on-surface-variant uppercase">Office</p>
+<p class="font-headline-sm text-secondary">5.4%</p>
+</div>
+</div>
+</div>
+<!-- Secondary Data Cards -->
+<div class="col-span-12 sm:col-span-6 lg:col-span-4 bg-primary text-on-primary p-8 border border-primary rounded-lg shadow-sm flex flex-col justify-between">
+<div class="space-y-4">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-4xl" data-icon="location_city">location_city</span>
+<h3 class="font-headline-sm text-headline-sm">Regional Liquidity</h3>
+<p class="text-on-primary-container font-body-md opacity-80">European markets show resilient liquidity despite interest rate fluctuations in major hubs.</p>
+</div>
+<div class="pt-6">
+<div class="flex items-center gap-2 text-tertiary-fixed-dim">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+<span class="font-label-md">Tier 1 Cities Stable</span>
+</div>
+</div>
+</div>
+<div class="col-span-12 sm:col-span-6 lg:col-span-4 bg-surface-container-lowest p-8 border border-outline-variant rounded-lg shadow-sm">
+<h4 class="font-label-md text-on-surface-variant uppercase mb-4">Capital Allocation</h4>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-body-md">Core Plus</span>
+<div class="h-2 w-32 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[65%]"></div>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-body-md">Value Add</span>
+<div class="h-2 w-32 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[42%]"></div>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-body-md">Opportunistic</span>
+<div class="h-2 w-32 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[28%]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-8 bg-surface-container-high p-8 border border-outline-variant rounded-lg flex items-center gap-8">
+<div class="hidden md:block">
+<img alt="Investor Analysis" class="w-32 h-32 rounded-full object-cover border-2 border-white shadow-md" data-alt="A macro detail shot of a professional investor's workspace. A clean desktop with a high-end tablet displaying complex financial graphs and heatmaps. A sleek metallic fountain pen rests nearby. The lighting is focused and clean, using a palette of deep blues and slate grays to suggest analytical precision and serious financial research." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnjUReP6runJrPEr336hMBlggUJUFcm_TmzhzxyT-FygBmYU-juPWlx5D7dPJ0_AMxWj7Oneaxfs-M9_U0ke8cnDLqj5o_WGdR27dFXEqfUuUMKS8cFIhT0P7N8XRoJY_ZReNTu8DbNe6PDk1gmv1OZdTPNreMfJBpxyRZy24P7d3pHo-x_CWgVQt9OfMIYYfcixWNAGN4xwthUCpQY0k0KukUF6sC_t2uyt8abgsqJo6MtWh2ZO8ekWgoY74wA_QCFuZrbBBy_am6"/>
+</div>
+<div class="flex-1 space-y-2">
+<h3 class="font-headline-sm text-primary">Analyst Insight: Q4 Forecast</h3>
+<p class="text-body-md text-on-surface-variant">Macroeconomic pressures are shifting the risk-reward profile of development projects in secondary markets. Access the full report for detailed sub-sector predictions.</p>
+<a class="text-secondary font-label-md inline-block mt-2 font-bold hover:underline" href="#">Download Pro Report →</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Latest Analysis Section -->
+<section class="bg-surface py-stack-lg px-gutter">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-10">
+<h2 class="font-headline-lg text-headline-lg text-primary">Latest Analysis</h2>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-container text-on-surface-variant font-label-md rounded border border-outline-variant hover:bg-surface-container-highest">All Classes</button>
+<button class="px-4 py-2 bg-primary text-on-primary font-label-md rounded">Logistics</button>
+<button class="px-4 py-2 bg-surface-container text-on-surface-variant font-label-md rounded border border-outline-variant hover:bg-surface-container-highest">Retail</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Post Card 1 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col shadow-[0_4px_12px_rgba(26,43,60,0.05)] hover:shadow-lg transition-shadow">
+<div class="relative">
+<img alt="Logistics Real Estate" class="w-full h-48 object-cover" data-alt="A modern industrial warehouse facility at sunset with dramatic warm lighting reflecting off the metallic exterior. The image has a professional, large-scale commercial feel with deep blue shadows and golden highlights. The composition is clean and geometric, conveying the scale and efficiency of modern global logistics centers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMYU-tdgJOqA4YEcFZCGAN5HPaegqXb4-fdSSNnHAJDISoVzmafFxqb1XrFgymQxCBhlGvqQs2oA5eo9MvTMs-RHZgk_coPhzV5tZ-qy8GeNgcDU8uwsAmsE4sVP4CARJKbAElYY2f6tWP1LBNW4r6ORhlpvCSvB5l1o5Aw1NJ3PcuOftEJf_WhDpqsUqhU_Xp18l_cwPOhv_pWlD8F6O3qkfvehi2L708EK0asJAavNVDNLX_5LQFWomy-FFhhCEJQVeTy28wGXIz"/>
+<div class="absolute top-4 right-4 bg-tertiary-fixed-dim text-on-tertiary-fixed px-2 py-1 rounded text-caption font-bold">Trending</div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<span class="text-caption text-secondary uppercase tracking-widest font-bold mb-2">Industrial Analysis</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3">The Rise of Multi-Story Logistics in Urban Centers</h3>
+<p class="text-body-md text-on-surface-variant line-clamp-3 mb-6">As urban land prices skyrocket, developers are looking vertically. Explore the feasibility and cap rate implications of high-density logistics assets.</p>
+<div class="mt-auto pt-6 border-t border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="person">person</span>
+</div>
+<span class="text-caption font-bold">Sarah Jenkins</span>
+</div>
+<span class="text-caption text-on-surface-variant">Oct 12, 2024</span>
+</div>
+</div>
+</article>
+<!-- Post Card 2 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col shadow-[0_4px_12px_rgba(26,43,60,0.05)] hover:shadow-lg transition-shadow">
+<div class="relative">
+<img alt="Commercial Office" class="w-full h-48 object-cover" data-alt="An expansive, high-end corporate office lobby featuring polished stone floors and large floor-to-ceiling windows overlooking a modern city skyline. The lighting is bright and airy with a cool business-professional tone. The aesthetic is clean and minimalist, highlighting architectural precision and luxury commercial real estate standards." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtrvrlO8ag_8L5-LuAsgrw9tXF_HT_tCtZ1JoS7Q-hJiQHWBfhswUpmDIyZvnzH8QLDmurzbZdwAj8ANHhXK_l3_-8dmGGjaOr2EM7ep3ISBtQzR8T3wFWXSYnV6Ml6GhORyhIVa--XYSfAsg0GR0l_Z2I9Xl_9m2axEu8Ix6PHGDkMn12gZQGl4USXa0ZqDbBRWXIkjmsa6ipD0pIhG5vTK5WpVzrY4ENjWOplPAp6EL9ReLC9m9EMYEsKeJ30CAZoH52lErCZosf"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<span class="text-caption text-secondary uppercase tracking-widest font-bold mb-2">Office Market</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3">Post-Remote Transition: The Flight to Quality</h3>
+<p class="text-body-md text-on-surface-variant line-clamp-3 mb-6">Analyzing the bifurcation of the office market as tenants migrate toward premium, sustainable Grade A assets in central business districts.</p>
+<div class="mt-auto pt-6 border-t border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="person">person</span>
+</div>
+<span class="text-caption font-bold">Marcus Thorne</span>
+</div>
+<span class="text-caption text-on-surface-variant">Oct 09, 2024</span>
+</div>
+</div>
+</article>
+<!-- Post Card 3 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col shadow-[0_4px_12px_rgba(26,43,60,0.05)] hover:shadow-lg transition-shadow">
+<div class="relative">
+<img alt="Multifamily Housing" class="w-full h-48 object-cover" data-alt="A cluster of modern high-rise residential apartment buildings in a clean urban environment. The buildings feature rhythmic balconies and contemporary facades. The lighting is golden hour, casting long shadows and creating a sense of aspirational living. The overall style is high-density residential development with a focus on urban planning and investment value." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW395r7nyakBk1QXFEYsd7-OfKo52osrHt-3bAqsMIcf32I27SU1hRNZzVa3z1PuQIlUNqWTLltIecQEJ6aQWH9LslX0Fens1tpkwniHcB8wiwQ_sEWnWnBnSsXuJ3Jtkrh_u5GZjn4Hvk9BnCf2DpJHMGbksLBZqovdCCOmRmTSrpTMShS7aDQQF32nVgEt0LBLi0z2WDOwH45WoWVEP9rdnn7IpVDZBl9UzfiB14qSvR2OwxKxrJSkuBjKT6bRLNBvIZCUQ7NY44"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<span class="text-caption text-secondary uppercase tracking-widest font-bold mb-2">Multifamily</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3">Rental Growth Projections for Sunbelt Markets</h3>
+<p class="text-body-md text-on-surface-variant line-clamp-3 mb-6">A deep dive into migration patterns and labor market statistics driving residential rental yields across fast-growing southern states.</p>
+<div class="mt-auto pt-6 border-t border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="person">person</span>
+</div>
+<span class="text-caption font-bold">Lydia Chen</span>
+</div>
+<span class="text-caption text-on-surface-variant">Oct 05, 2024</span>
+</div>
+</div>
+</article>
+</div>
+<div class="mt-12 text-center">
+<button class="border-2 border-primary text-primary px-10 py-3 font-label-md rounded hover:bg-primary hover:text-on-primary transition-all">
+                        View All Analysis
+                    </button>
+</div>
+</div>
+</section>
+<!-- Newsletter / CTA -->
+<section class="bg-surface-container-highest py-16 px-gutter">
+<div class="max-w-container-max mx-auto text-center space-y-6">
+<h2 class="font-headline-lg text-headline-lg text-primary">Get the Intelligence.</h2>
+<p class="text-body-lg text-on-surface-variant max-w-2xl mx-auto">Join 50,000+ institutional investors who receive our weekly deep-dive on market movements and regulatory shifts.</p>
+<div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+<input class="w-full sm:w-96 px-4 py-3 border border-outline-variant rounded focus:border-secondary focus:ring-1 focus:ring-secondary outline-none text-body-md bg-white" placeholder="professional@company.com" type="email"/>
+<button class="w-full sm:w-auto bg-primary text-on-primary px-8 py-3 font-label-md rounded hover:opacity-90">Subscribe</button>
+</div>
+<p class="text-caption text-on-surface-variant">We respect your privacy. Professional data only.</p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-stack-lg px-gutter py-12 flex flex-col items-center gap-stack-md bg-surface-container-highest border-t border-outline-variant">
+<div class="w-full max-w-container-max grid grid-cols-1 md:grid-cols-4 gap-12 items-start text-left mb-8">
+<div class="space-y-4">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">EstateIntel</span>
+<p class="text-body-md text-on-surface-variant">Precision analytics for the modern real estate professional.</p>
+</div>
+<div class="space-y-4">
+<h5 class="font-label-md text-primary uppercase">Resources</h5>
+<ul class="space-y-2 text-on-surface-variant font-body-md">
+<li><a class="hover:text-secondary transition-colors" href="#">Market Data</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Research Methodology</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Analyst Directory</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h5 class="font-label-md text-primary uppercase">Legal</h5>
+<ul class="space-y-2 text-on-surface-variant font-body-md">
+<li><a class="hover:text-secondary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h5 class="font-label-md text-primary uppercase">Follow</h5>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-secondary cursor-pointer" data-icon="public">public</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-secondary cursor-pointer" data-icon="work">work</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-secondary cursor-pointer" data-icon="rss_feed">rss_feed</span>
+</div>
+</div>
+</div>
+<div class="w-full border-t border-outline-variant pt-8 text-center">
+<p class="text-body-md text-on-surface-variant">© 2024 EstateIntel. Institutional data for professional investors.</p>
+</div>
+</footer>
+</body></html>

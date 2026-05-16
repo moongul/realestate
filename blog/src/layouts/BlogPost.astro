@@ -40,8 +40,10 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			}
 			.prose {
 				color: var(--body);
-				line-height: 1.5;
+				line-height: 1.6;
 				font-size: 16px;
+				word-break: keep-all;
+				overflow-wrap: break-word;
 			}
 			.title-section {
 				text-align: left;
@@ -143,11 +145,16 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				margin: 56px 0;
 			}
 			/* Custom Data Highlight (can be used via HTML in Markdown if needed) */
-			.data-card-grid {
+			.data-card-grid-2 {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-				gap: 16px;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 24px;
 				margin: 32px 0;
+			}
+			@media (max-width: 720px) {
+				.data-card-grid-2 {
+					grid-template-columns: 1fr;
+				}
 			}
 			.data-card {
 				padding: 20px;
