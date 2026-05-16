@@ -42,3 +42,6 @@ agents/history.txt
 .idea/
 *.swp
 *.swo
+
+# Automation scripts (contains secrets)
+run.fish
