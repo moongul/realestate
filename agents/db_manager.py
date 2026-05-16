@@ -127,14 +127,13 @@ class RealEstateDBManager:
             return False
 
     def calculate_daily_stats(self, target_date=None):
-        """특정 날짜의 구별 통계를 계산하여 trend 테이블에 저장"""
+        """특정 날짜의 구별 통계를 계산하여 trend 테이블에 저장 (7일 이동평균 적용하여 변동성 완화)"""
         if target_date is None:
             target_date = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
             
         conn = sqlite3.connect(self.db_path)
         cur = conn.cursor()
         
-        # 서울시 구 코드 매핑 (일부)
         seoul_districts = {
             "11110": "종로구", "11140": "중구", "11170": "용산구", "11200": "성동구",
             "11215": "광진구", "11230": "동대문구", "11260": "중랑구", "11290": "성북구",
@@ -145,18 +144,27 @@ class RealEstateDBManager:
             "11740": "강동구"
         }
         
+        # 날짜 형식 변환
+        end_dt = datetime.strptime(target_date, "%Y-%m-%d")
+        # 7일간의 데이터를 합산하여 평균 계산 (표본 부족으로 인한 왜곡 방지)
+        start_date = (end_dt - timedelta(days=6)).strftime("%Y-%m-%d")
+
         for code, name in seoul_districts.items():
-            # 평균가 및 거래건수 계산 (취소 거래 제외)
+            # 1. 7일 이동 평균가 및 거래건수 계산 (이상치 방지를 위해 너무 크거나 작은 값 제외 필터링 추가 가능)
+            # 여기서는 50억 이상의 특수 거래(통건물 등)는 아파트 평균가 계산에서 제외하여 왜곡 방지
             cur.execute("""
                 SELECT AVG(trade_amount), COUNT(*) FROM raw_trades
-                WHERE district_code = ? AND trade_date = ? AND cancel_yn != 'O'
-            """, (code, target_date))
+                WHERE district_code = ? 
+                AND trade_date BETWEEN ? AND ? 
+                AND cancel_yn != 'Y'
+                AND trade_amount < 500000 
+            """, (code, start_date, target_date))
             
             avg_price, count = cur.fetchone()
             
             if count > 0:
-                # 전일 평균가 가져오기 (변동률 계산용)
-                prev_date = (datetime.strptime(target_date, "%Y-%m-%d") - timedelta(days=1)).strftime("%Y-%m-%d")
+                # 2. 전일(의 7일 이동평균) 대비 변동률 계산
+                prev_date = (end_dt - timedelta(days=1)).strftime("%Y-%m-%d")
                 cur.execute("SELECT avg_price FROM district_trend WHERE log_date = ? AND district_code = ?", (prev_date, code))
                 prev_row = cur.fetchone()
                 prev_avg = prev_row[0] if prev_row else avg_price
@@ -174,7 +182,7 @@ class RealEstateDBManager:
                 
         conn.commit()
         conn.close()
-        print(f"{target_date} 통계 계산 완료")
+        print(f"{target_date} 통계 계산 완료 (7일 이동평균 적용)")
 
     def get_latest_trends(self, days=7):
         """최근 7일간의 주요 통계 데이터 반환 (에이전트용)"""
