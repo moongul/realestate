@@ -1,46 +1,114 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
 import Layout from '../layouts/BlogPost.astro';
 ---
 
 <Layout
-	title="서비스 소개"
-	description="데이터와 AI로 부동산의 미래를 봅니다."
+	title="Our Methodology"
+	description="Institutional-grade real estate analytics powered by AI."
 	pubDate={new Date('May 16 2026')}
-	heroImage={AboutHeroImage}
 >
-	<p>
-		<strong>대한민국 부동산 Insight</strong>는 파편화된 부동산 정보의 홍수 속에서 
-		독자들에게 가장 객관적이고 가치 있는 데이터를 제공하기 위해 시작되었습니다.
-	</p>
+	<div class="about-content">
+		<p class="lead">
+			<strong>EstateIntel</strong> is a specialized platform dedicated to providing institutional-quality real estate insights. We bridge the gap between complex market data and actionable investment strategies.
+		</p>
 
-	<h2>우리의 미션</h2>
-	<p>
-		우리는 단순히 뉴스를 전달하는 것을 넘어, 데이터에 숨겨진 맥락을 읽어냅니다. 
-		국토교통부 실거래가 기반의 정밀한 통계와 인공지능 에이전트의 다각도 분석을 결합하여, 
-		누구나 쉽게 이해할 수 있는 전문적인 리포트를 발행합니다.
-	</p>
+		<h2>Institutional Grade Analysis</h2>
+		<p>
+			Our methodology combines rigorous traditional financial analysis with advanced artificial intelligence. We process thousands of daily data points from official government sources (MOLIT) and news outlets to provide a comprehensive view of the market.
+		</p>
 
-	<h2>AI 에이전트 시스템</h2>
-	<p>
-		본 블로그의 모든 콘텐츠는 5단계의 전문 AI 에이전트 시스템에 의해 생성됩니다:
-	</p>
-	<ul>
-		<li><strong>Researcher</strong>: 실시간 뉴스 및 정책 동향 수집</li>
-		<li><strong>Data Analyst</strong>: 국토부 실거래가 및 수치 데이터 분석</li>
-		<li><strong>Blog Writer</strong>: 구조화된 전문 분석 리포트 집필</li>
-		<li><strong>Persona Editor</strong>: 세련된 톤앤매너와 가독성 교정</li>
-		<li><strong>SEO Optimizer</strong>: 사용자 검색 의도 최적화</li>
-	</ul>
+		<div class="agent-system">
+			<h3>The AI Agent Pipeline</h3>
+			<div class="agent-grid">
+				<div class="agent-card">
+					<span class="agent-icon">🔍</span>
+					<h4>Researcher</h4>
+					<p>Aggregates global and local policy trends and news cycles.</p>
+				</div>
+				<div class="agent-card">
+					<span class="agent-icon">📊</span>
+					<h4>Analyst</h4>
+					<p>Extracts precise transaction data and calculates moving averages.</p>
+				</div>
+				<div class="agent-card">
+					<span class="agent-icon">🖋️</span>
+					<h4>Writer</h4>
+					<p>Synthesizes insights into structured, professional reports.</p>
+				</div>
+				<div class="agent-card">
+					<span class="agent-icon">✨</span>
+					<h4>Editor</h4>
+					<p>Ensures consistent tone and clarity across all publications.</p>
+				</div>
+			</div>
+		</div>
 
-	<h2>객관성이라는 가치</h2>
-	<p>
-		부동산 시장은 감정과 분위기에 휩쓸리기 쉽습니다. 우리는 '데이터'라는 가장 강력한 무기를 통해 
-		시장을 냉정하게 바라보고, 실거주자와 투자자가 올바른 결정을 내릴 수 있는 든든한 조력자가 되겠습니다.
-	</p>
+		<h2>Precision and Objectivity</h2>
+		<p>
+			Real estate markets are often driven by sentiment. We prioritize <strong>data-driven objectivity</strong>, using 7-day moving averages and outlier filtering to provide a stable, reliable perspective on price movements and regional liquidity.
+		</p>
 
-	<p>
-		매일 업데이트되는 서울시 구별 시세 브리핑과 심도 있는 분석 리포트를 통해 
-		부동산의 흐름을 한발 앞서 파악해 보세요.
-	</p>
+		<p class="cta-text">
+			Whether you are a professional investor or a homeowner, our goal is to provide the intelligence you need to navigate the evolving real estate landscape.
+		</p>
+	</div>
 </Layout>
+
+<style>
+	.about-content {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	.lead {
+		font-size: 20px;
+		line-height: 1.6;
+		color: var(--primary);
+		margin-bottom: 48px;
+	}
+	.agent-system {
+		background: var(--primary);
+		color: white;
+		padding: 48px;
+		border-radius: var(--rounded-lg);
+		margin: 64px 0;
+	}
+	.agent-system h3 {
+		color: white;
+		margin-top: 0;
+		margin-bottom: 32px;
+		text-align: center;
+	}
+	.agent-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 24px;
+	}
+	.agent-card {
+		background: rgba(255, 255, 255, 0.1);
+		padding: 24px;
+		border-radius: var(--rounded-md);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+	}
+	.agent-card h4 {
+		color: var(--secondary-container);
+		margin: 12px 0 8px;
+	}
+	.agent-card p {
+		font-size: 14px;
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0;
+	}
+	.agent-icon {
+		font-size: 24px;
+	}
+	.cta-text {
+		font-style: italic;
+		border-left: 4px solid var(--secondary);
+		padding-left: 24px;
+		margin-top: 48px;
+	}
+	@media (max-width: 640px) {
+		.agent-grid { grid-template-columns: 1fr; }
+		.agent-system { padding: 24px; }
+	}
+</style>

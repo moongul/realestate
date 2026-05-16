@@ -33,8 +33,8 @@ def research_node(state: AgentState):
     raw_topics = researcher.fetch_multi_source_topics()
     
     if not raw_topics:
-        print("새로운 뉴스가 부족합니다.")
-        return state
+        print("!! 새로운 뉴스가 부족하여 워크플로우를 종료합니다.")
+        return {"topics": [], "selected_theme": None}
 
     selected_theme = researcher.group_and_select_best_theme(raw_topics)
     print(f"선정된 테마: {selected_theme['title']} ({len(selected_theme['news_items'])}개의 출처 취합)")
@@ -46,7 +46,7 @@ def market_collect_node(state: AgentState):
     
     db = RealEstateDBManager()
     
-    # 1. 오늘 기준 최신 데이터 업데이트 (이번 달과 지난 달 데이터 동기화)
+    # 1. 오늘 기준 최신 데이터 업데이트
     current_ym = datetime.now().strftime("%Y%m")
     prev_ym = (datetime.now().replace(day=1) - timedelta(days=1)).strftime("%Y%m")
     
@@ -73,15 +73,22 @@ def analyze_node(state: AgentState):
     return {"analyzed_data": analyzed_data}
 
 def write_node(state: AgentState):
+    if state.get("category") == "analysis":
+        if not state.get("selected_theme") or not state.get("analyzed_data"): 
+            print("집필할 데이터가 부족하여 중단합니다.")
+            return state
+    else:
+        if not state.get("market_data"): 
+            print("시세 데이터가 부족하여 중단합니다.")
+            return state
+
     current_retry = state.get("retry_count", 0)
     print(f"\n[Node: Writer] 리포트 집필 중... (시도: {current_retry + 1})")
     
     if state.get("category") == "analysis":
-        if not state.get("analyzed_data"): return state
         writer = BlogWriter()
         draft_post = writer.generate_post(state['selected_theme'], state['analyzed_data'])
     else:
-        if not state.get("market_data"): return state
         writer = MarketWriter()
         draft_post = writer.generate_briefing(state['market_data'])
         
@@ -112,7 +119,7 @@ def seo_node(state: AgentState):
     
     pub_date = datetime.now().strftime("%Y-%m-%d")
 
-    # 이미지는 이제 사용하지 않음
+    # Frontmatter 조립
     frontmatter = f"""---
 title: "{title_clean}"
 description: "{desc_clean}"
@@ -124,7 +131,8 @@ pubDate: {pub_date}
     return {"seo_metadata": metadata, "final_post": final_post, "filename": f"{filename_base}.md"}
 
 def review_node(state: AgentState):
-    if not state.get("final_post"): return state
+    if not state.get("final_post"): 
+        return {"review_result": "PASS_NO_DATA"}
     print("\n[Node: Reviewer] 최종 검수 중...")
     writer = BlogWriter()
     result = writer.review_post(state['final_post'])
@@ -133,12 +141,14 @@ def review_node(state: AgentState):
 
 def should_rewrite(state: AgentState):
     result = state.get("review_result", "FAIL")
-    if result.startswith("PASS") or state.get("retry_count", 0) >= 2:
+    if result == "PASS_NO_DATA" or result.startswith("PASS") or state.get("retry_count", 0) >= 2:
         return "publish"
     return "write"
 
 def publish_node(state: AgentState):
-    if not state.get("final_post"): return state
+    if not state.get("final_post") or state.get("review_result") == "PASS_NO_DATA": 
+        return state
+        
     print(f"\n[Node: Publisher] 최종 결과 저장 중...")
     writer = BlogWriter()
     writer.save_post(state['final_post'], state['filename'])

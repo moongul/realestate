@@ -1,45 +1,34 @@
-/* Airbnb Inspired Design System */
+/* Institutional Professional Design System (Inspired by screen.html) */
 :root {
 	/* Colors */
-	--primary: #ff385c;
-	--primary-active: #e00b41;
-	--primary-disabled: #ffd1da;
-	--ink: #222222;
-	--body: #3f3f3f;
-	--muted: #6a6a6a;
-	--hairline: #dddddd;
-	--canvas: #ffffff;
-	--surface-soft: #f7f7f7;
-	--surface-strong: #f2f2f2;
-	
-	/* Compatibility / Legacy Variables */
-	--bg-main: var(--canvas);
-	--card-bg: var(--canvas);
-	--primary-navy: var(--ink);
-	--accent-blue: var(--primary);
-	--border-light: var(--hairline);
-	--text-body: var(--body);
-	--black: 34, 34, 34; /* #222222 */
-	--accent: 255, 56, 92; /* #ff385c */
-	--gray: 106, 106, 106; /* #6a6a6a */
-	--gray-light: 221, 221, 221; /* #dddddd */
-	--gray-dark: 34, 34, 34;
-	--gray-gradient: rgba(221, 221, 221, 0.4), rgba(221, 221, 221, 0);
+	--primary: #041627;
+	--primary-container: #1a2b3c;
+	--on-primary: #ffffff;
+	--secondary: #006397;
+	--secondary-container: #5cb8fd;
+	--on-secondary: #ffffff;
+	--ink: #1b1c1d;
+	--body: #44474c;
+	--muted: #74777d;
+	--hairline: #c4c6cd;
+	--canvas: #fbf9fa;
+	--surface: #ffffff;
+	--surface-variant: #e4e2e3;
+	--outline-variant: #c4c6cd;
 
+	/* Functional Colors */
+	--error: #ba1a1a;
+	--tertiary: #00a656;
+	
 	/* Rounded Corners */
-	--rounded-sm: 8px;
-	--rounded-md: 14px;
-	--rounded-lg: 20px;
+	--rounded-sm: 4px;
+	--rounded-md: 8px;
+	--rounded-lg: 16px;
 	--rounded-full: 9999px;
 
-	/* Spacing */
-	--spacing-base: 16px;
-	--spacing-lg: 24px;
-	--spacing-xl: 32px;
-	--spacing-section: 64px;
-
 	/* Shadows */
-	--shadow-airbnb: rgba(0, 0, 0, 0.02) 0 0 0 1px, rgba(0, 0, 0, 0.04) 0 2px 6px 0, rgba(0, 0, 0, 0.1) 0 4px 8px 0;
+	--shadow-sm: 0 2px 8px rgba(26, 43, 60, 0.05);
+	--shadow-md: 0 6px 16px rgba(26, 43, 60, 0.08);
 }
 
 * {
@@ -54,9 +43,10 @@ body {
 	min-height: 100vh;
 	background-color: var(--canvas);
 	color: var(--ink);
-	font-family: 'Inter', Circular, -apple-system, system-ui, Roboto, 'Helvetica Neue', sans-serif;
+	font-family: 'Inter', -apple-system, system-ui, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	word-break: keep-all;
+	overflow-wrap: break-word;
 }
 
 body {
@@ -65,22 +55,25 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	color: var(--ink);
-	line-height: 1.25;
-	font-weight: 600;
+	font-family: 'Source Serif 4', serif;
+	color: var(--primary);
+	line-height: 1.2;
+	font-weight: 700;
 	margin: 0;
 }
 
-h1 { font-size: 28px; font-weight: 700; }
-h2 { font-size: 22px; font-weight: 500; }
-
 a {
-	color: var(--ink);
+	color: var(--secondary);
 	text-decoration: none;
+	transition: color 0.2s;
+}
+
+a:hover {
+	color: var(--primary);
 }
 
 p {
-	line-height: 1.5;
+	line-height: 1.6;
 	margin: 0;
 }
 

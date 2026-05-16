@@ -9,181 +9,279 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 100%;
-				max-width: 1280px;
-				margin: 0 auto;
-				padding: 80px;
-			}
-			h1 {
-				font-size: 28px;
-				margin-bottom: 24px;
-			}
-			p {
-				font-size: 16px;
-				margin-bottom: 16px;
-				color: var(--body);
-			}
-			ul {
-				margin-bottom: 24px;
-				padding-left: 20px;
-			}
-			li {
-				margin-bottom: 8px;
-				color: var(--body);
-			}
-			@media (max-width: 720px) {
-				main {
-					padding: 48px 24px;
-				}
-			}
-		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<div class="hero-section">
-				<h1>🏠 대한민국 부동산 Insight</h1>
-				<p class="hero-subtitle">데이터와 AI로 분석하는 대한민국 부동산 트렌드 및 투자 전략</p>
-				<div class="cta-group">
-					<a href="/blog" class="cta-primary">인사이트 읽어보기</a>
-					<a href="/about" class="cta-secondary">서비스 소개</a>
+			<!-- Hero Section -->
+			<section class="hero">
+				<div class="hero-content">
+					<span class="badge">Institutional Grade Analysis</span>
+					<h1>Data-Driven Real Estate Insights</h1>
+					<p class="subtitle">
+						Unlocking institutional-quality market data and predictive analytics for professional real estate investors. Navigate complex global markets with vetted research.
+					</p>
+					<div class="hero-actions">
+						<a href="/blog" class="btn-primary">
+							Latest Reports
+							<span class="material-symbols-outlined">arrow_forward</span>
+						</a>
+						<a href="/about" class="btn-secondary">Our Methodology</a>
+					</div>
 				</div>
-			</div>
-
-			<section class="features">
-				<div class="feature-card">
-					<div class="icon">📊</div>
-					<h3>데이터 기반 분석</h3>
-					<p>국토교통부 실거래가 데이터를 바탕으로 정확한 시세 동향을 제공합니다.</p>
-				</div>
-				<div class="feature-card">
-					<div class="icon">🤖</div>
-					<h3>AI 에이전트 리포트</h3>
-					<p>5단계 전문 에이전트 시스템이 방대한 뉴스를 요약하고 인사이트를 도출합니다.</p>
-				</div>
-				<div class="feature-card">
-					<div class="icon">📍</div>
-					<h3>구 단위 상세 정보</h3>
-					<p>서울 25개 구별 시세 브리핑을 통해 내 지역의 변화를 가장 빠르게 확인하세요.</p>
+				<div class="hero-image">
+					<img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&h=800&auto=format&fit=crop" alt="Modern Architecture" />
 				</div>
 			</section>
 
-			<section class="intro-text">
-				<h2>왜 대한민국 부동산 Insight인가요?</h2>
-				<p>
-					복잡하게 얽힌 부동산 뉴스 속에서 진짜 가치 있는 정보만을 골라냅니다. 
-					단순한 정보 전달을 넘어, 시장의 흐름을 읽고 실거주자와 투자자 모두에게 필요한 
-					전문가적 견해를 전달하는 것이 우리의 목표입니다.
-				</p>
+			<!-- Bento Features Section -->
+			<section class="features">
+				<div class="section-header">
+					<h2>Market Trends</h2>
+					<p>Performance Indicators & AI Insights</p>
+				</div>
+				
+				<div class="bento-grid">
+					<div class="bento-item large">
+						<div class="bento-header">
+							<h3>Yield Compression Trends</h3>
+							<span class="trend-tag">+1.2% Momentum</span>
+						</div>
+						<div class="mock-chart">
+							<svg viewBox="0 0 800 200">
+								<path d="M0,150 Q150,130 250,100 T500,50 T800,20" fill="none" stroke="var(--secondary)" stroke-width="3" />
+							</svg>
+						</div>
+						<div class="stat-grid">
+							<div class="stat-item">
+								<span class="label">Industrial</span>
+								<span class="value">4.2%</span>
+							</div>
+							<div class="stat-item">
+								<span class="label">Multifamily</span>
+								<span class="value">3.8%</span>
+							</div>
+							<div class="stat-item">
+								<span class="label">Office</span>
+								<span class="value">5.4%</span>
+							</div>
+						</div>
+					</div>
+					
+					<div class="bento-item dark">
+						<span class="material-symbols-outlined icon">location_city</span>
+						<h3>Regional Liquidity</h3>
+						<p>Seoul markets show resilient liquidity despite interest rate fluctuations in major hubs.</p>
+						<div class="status">
+							<span class="material-symbols-outlined">check_circle</span>
+							<span>Tier 1 Districts Stable</span>
+						</div>
+					</div>
+
+					<div class="bento-item high">
+						<img src="https://images.unsplash.com/photo-1454165833767-027ffea70288?q=80&w=400&h=400&auto=format&fit=crop" alt="Analyst" />
+						<div class="item-content">
+							<h3>Analyst Insight</h3>
+							<p>Macroeconomic pressures are shifting the risk-reward profile.</p>
+							<a href="/blog">Read Q4 Forecast →</a>
+						</div>
+					</div>
+				</div>
 			</section>
 		</main>
 
 		<style>
-			main {
-				width: 100%;
+			/* Hero Section */
+			.hero {
+				background: var(--primary-container);
+				padding: 96px 24px;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 64px;
+				align-items: center;
 				max-width: 1280px;
 				margin: 0 auto;
-				padding: 80px 48px;
+				border-radius: 0 0 var(--rounded-lg) var(--rounded-lg);
+				position: relative;
+				overflow: hidden;
 			}
-			.hero-section {
-				text-align: center;
-				padding: 80px 0;
-				background: linear-gradient(to bottom, #fffcfc, #ffffff);
+			.hero::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				opacity: 0.05;
+				background-image: radial-gradient(circle at 2px 2px, #ffffff 1px, transparent 0);
+				background-size: 40px 40px;
 			}
-			h1 {
-				font-size: 48px;
+			.hero-content {
+				position: relative;
+				z-index: 10;
+			}
+			.badge {
+				display: inline-block;
+				background: var(--secondary-container);
+				color: var(--primary);
+				padding: 4px 12px;
+				border-radius: var(--rounded-sm);
+				font-size: 12px;
 				font-weight: 800;
-				color: var(--ink);
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
 				margin-bottom: 24px;
-				letter-spacing: -0.02em;
 			}
-			.hero-subtitle {
+			.hero h1 {
+				font-size: 56px;
+				color: white;
+				margin-bottom: 24px;
+				line-height: 1.1;
+			}
+			.subtitle {
 				font-size: 20px;
-				color: var(--muted);
+				color: rgba(255, 255, 255, 0.7);
+				line-height: 1.5;
 				margin-bottom: 48px;
+				max-width: 560px;
 			}
-			.cta-group {
+			.hero-actions {
 				display: flex;
 				gap: 16px;
-				justify-content: center;
 			}
-			.cta-primary {
+			.btn-primary {
+				background: var(--secondary);
+				color: white;
+				padding: 14px 28px;
+				border-radius: var(--rounded-sm);
+				font-weight: 600;
+				display: flex;
+				align-items: center;
+				gap: 8px;
+			}
+			.btn-secondary {
+				border: 1px solid rgba(255, 255, 255, 0.3);
+				color: white;
+				padding: 14px 28px;
+				border-radius: var(--rounded-sm);
+				font-weight: 600;
+			}
+			.hero-image img {
+				width: 100%;
+				height: 500px;
+				object-fit: cover;
+				border-radius: var(--rounded-lg);
+				box-shadow: var(--shadow-md);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+			}
+
+			/* Features Bento Grid */
+			.features {
+				max-width: 1280px;
+				margin: 96px auto;
+				padding: 0 24px;
+			}
+			.section-header {
+				margin-bottom: 48px;
+			}
+			.section-header h2 {
+				font-size: 32px;
+				margin-bottom: 8px;
+			}
+			.section-header p {
+				color: var(--muted);
+				font-weight: 500;
+			}
+
+			.bento-grid {
+				display: grid;
+				grid-template-columns: repeat(12, 1fr);
+				gap: 24px;
+			}
+			.bento-item {
+				background: white;
+				border: 1px solid var(--outline-variant);
+				border-radius: var(--rounded-lg);
+				padding: 32px;
+				box-shadow: var(--shadow-sm);
+			}
+			.bento-item.large {
+				grid-column: span 8;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			}
+			.bento-item.dark {
+				grid-column: span 4;
 				background: var(--primary);
 				color: white;
-				padding: 16px 32px;
-				border-radius: var(--rounded-md);
-				font-weight: 700;
-				font-size: 18px;
-				transition: background 0.2s;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				gap: 24px;
 			}
-			.cta-primary:hover {
-				background: var(--primary-active);
-			}
-			.cta-secondary {
-				background: var(--canvas);
-				color: var(--ink);
-				padding: 16px 32px;
-				border-radius: var(--rounded-md);
-				border: 1px solid var(--hairline);
+			.bento-item.dark h3 { color: white; }
+			.bento-item.dark .icon { font-size: 48px; color: var(--secondary-container); }
+			.bento-item.dark .status { 
+				display: flex; 
+				align-items: center; 
+				gap: 8px; 
+				color: var(--tertiary);
 				font-weight: 600;
-				font-size: 18px;
-				transition: background 0.2s;
-			}
-			.cta-secondary:hover {
-				background: var(--surface-soft);
+				font-size: 14px;
 			}
 
-			.features {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			.bento-item.high {
+				grid-column: span 12;
+				display: flex;
+				align-items: center;
 				gap: 32px;
-				margin: 80px 0;
+				background: var(--surface-variant);
 			}
-			.feature-card {
-				padding: 40px;
-				background: var(--canvas);
-				border: 1px solid var(--hairline);
-				border-radius: var(--rounded-md);
-				text-align: left;
-				transition: box-shadow 0.2s;
-			}
-			.feature-card:hover {
-				box-shadow: var(--shadow-airbnb);
-			}
-			.feature-card .icon {
-				font-size: 40px;
-				margin-bottom: 24px;
-			}
-			.feature-card h3 {
-				font-size: 22px;
-				margin-bottom: 16px;
-			}
-			.feature-card p {
-				color: var(--body);
-				line-height: 1.6;
+			.bento-item.high img {
+				width: 120px;
+				height: 120px;
+				border-radius: 50%;
+				object-fit: cover;
+				border: 4px solid white;
 			}
 
-			.intro-text {
-				max-width: 800px;
-				margin: 80px auto;
-				text-align: center;
-			}
-			.intro-text h2 {
-				font-size: 32px;
+			.bento-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
 				margin-bottom: 32px;
 			}
-			.intro-text p {
-				font-size: 18px;
-				color: var(--body);
-				line-height: 1.8;
+			.trend-tag {
+				background: rgba(0, 166, 86, 0.1);
+				color: var(--tertiary);
+				padding: 4px 8px;
+				border-radius: 4px;
+				font-size: 12px;
+				font-weight: 700;
+			}
+			.stat-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 24px;
+				padding-top: 24px;
+				border-top: 1px solid var(--outline-variant);
+			}
+			.stat-item .label {
+				font-size: 12px;
+				text-transform: uppercase;
+				color: var(--muted);
+				font-weight: 600;
+				display: block;
+				margin-bottom: 4px;
+			}
+			.stat-item .value {
+				font-size: 24px;
+				font-weight: 700;
+				color: var(--primary);
 			}
 
-			@media (max-width: 720px) {
-				main { padding: 48px 24px; }
-				h1 { font-size: 32px; }
-				.cta-group { flex-direction: column; }
+			@media (max-width: 1024px) {
+				.hero { grid-template-columns: 1fr; }
+				.hero-image { display: none; }
+				.bento-item.large, .bento-item.dark { grid-column: span 12; }
 			}
 		</style>
 		<Footer />

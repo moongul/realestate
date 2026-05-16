@@ -38,8 +38,8 @@ class BlogWriter:
         {regional_text}
         
         [작성 스타일 가이드]
-        1. **시각적 요약 카드**: 본문 시작 직후(서론 전)에 아래 HTML 구조를 사용하여 핵심 지표 3개를 요약하세요. 데이터의 내용을 채워넣으세요.
-           <div class="data-card-grid-2">
+        1. **시각적 요약 카드**: 본문 시작 직후(서론 전)에 아래 HTML 구조를 사용하여 핵심 지표 3개를 요약하세요 (2행/세로 스택 구조). 데이터의 내용을 채워넣으세요.
+           <div class="data-card-grid-rows">
              <div class="data-card"><div class="label">시장 분위기</div><div class="value">{analyzed_data.get('market_vibe', '보합')}</div></div>
              <div class="data-card"><div class="label">핵심 키워드</div><div class="value">{analyzed_data.get('key_factors', '이슈 없음')}</div></div>
              <div class="data-card"><div class="label">주의 단계</div><div class="value">{analyzed_data.get('attention_level', '관망')}</div></div>
