@@ -25,8 +25,8 @@ const posts = (await getCollection('blog')).sort(
 			}
 			ul {
 				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-				gap: 40px 24px;
+				grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+				gap: 32px;
 				list-style-type: none;
 				margin: 0;
 				padding: 0;
@@ -37,24 +37,22 @@ const posts = (await getCollection('blog')).sort(
 			ul li a {
 				display: block;
 				text-decoration: none;
-				color: var(--ink);
-			}
-			ul li img {
-				display: block; 
-				width: 100%;
-				aspect-ratio: 1 / 1;
-				object-fit: cover;
+				padding: 32px;
+				background: var(--canvas);
+				border: 1px solid var(--hairline);
 				border-radius: var(--rounded-md);
-				margin-bottom: 12px;
-				transition: transform 0.2s ease;
+				height: 100%;
+				transition: all 0.2s ease;
 			}
-			ul li a:hover img {
+			ul li a:hover {
+				border-color: var(--primary);
 				box-shadow: var(--shadow-airbnb);
+				transform: translateY(-4px);
 			}
 			.content-wrap {
 				display: flex;
 				flex-direction: column;
-				gap: 2px;
+				gap: 12px;
 			}
 			.meta-row {
 				display: flex;
@@ -63,12 +61,11 @@ const posts = (await getCollection('blog')).sort(
 			}
 			.category-badge {
 				font-size: 11px;
-				font-weight: 600;
-				padding: 2px 8px;
+				font-weight: 700;
+				padding: 4px 10px;
 				border-radius: var(--rounded-full);
-				background: var(--surface-strong);
-				color: var(--muted);
 				text-transform: uppercase;
+				letter-spacing: 0.05em;
 			}
 			.category-badge.analysis {
 				background: #eef2ff;
@@ -81,15 +78,25 @@ const posts = (await getCollection('blog')).sort(
 			.title {
 				margin: 0;
 				color: var(--ink);
-				font-size: 16px;
-				font-weight: 600;
-				line-height: 1.25;
+				font-size: 20px;
+				font-weight: 700;
+				line-height: 1.4;
+			}
+			.description {
+				margin: 0;
+				color: var(--muted);
+				font-size: 15px;
+				line-height: 1.5;
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
 			}
 			.date {
 				margin: 0;
 				color: var(--muted);
-				font-size: 14px;
-				line-height: 1.43;
+				font-size: 13px;
+				font-weight: 500;
 			}
 			@media (max-width: 720px) {
 				main {
@@ -143,17 +150,17 @@ const posts = (await getCollection('blog')).sort(
 						posts.map((post) => (
 							<li class="post-item" data-category={post.data.category}>
 								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && <img src={post.data.heroImage} alt="" />}
 									<div class="content-wrap">
 										<div class="meta-row">
-											<p class="date">
-												<FormattedDate date={post.data.pubDate} />
-											</p>
 											<span class={`category-badge ${post.data.category}`}>
 												{post.data.category === 'analysis' ? '리포트' : '시세 브리핑'}
 											</span>
+											<p class="date">
+												<FormattedDate date={post.data.pubDate} />
+											</p>
 										</div>
 										<h4 class="title">{post.data.title}</h4>
+										<p class="description">{post.data.description}</p>
 									</div>
 								</a>
 							</li>

@@ -93,22 +93,6 @@ def edit_node(state: AgentState):
     edited_post = editor.edit(state["draft_post"])
     return {"edited_post": edited_post}
 
-import requests
-
-def download_image(url, target_path):
-    """이미지 URL로부터 파일을 다운로드하여 저장"""
-    try:
-        response = requests.get(url, stream=True, timeout=20)
-        if response.status_code == 200:
-            os.makedirs(os.path.dirname(target_path), exist_ok=True)
-            with open(target_path, 'wb') as f:
-                for chunk in response.iter_content(1024):
-                    f.write(chunk)
-            return True
-    except Exception as e:
-        print(f"이미지 다운로드 실패: {e}")
-    return False
-
 def seo_node(state: AgentState):
     if not state.get("edited_post"): return state
     seo = SEOOptimizer()
@@ -126,30 +110,14 @@ def seo_node(state: AgentState):
     slug = "-".join(slug_title.split()[:4])
     filename_base = f"{date_str}-{slug}"
     
-    # 이미지 다운로드 처리
-    keyword = str(metadata.get('image_keyword', 'realestate')).lower()
-    source_url = f"https://loremflickr.com/1200/400/{keyword},realestate/all"
-    
-    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    image_filename = f"{filename_base}.jpg"
-    local_image_path = os.path.join(project_root, "blog/public/images/post-images", image_filename)
-    
-    print(f"[SEO Optimizer] 히어로 이미지 다운로드 중: {source_url}")
-    if download_image(source_url, local_image_path):
-        # 성공 시 로컬 경로 사용 (Astro public 폴더 기준)
-        hero_image_path = f"/images/post-images/{image_filename}"
-    else:
-        # 실패 시 폴백 이미지 또는 원본 URL
-        hero_image_path = source_url
-
     pub_date = datetime.now().strftime("%Y-%m-%d")
 
+    # 이미지는 이제 사용하지 않음
     frontmatter = f"""---
 title: "{title_clean}"
 description: "{desc_clean}"
 category: "{state['category']}"
 pubDate: {pub_date}
-heroImage: "{hero_image_path}"
 ---"""
     final_post = f"{frontmatter}\n\n{state['edited_post']}"
     

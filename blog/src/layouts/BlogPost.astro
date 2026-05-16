@@ -175,13 +175,16 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<Header />
 		<main>
 			<article>
-				<div class="hero-image">
-					{heroImage && <img width={1020} height={380} src={heroImage} alt="" />}
-				</div>
 				<div class="prose">
 					<div class="title-section">
-						<div class="date">
-							<FormattedDate date={pubDate} />
+						<div class="meta-row">
+							<div class="date">
+								<FormattedDate date={pubDate} />
+							</div>
+							<span class="category-divider">/</span>
+							<span class="category-name">
+								{Astro.props.category === 'market' ? '시세 브리핑' : '분석 리포트'}
+							</span>
 						</div>
 						<h1>{title}</h1>
 					</div>
@@ -191,4 +194,31 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		</main>
 		<Footer />
 	</body>
+
+	<style is:global>
+		/* Category Meta Styles */
+		.meta-row {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 8px;
+			font-size: 14px;
+			font-weight: 500;
+		}
+		.category-divider {
+			color: var(--hairline);
+		}
+		.category-name {
+			color: var(--primary);
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+		.title-section h1 {
+			font-size: 32px !important;
+			font-weight: 700 !important;
+			line-height: 1.3 !important;
+			margin: 0 !important;
+			color: var(--ink) !important;
+		}
+	</style>
 </html>

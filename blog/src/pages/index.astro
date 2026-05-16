@@ -43,37 +43,149 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<div class="hero-section">
+				<h1>🏠 대한민국 부동산 Insight</h1>
+				<p class="hero-subtitle">데이터와 AI로 분석하는 대한민국 부동산 트렌드 및 투자 전략</p>
+				<div class="cta-group">
+					<a href="/blog" class="cta-primary">인사이트 읽어보기</a>
+					<a href="/about" class="cta-secondary">서비스 소개</a>
+				</div>
+			</div>
+
+			<section class="features">
+				<div class="feature-card">
+					<div class="icon">📊</div>
+					<h3>데이터 기반 분석</h3>
+					<p>국토교통부 실거래가 데이터를 바탕으로 정확한 시세 동향을 제공합니다.</p>
+				</div>
+				<div class="feature-card">
+					<div class="icon">🤖</div>
+					<h3>AI 에이전트 리포트</h3>
+					<p>5단계 전문 에이전트 시스템이 방대한 뉴스를 요약하고 인사이트를 도출합니다.</p>
+				</div>
+				<div class="feature-card">
+					<div class="icon">📍</div>
+					<h3>구 단위 상세 정보</h3>
+					<p>서울 25개 구별 시세 브리핑을 통해 내 지역의 변화를 가장 빠르게 확인하세요.</p>
+				</div>
+			</section>
+
+			<section class="intro-text">
+				<h2>왜 대한민국 부동산 Insight인가요?</h2>
+				<p>
+					복잡하게 얽힌 부동산 뉴스 속에서 진짜 가치 있는 정보만을 골라냅니다. 
+					단순한 정보 전달을 넘어, 시장의 흐름을 읽고 실거주자와 투자자 모두에게 필요한 
+					전문가적 견해를 전달하는 것이 우리의 목표입니다.
+				</p>
+			</section>
 		</main>
+
+		<style>
+			main {
+				width: 100%;
+				max-width: 1280px;
+				margin: 0 auto;
+				padding: 80px 48px;
+			}
+			.hero-section {
+				text-align: center;
+				padding: 80px 0;
+				background: linear-gradient(to bottom, #fffcfc, #ffffff);
+			}
+			h1 {
+				font-size: 48px;
+				font-weight: 800;
+				color: var(--ink);
+				margin-bottom: 24px;
+				letter-spacing: -0.02em;
+			}
+			.hero-subtitle {
+				font-size: 20px;
+				color: var(--muted);
+				margin-bottom: 48px;
+			}
+			.cta-group {
+				display: flex;
+				gap: 16px;
+				justify-content: center;
+			}
+			.cta-primary {
+				background: var(--primary);
+				color: white;
+				padding: 16px 32px;
+				border-radius: var(--rounded-md);
+				font-weight: 700;
+				font-size: 18px;
+				transition: background 0.2s;
+			}
+			.cta-primary:hover {
+				background: var(--primary-active);
+			}
+			.cta-secondary {
+				background: var(--canvas);
+				color: var(--ink);
+				padding: 16px 32px;
+				border-radius: var(--rounded-md);
+				border: 1px solid var(--hairline);
+				font-weight: 600;
+				font-size: 18px;
+				transition: background 0.2s;
+			}
+			.cta-secondary:hover {
+				background: var(--surface-soft);
+			}
+
+			.features {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 32px;
+				margin: 80px 0;
+			}
+			.feature-card {
+				padding: 40px;
+				background: var(--canvas);
+				border: 1px solid var(--hairline);
+				border-radius: var(--rounded-md);
+				text-align: left;
+				transition: box-shadow 0.2s;
+			}
+			.feature-card:hover {
+				box-shadow: var(--shadow-airbnb);
+			}
+			.feature-card .icon {
+				font-size: 40px;
+				margin-bottom: 24px;
+			}
+			.feature-card h3 {
+				font-size: 22px;
+				margin-bottom: 16px;
+			}
+			.feature-card p {
+				color: var(--body);
+				line-height: 1.6;
+			}
+
+			.intro-text {
+				max-width: 800px;
+				margin: 80px auto;
+				text-align: center;
+			}
+			.intro-text h2 {
+				font-size: 32px;
+				margin-bottom: 32px;
+			}
+			.intro-text p {
+				font-size: 18px;
+				color: var(--body);
+				line-height: 1.8;
+			}
+
+			@media (max-width: 720px) {
+				main { padding: 48px 24px; }
+				h1 { font-size: 32px; }
+				.cta-group { flex-direction: column; }
+			}
+		</style>
 		<Footer />
 	</body>
 </html>

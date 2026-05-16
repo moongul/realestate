@@ -89,7 +89,6 @@ class SEOOptimizer:
         [가이드]
         1. title: 클릭을 유도하는 매력적인 제목 (최대 50자). 테마 "{theme_title}"를 반영.
         2. description: 검색 결과에 노출될 요약문 (100자 내외).
-        3. image_keyword: 이 글의 히어로 이미지로 쓸만한 영어 단어 딱 하나 (예: apartment, city, seoul, architecture).
         
         [본문 미리보기]:
         {final_text[:800]}
@@ -97,8 +96,7 @@ class SEOOptimizer:
         JSON 포맷:
         {{
             "title": "...",
-            "description": "...",
-            "image_keyword": "..."
+            "description": "..."
         }}
         """
         response = self.client.models.generate_content(model=self.model, contents=prompt).text
