@@ -1,0 +1,107 @@
+/* Airbnb Inspired Design System */
+:root {
+	/* Colors */
+	--primary: #ff385c;
+	--primary-active: #e00b41;
+	--primary-disabled: #ffd1da;
+	--ink: #222222;
+	--body: #3f3f3f;
+	--muted: #6a6a6a;
+	--hairline: #dddddd;
+	--canvas: #ffffff;
+	--surface-soft: #f7f7f7;
+	--surface-strong: #f2f2f2;
+	
+	/* Compatibility / Legacy Variables */
+	--bg-main: var(--canvas);
+	--card-bg: var(--canvas);
+	--primary-navy: var(--ink);
+	--accent-blue: var(--primary);
+	--border-light: var(--hairline);
+	--text-body: var(--body);
+	--black: 34, 34, 34; /* #222222 */
+	--accent: 255, 56, 92; /* #ff385c */
+	--gray: 106, 106, 106; /* #6a6a6a */
+	--gray-light: 221, 221, 221; /* #dddddd */
+	--gray-dark: 34, 34, 34;
+	--gray-gradient: rgba(221, 221, 221, 0.4), rgba(221, 221, 221, 0);
+
+	/* Rounded Corners */
+	--rounded-sm: 8px;
+	--rounded-md: 14px;
+	--rounded-lg: 20px;
+	--rounded-full: 9999px;
+
+	/* Spacing */
+	--spacing-base: 16px;
+	--spacing-lg: 24px;
+	--spacing-xl: 32px;
+	--spacing-section: 64px;
+
+	/* Shadows */
+	--shadow-airbnb: rgba(0, 0, 0, 0.02) 0 0 0 1px, rgba(0, 0, 0, 0.04) 0 2px 6px 0, rgba(0, 0, 0, 0.1) 0 4px 8px 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	min-height: 100vh;
+	background-color: var(--canvas);
+	color: var(--ink);
+	font-family: 'Inter', Circular, -apple-system, system-ui, Roboto, 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	word-break: keep-all;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: var(--ink);
+	line-height: 1.25;
+	font-weight: 600;
+	margin: 0;
+}
+
+h1 { font-size: 28px; font-weight: 700; }
+h2 { font-size: 22px; font-weight: 500; }
+
+a {
+	color: var(--ink);
+	text-decoration: none;
+}
+
+p {
+	line-height: 1.5;
+	margin: 0;
+}
+
+main {
+	flex: 1;
+	width: 100%;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}

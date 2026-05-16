@@ -1,0 +1,44 @@
+# OS Metadata
+.DS_Store
+Thumbs.db
+
+# Environments & Secrets
+.env
+.env.local
+.env.*.local
+.venv/
+env/
+venv/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# Node / Astro
+node_modules/
+dist/
+.astro/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Databases
+*.db
+*.sqlite3
+
+# Local History / Cache
+agents/history.txt
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo

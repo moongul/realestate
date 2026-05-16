@@ -1,0 +1,194 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+		<style is:global>
+			main {
+				width: 100%;
+				max-width: 1080px;
+				margin: 0 auto;
+				padding: 48px 24px;
+			}
+			article {
+				background: var(--canvas);
+				border-radius: var(--rounded-md);
+				overflow: hidden;
+			}
+			.hero-image {
+				width: 100%;
+				aspect-ratio: 16 / 9;
+				overflow: hidden;
+				border-radius: var(--rounded-md);
+				margin-bottom: 32px;
+			}
+			.hero-image img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+			.prose {
+				color: var(--body);
+				line-height: 1.5;
+				font-size: 16px;
+			}
+			.title-section {
+				text-align: left;
+				margin-bottom: 32px;
+			}
+			.title-section h1 {
+				font-size: 22px;
+				font-weight: 500;
+				color: var(--ink);
+				line-height: 1.18;
+				margin: 8px 0;
+			}
+			.date {
+				color: var(--muted);
+				font-size: 14px;
+				font-weight: 400;
+			}
+			/* Content Elements */
+			.prose h2 {
+				font-size: 21px;
+				margin-top: 56px;
+				margin-bottom: 20px;
+				color: var(--ink);
+				font-weight: 700;
+				padding-bottom: 12px;
+				border-bottom: 1px solid var(--hairline);
+			}
+			.prose h3 {
+				font-size: 18px;
+				margin-top: 32px;
+				margin-bottom: 12px;
+				color: var(--ink);
+				font-weight: 600;
+			}
+			.prose p {
+				margin-bottom: 24px;
+			}
+			/* Enhanced Table Styling */
+			.prose table {
+				width: 100%;
+				border-collapse: separate;
+				border-spacing: 0;
+				margin: 32px 0;
+				border: 1px solid var(--hairline);
+				border-radius: var(--rounded-sm);
+				overflow: hidden;
+			}
+			.prose th {
+				background: var(--surface-soft);
+				padding: 16px;
+				border-bottom: 1px solid var(--hairline);
+				text-align: left;
+				font-weight: 600;
+				font-size: 14px;
+				color: var(--ink);
+			}
+			.prose td {
+				padding: 16px;
+				border-bottom: 1px solid var(--hairline);
+				font-size: 14px;
+				vertical-align: top;
+			}
+			.prose tr:last-child td {
+				border-bottom: none;
+			}
+			/* Highlight Boxes / Callouts */
+			.prose blockquote {
+				border: 1px solid var(--hairline);
+				border-left: 4px solid var(--primary);
+				padding: 24px;
+				margin: 40px 0;
+				background: var(--canvas);
+				border-radius: var(--rounded-sm);
+				font-style: normal;
+				color: var(--body);
+				box-shadow: var(--shadow-airbnb);
+			}
+			.prose blockquote strong {
+				display: block;
+				font-size: 18px;
+				margin-bottom: 8px;
+				color: var(--primary);
+			}
+			/* Lists */
+			.prose ul, .prose ol {
+				margin-bottom: 32px;
+				padding-left: 24px;
+			}
+			.prose li {
+				margin-bottom: 12px;
+			}
+			.prose li strong {
+				color: var(--ink);
+			}
+			/* Horizontal Rule */
+			.prose hr {
+				border: 0;
+				border-top: 1px solid var(--hairline);
+				margin: 56px 0;
+			}
+			/* Custom Data Highlight (can be used via HTML in Markdown if needed) */
+			.data-card-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 16px;
+				margin: 32px 0;
+			}
+			.data-card {
+				padding: 20px;
+				border: 1px solid var(--hairline);
+				border-radius: var(--rounded-md);
+				background: var(--canvas);
+				text-align: center;
+			}
+			.data-card .label {
+				font-size: 12px;
+				color: var(--muted);
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+				margin-bottom: 8px;
+			}
+			.data-card .value {
+				font-size: 24px;
+				font-weight: 700;
+				color: var(--primary);
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<article>
+				<div class="hero-image">
+					{heroImage && <img width={1020} height={380} src={heroImage} alt="" />}
+				</div>
+				<div class="prose">
+					<div class="title-section">
+						<div class="date">
+							<FormattedDate date={pubDate} />
+						</div>
+						<h1>{title}</h1>
+					</div>
+					<slot />
+				</div>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>
