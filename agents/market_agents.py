@@ -85,8 +85,7 @@ class MarketWriter:
         1. **시각적 강조**: 상승(▲), 하락(▼), 보합(—) 이모지를 적절히 사용하여 시세 변동을 한눈에 보여주세요.
         2. **표(Table) 활용**: 구별 시세 정보를 깔끔한 마크다운 표로 정리하세요.
         3. **브랜드 톤앤매너**: Airbnb 스타일의 세련된 디자인을 위해 넉넉한 여백과 구조화된 섹션을 사용하세요.
-        4. **카테고리**: 반드시 'market' 카테고리임을 명시하세요 (에이전트가 처리할 예정이므로 본문 내용만 작성).
-        5. **데이터 카드**: 상단에 아래 HTML 구조를 사용하여 오늘의 요약을 보여주세요.
+        4. **데이터 카드**: 상단에 아래 HTML 구조를 사용하여 오늘의 요약을 보여주세요.
            <div class="data-card-grid">
              <div class="data-card"><div class="label">오늘의 핫스팟</div><div class="value">{market_data.get('hot_spot')}</div></div>
              <div class="data-card"><div class="label">서울 전체 동향</div><div class="value">{market_data.get('summary')}</div></div>
