@@ -62,12 +62,11 @@ body {
 	min-height: 100vh;
 	background-color: var(--canvas);
 	color: var(--ink);
-	font-family: 'Inter', 'Noto Sans KR', -apple-system, system-ui, sans-serif;
+	font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	word-break: keep-all;
 	overflow-wrap: break-word;
 }
-
 
 body {
 	display: flex;
@@ -75,12 +74,13 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Source Serif 4', 'Noto Sans KR', serif;
+	font-family: 'Pretendard Variable', Pretendard, sans-serif;
 	color: var(--primary);
 	line-height: 1.2;
 	font-weight: 700;
 	margin: 0;
 }
+
 
 a {
 	color: var(--secondary);
