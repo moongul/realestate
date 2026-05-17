@@ -23,21 +23,21 @@ const totalTrades = latestStats.total_trades;
 				<div class="hero-overlay"></div>
 				<div class="container hero-container">
 					<div class="hero-content">
-						<span class="badge">Institutional Grade Analysis</span>
-						<h1>Data-Driven Real Estate Insights</h1>
+						<span class="badge">기관급 전문 분석 리포트</span>
+						<h1>데이터 기반의<br />부동산 인사이트</h1>
 						<p class="subtitle">
-							Unlocking institutional-quality market data and predictive analytics for professional real estate investors. Navigate complex global markets with vetted research.
+							전문 투자자를 위한 고품질 시장 데이터와 인공지능 기반의 예측 분석을 제공합니다. 검증된 연구 데이터를 통해 복잡한 시장의 흐름을 정확히 파악하세요.
 						</p>
 						<div class="hero-actions">
 							<a href="/blog" class="btn-primary">
-								Latest Reports
+								최신 리포트 읽기
 								<span class="material-symbols-outlined">arrow_forward</span>
 							</a>
-							<a href="/about" class="btn-outline">Our Methodology</a>
+							<a href="/about" class="btn-outline">분석 방법론</a>
 						</div>
 					</div>
 					<div class="hero-image">
-						<img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&h=800&auto=format&fit=crop" alt="Modern Architecture" />
+						<img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&h=800&auto=format&fit=crop" alt="현대적인 건축물" />
 					</div>
 				</div>
 			</section>
@@ -47,11 +47,11 @@ const totalTrades = latestStats.total_trades;
 				<div class="container">
 					<div class="section-header">
 						<div class="header-text">
-							<h2>Market Trends</h2>
-							<p>{latestStats.last_updated} Seoul Performance Indicators</p>
+							<h2>시장 동향</h2>
+							<p>{latestStats.last_updated} 서울 부동산 주요 지표</p>
 						</div>
 						<a href="/blog" class="dashboard-link">
-							View Daily Briefings <span class="material-symbols-outlined">trending_up</span>
+							일일 시세 브리핑 보기 <span class="material-symbols-outlined">trending_up</span>
 						</a>
 					</div>
 					
@@ -59,9 +59,9 @@ const totalTrades = latestStats.total_trades;
 						<!-- Large Chart Card -->
 						<div class="bento-card large chart-card">
 							<div class="card-header">
-								<h3>Seoul Price Index</h3>
+								<h3>서울 아파트 시세 지수</h3>
 								<div class="trend-badge">
-									{topGainer.prev_diff_rate > 0 ? '+' : ''}{topGainer.prev_diff_rate.toFixed(2)}% Momentum in {topGainer.district_name}
+									{topGainer.district_name} {topGainer.prev_diff_rate > 0 ? '+' : ''}{topGainer.prev_diff_rate.toFixed(2)}% 상승 모멘텀
 								</div>
 							</div>
 							<div class="chart-container">
@@ -72,16 +72,16 @@ const totalTrades = latestStats.total_trades;
 							</div>
 							<div class="stat-footer">
 								<div class="stat-item">
-									<span class="label">Avg Seoul Price</span>
+									<span class="label">서울 평균 매매가</span>
 									<span class="value">₩{avgPrice}만</span>
 								</div>
 								<div class="stat-item">
-									<span class="label">Top Gainer</span>
+									<span class="label">최고 상승 지역</span>
 									<span class="value">{topGainer.district_name}</span>
 								</div>
 								<div class="stat-item">
-									<span class="label">Market Volume</span>
-									<span class="value">{totalTrades} Trades</span>
+									<span class="label">시장 거래량</span>
+									<span class="value">{totalTrades}건</span>
 								</div>
 							</div>
 						</div>
@@ -90,23 +90,23 @@ const totalTrades = latestStats.total_trades;
 						<div class="bento-card medium dark-card">
 							<div class="card-content">
 								<span class="material-symbols-outlined large-icon">location_city</span>
-								<h3>Market Liquidity</h3>
+								<h3>시장 유동성 분석</h3>
 								<p>
-									As of {latestStats.last_updated}, we observed {totalTrades} verified transactions across 25 districts. 
-									The market is showing a {topGainer.prev_diff_rate > 0 ? 'bullish' : 'stable'} trend led by {topGainer.district_name}.
+									{latestStats.last_updated} 기준, 서울 25개 자치구에서 {totalTrades}건의 검증된 실거래가 포착되었습니다. 
+									현재 시장은 {topGainer.district_name}을(를) 중심으로 {topGainer.prev_diff_rate > 0 ? '강세' : '보합'} 흐름을 보이고 있습니다.
 								</p>
 							</div>
 							<div class="card-footer">
 								<div class="status-indicator">
 									<span class="material-symbols-outlined">check_circle</span>
-									<span>Real-time Data Synced</span>
+									<span>실시간 데이터 동기화 완료</span>
 								</div>
 							</div>
 						</div>
 
 						<!-- Capital Allocation Card -->
 						<div class="bento-card small">
-							<h4 class="label-md">District Performance</h4>
+							<h4 class="label-md">자치구별 시세 등락률</h4>
 							<div class="allocation-stack">
 								{latestStats.top_gainers.slice(0, 3).map((d) => (
 									<div class="allocation-item">
@@ -120,15 +120,15 @@ const totalTrades = latestStats.total_trades;
 						<!-- Analyst Insight Card -->
 						<div class="bento-card wide insight-card">
 							<div class="insight-image">
-								<img src="https://images.unsplash.com/photo-1454165833767-027ffea70288?q=80&w=400&h=400&auto=format&fit=crop" alt="Analyst" />
+								<img src="https://images.unsplash.com/photo-1454165833767-027ffea70288?q=80&w=400&h=400&auto=format&fit=crop" alt="분석가" />
 							</div>
 							<div class="insight-content">
-								<h3>Data-Driven Insights</h3>
+								<h3>데이터 기반 인사이트</h3>
 								<p>
-									Our AI-driven analysis monitors official MOLIT data to detect shifts in regional demand. 
-									The current focus is on {topGainer.district_name} and other Tier 1 districts showing high liquidity.
+									우리의 AI 에이전트는 국토교통부 실거래 데이터를 실시간 모니터링하여 지역별 수요 변화를 감지합니다. 
+									현재 {topGainer.district_name} 및 주요 상급지를 중심으로 유동성 흐름이 집중되고 있습니다.
 								</p>
-								<a href="/blog" class="pro-link">Explore Detailed Reports →</a>
+								<a href="/blog" class="pro-link">상세 분석 리포트 탐색하기 →</a>
 							</div>
 						</div>
 					</div>
@@ -138,13 +138,13 @@ const totalTrades = latestStats.total_trades;
 			<!-- Newsletter Section -->
 			<section class="newsletter-section">
 				<div class="container narrow">
-					<h2>Get the Intelligence.</h2>
-					<p>Join 50,000+ institutional investors who receive our weekly deep-dive on market movements and regulatory shifts.</p>
+					<h2>전문가용 인사이트 구독</h2>
+					<p>시장 변화와 규제 동향에 대한 주간 심층 분석 리포트를 50,000명의 투자자들과 함께 받아보세요.</p>
 					<div class="form-container">
 						<input type="email" placeholder="professional@company.com" />
-						<button class="btn-primary">Subscribe</button>
+						<button class="btn-primary">구독하기</button>
 					</div>
-					<p class="disclaimer">We respect your privacy. Professional data only.</p>
+					<p class="disclaimer">귀하의 개인정보를 소중히 다룹니다. 오직 전문 데이터만 발송됩니다.</p>
 				</div>
 			</section>
 		</main>
