@@ -293,6 +293,11 @@ const { title, description, pubDate, updatedDate } = Astro.props;
 							<span class="category-name">
 								{Astro.props.category === 'market' ? '시세 브리핑' : '분석 리포트'}
 							</span>
+							<span class="category-divider">/</span>
+							<span class="view-count" title="페이지 조회수">
+								<span class="material-symbols-outlined" style="font-size: 14px; margin-right: 2px;">visibility</span>
+								<span id="page-views">...</span>
+							</span>
 						</div>
 						<h1>{title}</h1>
 					</div>
@@ -437,6 +442,36 @@ const { title, description, pubDate, updatedDate } = Astro.props;
 			// 문서 로드 후 실행
 			initDistricts();
 		</script>
+
+		<!-- 페이지 조회수 카운터 스크립트 -->
+		<script is:inline>
+			async function initViewCount() {
+				const namespace = 'estateintel-blog-views';
+				// URL의 pathname을 안전한 키로 변환 (예: blog_2026-05-17-market-briefing_)
+				let key = window.location.pathname.replace(/\//g, '_');
+				if (key.length === 0 || key === '_') key = 'home';
+				
+				try {
+					// 페이지 로드 시 1 증가시키고 현재 값을 가져옴
+					const res = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
+					const data = await res.json();
+					const viewsElement = document.getElementById('page-views');
+					if (viewsElement && data.count) {
+						viewsElement.innerText = data.count.toLocaleString();
+					}
+				} catch (e) {
+					console.error('Failed to update view count:', e);
+					const viewsElement = document.getElementById('page-views');
+					if (viewsElement) {
+						viewsElement.innerText = '-';
+					}
+				}
+			}
+			
+			// 문서가 로드되면 조회수 카운트 실행
+			initViewCount();
+		</script>
+
 		<Footer />
 	</body>
 </html>
