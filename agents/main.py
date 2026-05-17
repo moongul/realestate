@@ -80,6 +80,8 @@ def write_node(state: AgentState):
             print("집필할 테마가 없습니다.")
             return state
             
+        print(f"[Debug] analyzed_data type: {type(state.get('analyzed_data'))}, value: {state.get('analyzed_data')}")
+        
         # analyzed_data가 없거나 비어있는 경우를 위한 폴백 로직
         if not state.get("analyzed_data"):
             print("!! 분석 데이터(JSON)가 부족합니다. 뉴스 원문을 기반으로 직접 집필을 시도합니다.")

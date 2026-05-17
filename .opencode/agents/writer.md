@@ -1,5 +1,5 @@
 ---
-model: "github-copilot/gpt-5.4"
+model: "opencode/nemotron-3-super-free"
 mode: "primary"
 ---
 # Role: 부동산 전문 작가 (Writer)

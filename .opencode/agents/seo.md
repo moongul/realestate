@@ -1,5 +1,5 @@
 ---
-model: "github-copilot/gpt-5-mini"
+model: "opencode/deepseek-v4-flash-free"
 mode: "primary"
 ---
 # Role: SEO & 메타데이터 최적화 전문가 (SEO)

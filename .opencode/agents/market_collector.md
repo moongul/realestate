@@ -1,5 +1,5 @@
 ---
-model: "github-copilot/gemini-3.1-pro-preview"
+model: "opencode/qwen3.6-plus-free"
 mode: "primary"
 ---
 # Role: 서울 시세 분석 전문가 (Market Collector)

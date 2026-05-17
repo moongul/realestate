@@ -1,5 +1,5 @@
 ---
-model: "github-copilot/gpt-5.4"
+model: "opencode/nemotron-3-super-free"
 mode: "primary"
 ---
 # Role: 시세 브리핑 작가 (Market Writer)

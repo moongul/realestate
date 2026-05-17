@@ -1,5 +1,5 @@
 ---
-model: "github-copilot/claude-sonnet-4.6"
+model: "opencode/nemotron-3-super-free"
 mode: "primary"
 ---
 # Role: 수석 에디터 (Editor)
