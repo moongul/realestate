@@ -53,25 +53,23 @@ import HeaderLink from './HeaderLink.astro';
 	}
 	.internal-links {
 		display: flex;
-		gap: 24px;
-		margin-left: 32px;
+		gap: 32px;
 	}
-	.internal-links :global(a) {
-		font-family: 'Inter', sans-serif;
+	.internal-links a {
+		padding: 20px 0;
+		color: var(--body);
 		font-size: 14px;
 		font-weight: 600;
-		color: var(--on-surface-variant);
 		text-decoration: none;
-		padding: 4px 0;
 		border-bottom: 2px solid transparent;
 		transition: all 0.2s;
-		letter-spacing: 0.01em;
+		font-family: 'Inter', 'Noto Sans KR', sans-serif;
 	}
-	.internal-links :global(a:hover) {
+	.internal-links a:hover {
 		color: var(--secondary);
 	}
-	.internal-links :global(a.active) {
-		color: var(--secondary);
+	.internal-links a.active {
+		color: var(--secondary) !important;
 		border-bottom-color: var(--secondary);
 	}
 	.actions {
@@ -82,32 +80,26 @@ import HeaderLink from './HeaderLink.astro';
 	.search-box {
 		display: flex;
 		align-items: center;
-		background: var(--surface-container-low);
+		background: var(--surface-variant);
 		padding: 6px 12px;
-		border-radius: var(--rounded-default);
-		border: 1px solid var(--outline-variant);
-	}
-	.search-box span {
-		font-size: 18px;
-		color: var(--on-surface-variant);
-		margin-right: 8px;
+		border-radius: var(--rounded-sm);
+		gap: 8px;
 	}
 	.search-box input {
 		background: transparent;
 		border: none;
 		outline: none;
-		font-size: 14px;
-		color: var(--on-surface);
-		width: 160px;
+		font-size: 13px;
+		width: 150px;
 	}
 	.menu-btn {
 		display: none;
 		background: none;
 		border: none;
-		color: var(--primary);
 		cursor: pointer;
+		color: var(--primary);
 	}
-	@media (max-width: 768px) {
+	@media (max-width: 1024px) {
 		.internal-links, .search-box {
 			display: none;
 		}

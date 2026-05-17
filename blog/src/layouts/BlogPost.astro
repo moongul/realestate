@@ -11,7 +11,7 @@ type Props = CollectionEntry<'blog'>['data'];
 const { title, description, pubDate, updatedDate } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="ko">
 	<head>
 		<BaseHead title={title} description={description} />
 		<style is:global>
@@ -47,7 +47,6 @@ const { title, description, pubDate, updatedDate } = Astro.props;
 				color: var(--primary);
 				line-height: 1.2;
 				margin: 16px 0;
-				font-family: 'Source Serif 4', 'Noto Sans KR', serif;
 			}
 			.meta-row {
 				display: flex;
@@ -130,7 +129,6 @@ const { title, description, pubDate, updatedDate } = Astro.props;
 				font-size: 18px;
 				margin-bottom: 12px;
 				color: var(--secondary);
-				font-family: 'Source Serif 4', 'Noto Sans KR', serif;
 			}
 			/* Horizontal Rule */
 			.prose hr {
@@ -193,7 +191,7 @@ const { title, description, pubDate, updatedDate } = Astro.props;
 							</div>
 							<span class="category-divider">/</span>
 							<span class="category-name">
-								{Astro.props.category === 'market' ? 'Daily Intelligence' : 'Industrial Report'}
+								{Astro.props.category === 'market' ? '시세 브리핑' : '분석 리포트'}
 							</span>
 						</div>
 						<h1>{title}</h1>

@@ -60,13 +60,14 @@ body {
 	padding: 0;
 	width: 100%;
 	min-height: 100vh;
-	background-color: var(--background);
-	color: var(--on-surface);
-	font-family: 'Inter', -apple-system, system-ui, sans-serif;
+	background-color: var(--canvas);
+	color: var(--ink);
+	font-family: 'Inter', 'Noto Sans KR', -apple-system, system-ui, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	word-break: keep-all;
 	overflow-wrap: break-word;
 }
+
 
 body {
 	display: flex;
