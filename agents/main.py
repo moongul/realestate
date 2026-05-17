@@ -109,6 +109,12 @@ def edit_node(state: AgentState):
     if not state.get("draft_post"): return state
     editor = PersonaEditor()
     edited_post = editor.edit(state["draft_post"])
+    
+    # [안전 장치]: 에디터가 본문을 대량 삭제하거나 코멘트만 남기는 경우 방지
+    if not edited_post or len(edited_post) < (len(state["draft_post"]) * 0.5):
+        print("!! 경고: 에디터가 본문을 비정상적으로 축소했습니다. 원본 초안을 유지합니다.")
+        return {"edited_post": state["draft_post"]}
+        
     return {"edited_post": edited_post}
 
 def seo_node(state: AgentState):

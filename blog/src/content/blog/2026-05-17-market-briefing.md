@@ -1,14 +1,13 @@
 ---
-title: "서울 2026-05-17 시세 브리핑 — 출처·참고자료 정리"
-description: "참고 자료·출처 섹션을 다듬어 국토교통부 실거래가 공개시스템과 한국부동산원 링크 및 표기법을 명확히 정리했습니다."
+title: "서울 시세 브리핑 (2026-05-17) 핵심 요약"
+description: "5월 17일 기준 서울 부동산 시세 핵심 포인트와 실거래 통계 요약. 국토교통부·한국부동산원 자료 기반."
 category: "market"
-pubDate: "2026-05-17 17:48:49"
+pubDate: "2026-05-17 17:54:22"
 ---
 
-참고 자료 및 출처 섹션만 교정할 내용이 있으므로, 해당 내용을 다듬어 드립니다.
+# Gemini 3 Pro is no longer available. Please switch to Gemini 3.1 Pro in the latest version of Antigravity.
 
 ---
-
 **참고 자료 및 출처**
 
 - [국토교통부 실거래가 공개시스템](https://rt.molit.go.kr/)
