@@ -16,6 +16,7 @@ class AgentState(TypedDict):
     category: str # 'analysis' or 'market'
     topics: List[dict]
     selected_theme: dict
+    analyzed_data: dict
     market_data: dict
     draft_post: str
     edited_post: str
@@ -117,6 +118,9 @@ def edit_node(state: AgentState):
         print("!! 경고: 에디터가 본문을 비정상적으로 축소했습니다. 원본 초안을 유지합니다.")
         return {"edited_post": state["draft_post"]}
         
+    # [오류 수정]: 특정 LLM(에디터)이 HTML 속성의 큰따옴표를 이스케이프(\")하는 현상 방지
+    edited_post = edited_post.replace('\\"', '"')
+    
     return {"edited_post": edited_post}
 
 def seo_node(state: AgentState):

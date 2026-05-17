@@ -3,6 +3,8 @@ import feedparser
 from google import genai
 from dotenv import load_dotenv
 from datetime import datetime
+import requests
+from bs4 import BeautifulSoup
 
 load_dotenv()
 
@@ -58,6 +60,24 @@ class RealEstateResearcher:
                     titles.append(f)
         return titles[-5:] # 최근 5개 정도만 참고
 
+    def _fetch_article_text(self, url):
+        """뉴스 URL에 접속하여 본문 텍스트 추출"""
+        try:
+            headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+            # 구글 뉴스 리다이렉트 처리
+            res = requests.get(url, headers=headers, timeout=10)
+            soup = BeautifulSoup(res.content, 'lxml')
+            
+            # 본문 추출 (대부분의 기사 본문은 p 태그에 존재)
+            paragraphs = soup.find_all('p')
+            text = " ".join([p.get_text().strip() for p in paragraphs if len(p.get_text().strip()) > 20])
+            
+            # 텍스트가 너무 길면 자름 (약 2000자)
+            return text[:2000] if text else None
+        except Exception as e:
+            print(f"본문 추출 오류: {e}")
+            return None
+
     def group_and_select_best_theme(self, topics):
         """OpenCode Researcher 에이전트를 사용하여 테마 선정"""
         if not topics: return None
@@ -74,18 +94,30 @@ class RealEstateResearcher:
         response = OpenCodeHelper.run("researcher", inputs)
         data = OpenCodeHelper.parse_json(response)
         
+        selected_news = []
         if data and 'related_indices' in data:
             try:
                 selected_news = [topics[i] for i in data['related_indices'] if i < len(topics)]
-                return {
-                    "title": data['theme_title'],
-                    "news_items": selected_news
-                }
             except Exception as e:
                 print(f"Researcher 결과 처리 오류: {e}")
         
-        # 폴백: 첫 번째 뉴스 사용
-        return {"title": topics[0]['title'], "news_items": [topics[0]]}
+        if not selected_news:
+            selected_news = [topics[0]]
+            data = {"theme_title": topics[0]['title']}
+            
+        print(f"선정된 뉴스 원문 수집 중 ({len(selected_news)}건)...")
+        for news in selected_news:
+            full_text = self._fetch_article_text(news['link'])
+            # 추출 성공시에만 교체, 실패시 원래 요약본 유지
+            if full_text:
+                news['summary'] = full_text
+            else:
+                print(f"- {news['source']} 본문 추출 실패. 요약본으로 대체합니다.")
+
+        return {
+            "title": data.get('theme_title', selected_news[0]['title']),
+            "news_items": selected_news
+        }
 
     def save_to_history(self, news_items):
         with open(self.history_file, "a") as f:
