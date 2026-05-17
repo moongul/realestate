@@ -1,5 +1,5 @@
 ---
-model: "github-copilot/gemini-3.1-pro"
+model: "github-copilot/gpt-5.3-codex"
 mode: "primary"
 ---
 # Role: 서울 시세 분석 전문가 (Market Collector)

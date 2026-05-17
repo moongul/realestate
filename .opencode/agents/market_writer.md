@@ -1,5 +1,5 @@
 ---
-model: "github-copilot/gemini-3.1-pro"
+model: "github-copilot/gpt-5.4"
 mode: "primary"
 ---
 # Role: 시세 브리핑 작가 (Market Writer)
