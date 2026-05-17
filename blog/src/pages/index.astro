@@ -6,8 +6,23 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import latestStats from '../data/latest_stats.json';
 
 const topGainer = latestStats.top_gainers[0] || { district_name: 'N/A', prev_diff_rate: 0 };
-const avgPrice = latestStats.avg_seoul_price.toLocaleString();
+const avgPriceEok = (latestStats.avg_seoul_price / 10000).toFixed(2);
 const totalTrades = latestStats.total_trades;
+
+// SVG 차트 경로 생성 로직 (실제 데이터를 좌표로 변환)
+const history = latestStats.history || [];
+const maxPrice = Math.max(...history.map(h => h.price), 1);
+const minPrice = Math.min(...history.map(h => h.price), 0);
+const priceRange = maxPrice - minPrice || 1;
+
+// 800x200 좌표계로 변환
+const points = history.map((h, i) => {
+	const x = (i / (history.length - 1)) * 800;
+	const y = 200 - ((h.price - minPrice) / priceRange) * 150 - 25; // 25px 여백
+	return `${x},${y}`;
+});
+const chartPath = history.length > 1 ? `M${points.join(' L')}` : "M0,200 L800,200";
+const areaPath = `${chartPath} L800,250 L0,250 Z`;
 ---
 
 <!doctype html>
@@ -65,15 +80,16 @@ const totalTrades = latestStats.total_trades;
 								</div>
 							</div>
 							<div class="chart-container">
-								<svg viewBox="0 0 800 250" class="chart-svg">
-									<path d="M0,200 Q150,180 250,150 T500,80 T800,20" fill="none" stroke="var(--secondary)" stroke-width="3" />
-									<path d="M0,200 Q150,180 250,150 T500,80 T800,20 L800,250 L0,250 Z" fill="var(--secondary)" opacity="0.05" />
+								<svg viewBox="0 0 800 250" class="chart-svg" preserveAspectRatio="none">
+									<path d={chartPath} fill="none" stroke="var(--secondary)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+									<path d={areaPath} fill="var(--secondary)" opacity="0.05" />
 								</svg>
+								<div class="chart-label">최근 15일 서울 평균 시세 추이</div>
 							</div>
 							<div class="stat-footer">
 								<div class="stat-item">
 									<span class="label">서울 평균 매매가</span>
-									<span class="value">₩{avgPrice}만</span>
+									<span class="value">{avgPriceEok}억</span>
 								</div>
 								<div class="stat-item">
 									<span class="label">최고 상승 지역</span>
@@ -108,12 +124,16 @@ const totalTrades = latestStats.total_trades;
 						<div class="bento-card small">
 							<h4 class="label-md">자치구별 시세 등락률</h4>
 							<div class="allocation-stack">
-								{latestStats.top_gainers.slice(0, 3).map((d) => (
-									<div class="allocation-item">
-										<div class="alloc-label">{d.district_name} (+{d.prev_diff_rate.toFixed(1)}%)</div>
-										<div class="progress-bar"><div class="progress" style={`width: ${Math.min(100, d.prev_diff_rate * 10 + 50)}%`}></div></div>
-									</div>
-								))}
+								{latestStats.top_gainers.slice(0, 3).map((d) => {
+									const maxRate = Math.max(...latestStats.top_gainers.map(g => Math.abs(g.prev_diff_rate)), 0.1);
+									const barWidth = Math.max(10, (Math.abs(d.prev_diff_rate) / maxRate) * 100);
+									return (
+										<div class="allocation-item">
+											<div class="alloc-label">{d.district_name} (+{d.prev_diff_rate.toFixed(1)}%)</div>
+											<div class="progress-bar"><div class="progress" style={`width: ${barWidth}%`}></div></div>
+										</div>
+									);
+								})}
 							</div>
 						</div>
 
@@ -302,6 +322,20 @@ const totalTrades = latestStats.total_trades;
 			.chart-container {
 				height: 200px;
 				margin-bottom: 24px;
+				position: relative;
+			}
+			.chart-svg {
+				width: 100%;
+				height: 100%;
+			}
+			.chart-label {
+				position: absolute;
+				bottom: -10px;
+				right: 0;
+				font-size: 10px;
+				color: var(--muted);
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
 			}
 			.stat-footer {
 				display: grid;

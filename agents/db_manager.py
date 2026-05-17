@@ -310,7 +310,19 @@ class RealEstateDBManager:
         rows = cur.fetchall()
         districts = [dict(row) for row in rows]
         
-        # 3. 주요 지표 계산
+        # 3. 서울 전체 15일간의 역사적 트렌드 (차트용)
+        cur.execute("""
+            SELECT log_date, AVG(avg_price) as seoul_avg 
+            FROM district_trend 
+            GROUP BY log_date 
+            ORDER BY log_date DESC 
+            LIMIT 15
+        """)
+        history_rows = cur.fetchall()
+        # 시계열 순서로 정렬 (과거 -> 현재)
+        history = [{"date": r['log_date'], "price": int(r['seoul_avg'])} for r in reversed(history_rows)]
+
+        # 4. 주요 지표 계산
         total_trades = sum(d['trade_count'] for d in districts)
         avg_seoul_price = sum(d['avg_price'] for d in districts) / len(districts) if districts else 0
         
@@ -322,6 +334,7 @@ class RealEstateDBManager:
             "last_updated": latest_date,
             "total_trades": total_trades,
             "avg_seoul_price": int(avg_seoul_price),
+            "history": history,
             "top_gainers": top_gainers,
             "top_losers": top_losers,
             "all_districts": districts
