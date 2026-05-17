@@ -14,23 +14,38 @@ import HeaderLink from './HeaderLink.astro';
 			<HeaderLink href="/about">서비스 소개</HeaderLink>
 		</div>
 		<div class="actions">
-			<div class="search-container">
+			<div class="search-container desktop-search">
 				<div class="search-box">
 					<span class="material-symbols-outlined">&#xe8b6;</span>
 					<input type="text" id="search-input" placeholder="검색어를 입력하세요..." autocomplete="off" />
 				</div>
 				<div id="search-results" class="search-results-dropdown"></div>
 			</div>
-			<button class="menu-btn material-symbols-outlined">&#xe5d2;</button>
+			<button class="menu-btn material-symbols-outlined" id="menu-toggle">&#xe5d2;</button>
 		</div>
 	</nav>
+	
+	<!-- Mobile Menu Overlay -->
+	<div class="mobile-menu" id="mobile-menu">
+		<div class="mobile-search-container">
+			<div class="search-box">
+				<span class="material-symbols-outlined">&#xe8b6;</span>
+				<input type="text" id="mobile-search-input" placeholder="검색어를 입력하세요..." autocomplete="off" />
+			</div>
+			<div id="mobile-search-results" class="search-results-dropdown mobile"></div>
+		</div>
+		<div class="mobile-links">
+			<a href="/">홈</a>
+			<a href="/blog">인사이트</a>
+			<a href="/about">서비스 소개</a>
+		</div>
+	</div>
 </header>
 
 <script is:inline>
 	let searchIndex = null;
-	const searchInput = document.getElementById('search-input');
-	const searchResults = document.getElementById('search-results');
-
+	
+	// 공통 검색 로직
 	async function fetchIndex() {
 		if (!searchIndex) {
 			try {
@@ -43,40 +58,72 @@ import HeaderLink from './HeaderLink.astro';
 		}
 	}
 
-	searchInput?.addEventListener('input', async (e) => {
-		const query = e.target.value.toLowerCase().trim();
-		if (query.length < 2) {
-			searchResults.classList.remove('show');
-			return;
-		}
+	function handleSearch(input, results) {
+		input?.addEventListener('input', async (e) => {
+			const query = e.target.value.toLowerCase().trim();
+			if (query.length < 2) {
+				results.classList.remove('show');
+				return;
+			}
 
-		await fetchIndex();
-		
-		const filtered = searchIndex.filter(post => 
-			post.title.toLowerCase().includes(query) || 
-			post.description.toLowerCase().includes(query)
-		).slice(0, 5);
+			await fetchIndex();
+			
+			const filtered = searchIndex.filter(post => 
+				post.title.toLowerCase().includes(query) || 
+				post.description.toLowerCase().includes(query)
+			).slice(0, 5);
 
-		if (filtered.length > 0) {
-			searchResults.innerHTML = filtered.map(post => `
-				<a href="/blog/${post.id}/" class="result-item">
-					<div class="result-badge ${post.category}">${post.category === 'market' ? '시세' : '리포트'}</div>
-					<div class="result-info">
-						<div class="result-title">${post.title}</div>
-						<div class="result-date">${new Date(post.pubDate).toLocaleDateString('ko-KR')}</div>
-					</div>
-				</a>
-			`).join('');
-			searchResults.classList.add('show');
-		} else {
-			searchResults.innerHTML = '<div class="no-results">검색 결과가 없습니다.</div>';
-			searchResults.classList.add('show');
-		}
+			if (filtered.length > 0) {
+				results.innerHTML = filtered.map(post => `
+					<a href="/blog/${post.id}/" class="result-item">
+						<div class="result-badge ${post.category}">${post.category === 'market' ? '시세' : '리포트'}</div>
+						<div class="result-info">
+							<div class="result-title">${post.title}</div>
+							<div class="result-date">${new Date(post.pubDate).toLocaleDateString('ko-KR')}</div>
+						</div>
+					</a>
+				`).join('');
+				results.classList.add('show');
+			} else {
+				results.innerHTML = '<div class="no-results">검색 결과가 없습니다.</div>';
+				results.classList.add('show');
+			}
+		});
+	}
+
+	// 데스크탑 검색 활성화
+	handleSearch(document.getElementById('search-input'), document.getElementById('search-results'));
+	// 모바일 검색 활성화
+	handleSearch(document.getElementById('mobile-search-input'), document.getElementById('mobile-search-results'));
+
+	// 메뉴 토글 로직
+	const menuToggle = document.getElementById('menu-toggle');
+	const mobileMenu = document.getElementById('mobile-menu');
+
+	menuToggle?.addEventListener('click', () => {
+		mobileMenu.classList.toggle('show');
+		// 아이콘 변경 (메뉴 <-> 닫기)
+		menuToggle.innerHTML = mobileMenu.classList.contains('show') ? '&#xe5cd;' : '&#xe5d2;';
 	});
 
+	// 외부 클릭 시 닫기
 	document.addEventListener('click', (e) => {
+		const searchInput = document.getElementById('search-input');
+		const searchResults = document.getElementById('search-results');
+		const mobileSearchInput = document.getElementById('mobile-search-input');
+		const mobileSearchResults = document.getElementById('mobile-search-results');
+
 		if (searchInput && searchResults && !searchInput.contains(e.target) && !searchResults.contains(e.target)) {
 			searchResults.classList.remove('show');
+		}
+		if (mobileSearchInput && mobileSearchResults && !mobileSearchInput.contains(e.target) && !mobileSearchResults.contains(e.target)) {
+			mobileSearchResults.classList.remove('show');
+		}
+		
+		// 메뉴 외부 클릭 시 닫기
+		if (mobileMenu && !mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+			mobileMenu.classList.remove('show');
+			menuToggle.innerHTML = '&#xe5d2;';
 		}
 	});
 </script>
@@ -85,14 +132,11 @@ import HeaderLink from './HeaderLink.astro';
 	header {
 		position: sticky;
 		top: 0;
-		z-index: 50;
+		z-index: 100;
 		width: 100%;
-		height: 64px;
-		background: rgba(251, 249, 250, 0.9);
+		background: rgba(251, 249, 250, 0.95);
 		backdrop-filter: blur(8px);
 		border-bottom: 1px solid var(--outline-variant);
-		display: flex;
-		align-items: center;
 	}
 	nav {
 		display: flex;
@@ -102,6 +146,7 @@ import HeaderLink from './HeaderLink.astro';
 		max-width: var(--container-max);
 		margin: 0 auto;
 		padding: 0 var(--gutter);
+		height: 64px;
 	}
 	.brand a {
 		font-family: 'Pretendard Variable', Pretendard, sans-serif;
@@ -176,7 +221,7 @@ import HeaderLink from './HeaderLink.astro';
 		z-index: 9999;
 		max-height: 480px;
 		overflow-y: auto;
-		padding: 12px; /* 결과창 주변과 글씨간의 패딩 추가 */
+		padding: 12px;
 	}
 	.search-results-dropdown.show {
 		display: block;
@@ -237,9 +282,60 @@ import HeaderLink from './HeaderLink.astro';
 		border: none;
 		cursor: pointer;
 		color: var(--primary);
+		font-size: 28px;
 	}
+
+	/* Mobile Menu Styles */
+	.mobile-menu {
+		display: none;
+		position: absolute;
+		top: 64px;
+		left: 0;
+		width: 100%;
+		background: white;
+		border-bottom: 1px solid var(--outline-variant);
+		padding: 24px;
+		flex-direction: column;
+		gap: 24px;
+		box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+	}
+	.mobile-menu.show {
+		display: flex;
+	}
+	.mobile-links {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+	.mobile-links a {
+		font-size: 18px;
+		font-weight: 600;
+		color: var(--primary);
+		text-decoration: none;
+		padding: 8px 0;
+	}
+	.mobile-search-container {
+		width: 100%;
+		position: relative;
+	}
+	.mobile-search-container .search-box {
+		width: 100%;
+	}
+	.mobile-search-container .search-box input {
+		width: 100%;
+	}
+	.search-results-dropdown.mobile {
+		width: 100%;
+		left: 0;
+		right: 0;
+		position: static;
+		box-shadow: none;
+		border: none;
+		padding: 12px 0 0 0;
+	}
+
 	@media (max-width: 1024px) {
-		.internal-links, .search-container {
+		.internal-links, .desktop-search {
 			display: none;
 		}
 		.menu-btn {
