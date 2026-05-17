@@ -15,8 +15,9 @@ class SeoulMarketCollector:
         trends = self.db.get_latest_trends(days=7)
         if not trends: return None
 
+        # 매매, 전세, 월세 정보를 모두 포함하여 전달
         summary_text = "\n".join([
-            f"- {t['log_date']} {t['district_name']}: 평균 {int(t['avg_price']):,}만원 (전일대비 {t['prev_diff_rate']:.2f}%)"
+            f"- {t['log_date']} {t['district_name']}: 매매 {int(t['avg_price']):,}만, 전세 {int(t['avg_jeonse']):,}만, 월세 {int(t['avg_wolse']):,}만 (변동 {t['prev_diff_rate']:.2f}%)"
             for t in trends[:50]
         ])
         

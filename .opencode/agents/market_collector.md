@@ -20,8 +20,9 @@ mode: "primary"
         {
             "name": "구이름",
             "sale_trend": "상승/하락/보합",
-            "sale_price": "최근 평균가 정보",
-            "jeonse_price": "데이터 없음(실거래 기반)",
+            "sale_price": "최근 평균 매매가",
+            "jeonse_price": "최근 평균 전세가",
+            "wolse_price": "최근 평균 월세가",
             "status": "변동 원인 추정 및 특징 1줄"
         }
     ],

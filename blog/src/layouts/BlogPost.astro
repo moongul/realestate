@@ -322,6 +322,10 @@ const { title, description, pubDate, updatedDate } = Astro.props;
 						<span class="m-stat-value" id="stat-avg-jeonse">-</span>
 					</div>
 					<div class="m-stat-item">
+						<span class="m-stat-label">평균 월세</span>
+						<span class="m-stat-value" id="stat-avg-wolse">-</span>
+					</div>
+					<div class="m-stat-item">
 						<span class="m-stat-label">누적 거래량</span>
 						<span class="m-stat-value" id="stat-total-trades">-</span>
 					</div>
@@ -391,6 +395,7 @@ const { title, description, pubDate, updatedDate } = Astro.props;
 				document.getElementById('modal-title').innerText = `${name} 상세 분석`;
 				document.getElementById('stat-avg-price').innerText = `${(latest.avg_price / 10000).toFixed(2)}억`;
 				document.getElementById('stat-avg-jeonse').innerText = latest.avg_jeonse ? `${(latest.avg_jeonse / 10000).toFixed(2)}억` : '데이터 없음';
+				document.getElementById('stat-avg-wolse').innerText = latest.avg_wolse ? `${Math.round(latest.avg_wolse)}만` : '데이터 없음';
 				
 				const totalTrades = data.reduce((sum, item) => sum + item.trade_count, 0);
 				document.getElementById('stat-total-trades').innerText = `${totalTrades}건`;
