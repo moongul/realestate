@@ -309,6 +309,16 @@
       "jeonse_count": 5,
       "avg_wolse": 116.0909090909091,
       "wolse_count": 11
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 64000.0,
+      "trade_count": 1,
+      "prev_diff_rate": -31.550802139037433,
+      "avg_jeonse": 60000.0,
+      "jeonse_count": 4,
+      "avg_wolse": 117.7,
+      "wolse_count": 10
     }
   ],
   "중구": [
@@ -621,6 +631,16 @@
       "jeonse_count": 9,
       "avg_wolse": 99.6923076923077,
       "wolse_count": 13
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 95750.0,
+      "trade_count": 2,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 59107.142857142855,
+      "jeonse_count": 7,
+      "avg_wolse": 107.81818181818181,
+      "wolse_count": 11
     }
   ],
   "용산구": [
@@ -933,6 +953,16 @@
       "jeonse_count": 16,
       "avg_wolse": 94.4375,
       "wolse_count": 32
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 0.0,
+      "trade_count": 0,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 80551.86666666667,
+      "jeonse_count": 15,
+      "avg_wolse": 91.03225806451613,
+      "wolse_count": 31
     }
   ],
   "성동구": [
@@ -1245,6 +1275,16 @@
       "jeonse_count": 49,
       "avg_wolse": 200.14814814814815,
       "wolse_count": 27
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 230000.0,
+      "trade_count": 1,
+      "prev_diff_rate": 10.047846889952153,
+      "avg_jeonse": 87722.43243243243,
+      "jeonse_count": 37,
+      "avg_wolse": 124.66666666666667,
+      "wolse_count": 18
     }
   ],
   "광진구": [
@@ -1557,6 +1597,16 @@
       "jeonse_count": 14,
       "avg_wolse": 149.75,
       "wolse_count": 8
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 0.0,
+      "trade_count": 0,
+      "prev_diff_rate": -100.0,
+      "avg_jeonse": 82163.6,
+      "jeonse_count": 10,
+      "avg_wolse": 97.5,
+      "wolse_count": 6
     }
   ],
   "동대문구": [
@@ -1869,6 +1919,16 @@
       "jeonse_count": 27,
       "avg_wolse": 57.509803921568626,
       "wolse_count": 51
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 75440.0,
+      "trade_count": 5,
+      "prev_diff_rate": 4.019303688383316,
+      "avg_jeonse": 55413.23809523809,
+      "jeonse_count": 21,
+      "avg_wolse": 68.46666666666667,
+      "wolse_count": 30
     }
   ],
   "중랑구": [
@@ -2181,6 +2241,16 @@
       "jeonse_count": 20,
       "avg_wolse": 42.86666666666667,
       "wolse_count": 45
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 63000.0,
+      "trade_count": 7,
+      "prev_diff_rate": -3.1886285055704953,
+      "avg_jeonse": 37474.05263157895,
+      "jeonse_count": 19,
+      "avg_wolse": 40.354838709677416,
+      "wolse_count": 31
     }
   ],
   "성북구": [
@@ -2493,6 +2563,16 @@
       "jeonse_count": 27,
       "avg_wolse": 107.60714285714286,
       "wolse_count": 28
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 68700.0,
+      "trade_count": 5,
+      "prev_diff_rate": -2.9832303618711387,
+      "avg_jeonse": 58931.25,
+      "jeonse_count": 24,
+      "avg_wolse": 116.17391304347827,
+      "wolse_count": 23
     }
   ],
   "강북구": [
@@ -2738,9 +2818,9 @@
     },
     {
       "log_date": "2026-05-11",
-      "avg_price": 70187.5,
-      "trade_count": 8,
-      "prev_diff_rate": 2.500912741876597,
+      "avg_price": 68055.55555555556,
+      "trade_count": 9,
+      "prev_diff_rate": -0.6125512149608441,
       "avg_jeonse": 46719.26666666667,
       "jeonse_count": 15,
       "avg_wolse": 106.77777777777777,
@@ -2748,9 +2828,9 @@
     },
     {
       "log_date": "2026-05-12",
-      "avg_price": 81916.66666666667,
-      "trade_count": 6,
-      "prev_diff_rate": 16.711190264173354,
+      "avg_price": 77500.0,
+      "trade_count": 7,
+      "prev_diff_rate": 13.877551020408152,
       "avg_jeonse": 44306.357142857145,
       "jeonse_count": 14,
       "avg_wolse": 96.58823529411765,
@@ -2758,9 +2838,9 @@
     },
     {
       "log_date": "2026-05-13",
-      "avg_price": 70300.0,
-      "trade_count": 5,
-      "prev_diff_rate": -14.181078331637847,
+      "avg_price": 67083.33333333333,
+      "trade_count": 6,
+      "prev_diff_rate": -13.440860215053771,
       "avg_jeonse": 46792.07142857143,
       "jeonse_count": 14,
       "avg_wolse": 75.91304347826087,
@@ -2768,8 +2848,8 @@
     },
     {
       "log_date": "2026-05-14",
-      "avg_price": 70300.0,
-      "trade_count": 5,
+      "avg_price": 67083.33333333333,
+      "trade_count": 6,
       "prev_diff_rate": 0.0,
       "avg_jeonse": 45082.416666666664,
       "jeonse_count": 12,
@@ -2780,7 +2860,7 @@
       "log_date": "2026-05-15",
       "avg_price": 78875.0,
       "trade_count": 4,
-      "prev_diff_rate": 12.197724039829302,
+      "prev_diff_rate": 17.577639751552805,
       "avg_jeonse": 45383.769230769234,
       "jeonse_count": 13,
       "avg_wolse": 73.22727272727273,
@@ -2805,6 +2885,16 @@
       "jeonse_count": 8,
       "avg_wolse": 53.94444444444444,
       "wolse_count": 18
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 91000.0,
+      "trade_count": 2,
+      "prev_diff_rate": 6.849315068493144,
+      "avg_jeonse": 38250.0,
+      "jeonse_count": 6,
+      "avg_wolse": 57.75,
+      "wolse_count": 12
     }
   ],
   "도봉구": [
@@ -3117,6 +3207,16 @@
       "jeonse_count": 20,
       "avg_wolse": 86.3157894736842,
       "wolse_count": 19
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 48233.333333333336,
+      "trade_count": 6,
+      "prev_diff_rate": -4.227682634235124,
+      "avg_jeonse": 30111.764705882353,
+      "jeonse_count": 17,
+      "avg_wolse": 97.58333333333333,
+      "wolse_count": 12
     }
   ],
   "노원구": [
@@ -3429,6 +3529,16 @@
       "jeonse_count": 86,
       "avg_wolse": 50.963855421686745,
       "wolse_count": 83
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 76244.44444444444,
+      "trade_count": 9,
+      "prev_diff_rate": 13.446008673203345,
+      "avg_jeonse": 30208.304347826088,
+      "jeonse_count": 69,
+      "avg_wolse": 51.63076923076923,
+      "wolse_count": 65
     }
   ],
   "은평구": [
@@ -3674,9 +3784,9 @@
     },
     {
       "log_date": "2026-05-11",
-      "avg_price": 83023.75,
-      "trade_count": 40,
-      "prev_diff_rate": -1.681107646153233,
+      "avg_price": 83464.77272727272,
+      "trade_count": 44,
+      "prev_diff_rate": -1.1588370181904328,
       "avg_jeonse": 51467.33870967742,
       "jeonse_count": 62,
       "avg_wolse": 82.17647058823529,
@@ -3684,9 +3794,9 @@
     },
     {
       "log_date": "2026-05-12",
-      "avg_price": 84614.77272727272,
-      "trade_count": 44,
-      "prev_diff_rate": 1.9163464999746707,
+      "avg_price": 84415.9574468085,
+      "trade_count": 47,
+      "prev_diff_rate": 1.139624165327629,
       "avg_jeonse": 49283.28787878788,
       "jeonse_count": 66,
       "avg_wolse": 68.81395348837209,
@@ -3694,9 +3804,9 @@
     },
     {
       "log_date": "2026-05-13",
-      "avg_price": 85344.5945945946,
-      "trade_count": 37,
-      "prev_diff_rate": 0.862522989542518,
+      "avg_price": 84296.05263157895,
+      "trade_count": 38,
+      "prev_diff_rate": -0.14204046113569416,
       "avg_jeonse": 50004.89189189189,
       "jeonse_count": 74,
       "avg_wolse": 63.212765957446805,
@@ -3706,7 +3816,7 @@
       "log_date": "2026-05-14",
       "avg_price": 90092.85714285714,
       "trade_count": 28,
-      "prev_diff_rate": 5.563635952362097,
+      "prev_diff_rate": 6.876721187187123,
       "avg_jeonse": 49263.013333333336,
       "jeonse_count": 75,
       "avg_wolse": 62.44897959183673,
@@ -3724,9 +3834,9 @@
     },
     {
       "log_date": "2026-05-16",
-      "avg_price": 90738.46153846153,
-      "trade_count": 13,
-      "prev_diff_rate": 0.9131384064897864,
+      "avg_price": 89042.85714285714,
+      "trade_count": 14,
+      "prev_diff_rate": -0.9725973460802487,
       "avg_jeonse": 47500.125,
       "jeonse_count": 48,
       "avg_wolse": 61.02439024390244,
@@ -3734,13 +3844,23 @@
     },
     {
       "log_date": "2026-05-17",
-      "avg_price": 93236.36363636363,
-      "trade_count": 11,
-      "prev_diff_rate": 2.752859212676103,
+      "avg_price": 91050.0,
+      "trade_count": 12,
+      "prev_diff_rate": 2.2541312369645414,
       "avg_jeonse": 47376.217391304344,
       "jeonse_count": 46,
       "avg_wolse": 60.16216216216216,
       "wolse_count": 37
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 91050.0,
+      "trade_count": 12,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 47790.45714285714,
+      "jeonse_count": 35,
+      "avg_wolse": 57.59375,
+      "wolse_count": 32
     }
   ],
   "서대문구": [
@@ -4053,6 +4173,16 @@
       "jeonse_count": 13,
       "avg_wolse": 117.375,
       "wolse_count": 16
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 104350.0,
+      "trade_count": 2,
+      "prev_diff_rate": -16.708793401622984,
+      "avg_jeonse": 69142.85714285714,
+      "jeonse_count": 7,
+      "avg_wolse": 115.86666666666666,
+      "wolse_count": 15
     }
   ],
   "마포구": [
@@ -4365,6 +4495,16 @@
       "jeonse_count": 31,
       "avg_wolse": 64.58208955223881,
       "wolse_count": 67
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 100000.0,
+      "trade_count": 3,
+      "prev_diff_rate": -6.323185011709602,
+      "avg_jeonse": 68329.58333333333,
+      "jeonse_count": 24,
+      "avg_wolse": 59.04081632653061,
+      "wolse_count": 49
     }
   ],
   "양천구": [
@@ -4677,6 +4817,16 @@
       "jeonse_count": 50,
       "avg_wolse": 56.67307692307692,
       "wolse_count": 52
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 96000.0,
+      "trade_count": 3,
+      "prev_diff_rate": -4.159733777038274,
+      "avg_jeonse": 56136.5,
+      "jeonse_count": 40,
+      "avg_wolse": 54.111111111111114,
+      "wolse_count": 45
     }
   ],
   "강서구": [
@@ -4989,6 +5139,16 @@
       "jeonse_count": 37,
       "avg_wolse": 51.18421052631579,
       "wolse_count": 38
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 90866.66666666667,
+      "trade_count": 6,
+      "prev_diff_rate": -9.845553460991496,
+      "avg_jeonse": 49928.96875,
+      "jeonse_count": 32,
+      "avg_wolse": 52.42857142857143,
+      "wolse_count": 28
     }
   ],
   "구로구": [
@@ -5301,6 +5461,16 @@
       "jeonse_count": 24,
       "avg_wolse": 37.320754716981135,
       "wolse_count": 53
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 43000.0,
+      "trade_count": 2,
+      "prev_diff_rate": 27.881040892193308,
+      "avg_jeonse": 31868.6,
+      "jeonse_count": 20,
+      "avg_wolse": 36.627906976744185,
+      "wolse_count": 43
     }
   ],
   "금천구": [
@@ -5613,6 +5783,16 @@
       "jeonse_count": 14,
       "avg_wolse": 43.285714285714285,
       "wolse_count": 14
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 0.0,
+      "trade_count": 0,
+      "prev_diff_rate": -100.0,
+      "avg_jeonse": 36121.38461538462,
+      "jeonse_count": 13,
+      "avg_wolse": 37.9,
+      "wolse_count": 10
     }
   ],
   "영등포구": [
@@ -5925,6 +6105,16 @@
       "jeonse_count": 40,
       "avg_wolse": 70.27777777777777,
       "wolse_count": 18
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 157583.0,
+      "trade_count": 2,
+      "prev_diff_rate": 14.421080146962723,
+      "avg_jeonse": 60739.032258064515,
+      "jeonse_count": 31,
+      "avg_wolse": 90.16666666666667,
+      "wolse_count": 12
     }
   ],
   "동작구": [
@@ -6237,6 +6427,16 @@
       "jeonse_count": 32,
       "avg_wolse": 80.67647058823529,
       "wolse_count": 34
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 115000.0,
+      "trade_count": 2,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 63536.75,
+      "jeonse_count": 20,
+      "avg_wolse": 80.64,
+      "wolse_count": 25
     }
   ],
   "관악구": [
@@ -6549,6 +6749,16 @@
       "jeonse_count": 17,
       "avg_wolse": 93.16666666666667,
       "wolse_count": 12
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 78000.0,
+      "trade_count": 2,
+      "prev_diff_rate": 22.680088078011952,
+      "avg_jeonse": 46853.57142857143,
+      "jeonse_count": 14,
+      "avg_wolse": 75.8,
+      "wolse_count": 10
     }
   ],
   "서초구": [
@@ -6861,6 +7071,16 @@
       "jeonse_count": 65,
       "avg_wolse": 177.26666666666668,
       "wolse_count": 45
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 273000.0,
+      "trade_count": 1,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 90226.96153846153,
+      "jeonse_count": 52,
+      "avg_wolse": 178.76470588235293,
+      "wolse_count": 34
     }
   ],
   "강남구": [
@@ -7173,6 +7393,16 @@
       "jeonse_count": 98,
       "avg_wolse": 151.46428571428572,
       "wolse_count": 140
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 452500.0,
+      "trade_count": 2,
+      "prev_diff_rate": 11.042944785276074,
+      "avg_jeonse": 76161.89156626505,
+      "jeonse_count": 83,
+      "avg_wolse": 116.22689075630252,
+      "wolse_count": 119
     }
   ],
   "송파구": [
@@ -7485,6 +7715,16 @@
       "jeonse_count": 79,
       "avg_wolse": 117.48148148148148,
       "wolse_count": 81
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 144833.33333333334,
+      "trade_count": 3,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 87413.98333333334,
+      "jeonse_count": 60,
+      "avg_wolse": 127.2,
+      "wolse_count": 50
     }
   ],
   "강동구": [
@@ -7797,6 +8037,16 @@
       "jeonse_count": 57,
       "avg_wolse": 55.53921568627451,
       "wolse_count": 102
+    },
+    {
+      "log_date": "2026-05-18",
+      "avg_price": 32800.0,
+      "trade_count": 1,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 59925.32,
+      "jeonse_count": 50,
+      "avg_wolse": 55.890243902439025,
+      "wolse_count": 82
     }
   ]
 }
