@@ -5,38 +5,14 @@ const today = new Date();
 
 <footer>
 	<div class="footer-container">
-		<div class="footer-grid">
+		<div class="footer-content">
 			<div class="footer-brand">
 				<span class="brand-name">{SITE_TITLE}</span>
 				<p>현대적인 부동산 전문가를 위한 정밀 분석. 대한민국 부동산 시장의 데이터 기반 분석 및 투자 전략.</p>
 			</div>
-			<div class="footer-section">
-				<h5 class="label-md">주요 리소스</h5>
-				<ul>
-					<li><a href="/blog">시장 데이터</a></li>
-					<li><a href="/blog">연구 방법론</a></li>
-					<li><a href="/about">분석가 디렉토리</a></li>
-				</ul>
-			</div>
-			<div class="footer-section">
-				<h5 class="label-md">법적 고지</h5>
-				<ul>
-					<li><a href="#">이용 약관</a></li>
-					<li><a href="#">개인정보 처리방침</a></li>
-					<li><a href="/about">문의하기</a></li>
-				</ul>
-			</div>
-			<div class="footer-section">
-				<h5 class="label-md">팔로우</h5>
-				<div class="social-icons">
-					<span class="material-symbols-outlined">public</span>
-					<span class="material-symbols-outlined">work</span>
-					<span class="material-symbols-outlined">rss_feed</span>
-				</div>
-			</div>
 		</div>
 		<div class="footer-bottom">
-			<p>&copy; {today.getFullYear()} {SITE_TITLE}. 전문 투자자를 위한 기관급 데이터 제공.</p>
+			<p>&copy; {today.getFullYear()} {SITE_TITLE}. 모든 권리 보유. 데이터 출처: 국토교통부.</p>
 		</div>
 	</div>
 </footer>
@@ -46,17 +22,17 @@ const today = new Date();
 		width: 100%;
 		background: var(--surface-variant);
 		border-top: 1px solid var(--outline-variant);
-		padding: 80px 0 40px;
+		padding: 64px 0 40px;
 	}
 	.footer-container {
 		max-width: var(--container-max);
 		margin: 0 auto;
 		padding: 0 var(--gutter);
 	}
-	.footer-grid {
-		display: grid;
-		grid-template-columns: 1.5fr 1fr 1fr 1fr;
-		gap: 48px;
+	.footer-content {
+		display: flex;
+		justify-content: center;
+		text-align: center;
 		margin-bottom: 48px;
 	}
 	.brand-name {
@@ -70,39 +46,9 @@ const today = new Date();
 	.footer-brand p {
 		font-size: 15px;
 		color: var(--muted);
-		max-width: 320px;
+		max-width: 480px;
 		line-height: 1.6;
-	}
-	h5 {
-		font-size: 12px;
-		font-weight: 800;
-		color: var(--primary);
-		text-transform: uppercase;
-		margin-bottom: 24px;
-		letter-spacing: 0.1em;
-	}
-	ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-	ul li {
-		margin-bottom: 12px;
-	}
-	ul li a {
-		font-size: 15px;
-		color: var(--body);
-		text-decoration: none;
-		transition: color 0.2s;
-		font-family: 'Pretendard Variable', Pretendard, sans-serif;
-	}
-	ul li a:hover {
-		color: var(--secondary);
-	}
-	.social-icons {
-		display: flex;
-		gap: 16px;
-		color: var(--muted);
+		margin: 0 auto;
 	}
 	.footer-bottom {
 		border-top: 1px solid var(--outline-variant);
@@ -112,15 +58,5 @@ const today = new Date();
 	.footer-bottom p {
 		font-size: 14px;
 		color: var(--muted);
-	}
-	@media (max-width: 1024px) {
-		.footer-grid {
-			grid-template-columns: 1fr 1fr;
-		}
-	}
-	@media (max-width: 640px) {
-		.footer-grid {
-			grid-template-columns: 1fr;
-		}
 	}
 </style>
