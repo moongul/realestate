@@ -23,22 +23,37 @@ import Layout from '../layouts/BlogPost.astro';
 				<div class="agent-card">
 					<span class="agent-icon">🔍</span>
 					<h4>리서처 (Researcher)</h4>
-					<p>글로벌 및 지역별 정책 트렌드와 뉴스 사이클을 수집하고 그룹화합니다.</p>
+					<p>다양한 소스에서 최신 부동산 뉴스와 정책 트렌드를 수집하고 핵심 테마를 선정합니다.</p>
 				</div>
 				<div class="agent-card">
-					<span class="agent-icon">📊</span>
+					<span class="agent-icon">🧠</span>
 					<h4>애널리스트 (Analyst)</h4>
-					<p>정밀한 실거래 데이터를 추출하고 7일 이동평균 등 통계 지표를 계산합니다.</p>
+					<p>선정된 뉴스 데이터에서 명확한 수치, 호재/악재, 시장 분위기 등 팩트만을 정밀하게 추출합니다.</p>
 				</div>
 				<div class="agent-card">
 					<span class="agent-icon">🖋️</span>
-					<h4>라이터 (Writer)</h4>
-					<p>도출된 인사이트를 체계적이고 전문적인 마크다운 리포트로 합성합니다.</p>
+					<h4>블로그 라이터 (Blog Writer)</h4>
+					<p>분석된 데이터를 바탕으로 심층적이고 구조화된 전문 분석 리포트를 집필합니다.</p>
+				</div>
+				<div class="agent-card">
+					<span class="agent-icon">📈</span>
+					<h4>마켓 콜렉터 (Market Collector)</h4>
+					<p>로컬 DB에 적재된 25개 자치구의 실거래가 통계(7일 이동평균 등)를 분석합니다.</p>
+				</div>
+				<div class="agent-card">
+					<span class="agent-icon">📋</span>
+					<h4>마켓 라이터 (Market Writer)</h4>
+					<p>수집된 구별 시세 데이터를 바탕으로 직관적이고 정확한 일일 시세 브리핑을 작성합니다.</p>
 				</div>
 				<div class="agent-card">
 					<span class="agent-icon">✨</span>
 					<h4>에디터 (Editor)</h4>
-					<p>모든 발행물의 일관된 톤앤매너와 가독성을 검수하고 교정합니다.</p>
+					<p>모든 발행물의 일관된 톤앤매너(세련된 전문가 스타일)와 가독성을 최종 검수하고 교정합니다.</p>
+				</div>
+				<div class="agent-card full-width">
+					<span class="agent-icon">🎯</span>
+					<h4>SEO 옵티마이저 (SEO Optimizer)</h4>
+					<p>검색 엔진 최적화를 위해 매력적인 제목과 요약문, 메타데이터를 자동 생성합니다.</p>
 				</div>
 			</div>
 		</div>
@@ -88,6 +103,9 @@ import Layout from '../layouts/BlogPost.astro';
 		padding: 24px;
 		border-radius: var(--rounded-md);
 		border: 1px solid rgba(255, 255, 255, 0.2);
+	}
+	.agent-card.full-width {
+		grid-column: 1 / -1;
 	}
 	.agent-card h4 {
 		color: var(--secondary-container);
