@@ -15,6 +15,8 @@ mode: "primary"
 - 뉴스 데이터: {sources_text}
 
 # Output Format (Pure JSON):
+**[중요]**: 반드시 마크다운 코드 블록(```json) 없이 순수한 JSON 객체 하나만 출력하세요. 다른 설명이나 텍스트를 절대 포함하지 마세요.
+
 {
     "market_vibe": "시장 분위기 요약 (예: 강보합, 하락세)",
     "key_factors": "주요 호재나 악재 (예: GTX-C, 대출 규제)",

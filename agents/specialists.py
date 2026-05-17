@@ -13,14 +13,7 @@ class DataAnalyst:
         }
         
         response = OpenCodeHelper.run("analyst", inputs)
-        data = OpenCodeHelper.parse_json(response)
-        
-        if not data:
-            return {
-                "market_vibe": "정보 부족", "key_factors": "정보 부족", "attention_level": "관망",
-                "regional_data": [], "expert_insight": "분석 데이터를 생성할 수 없습니다."
-            }
-        return data
+        return OpenCodeHelper.parse_json(response) # 실패 시 None 반환
 
 class PersonaEditor:
     def edit(self, draft_text):

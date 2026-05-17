@@ -1,5 +1,5 @@
 ---
-model: "opencode/glm-5-free"
+model: "opencode/deepseek-v4-flash-free"
 mode: "primary"
 ---
 # Role: 부동산 트렌드 연구원 (Researcher)

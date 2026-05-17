@@ -34,6 +34,8 @@ class OpenCodeHelper:
                 return None
             
             response = result.stdout.strip()
+            # 디버깅을 위한 원문 전체 출력
+            print(f"========== [OpenCode] {agent_name} 응답 원문 (길이: {len(response)}) ==========\n{response}\n=======================================================")
             return response
             
         except Exception as e:
@@ -44,12 +46,33 @@ class OpenCodeHelper:
     def parse_json(text):
         """응답 텍스트에서 JSON 추출 및 파싱"""
         if not text: return None
+        
+        # 마크다운 코드 블록 명시적 제거
+        text_clean = text.strip()
+        if text_clean.startswith("```json"):
+            text_clean = text_clean[7:]
+        elif text_clean.startswith("```"):
+            text_clean = text_clean[3:]
+            
+        if text_clean.endswith("```"):
+            text_clean = text_clean[:-3]
+            
+        text_clean = text_clean.strip()
+        
         try:
-            # 마크다운 코드 블록 제거 및 순수 JSON 추출
-            json_match = re.search(r'\{.*\}', text, re.DOTALL)
-            if json_match:
-                return json.loads(json_match.group())
-            return json.loads(text)
-        except Exception as e:
-            print(f"!! JSON 파싱 오류: {e}")
-            return None
+            return json.loads(text_clean)
+        except Exception as e1:
+            try:
+                # 정규식으로 {} 추출 시도
+                json_match = re.search(r'\{.*\}', text_clean, re.DOTALL)
+                if json_match:
+                    extracted = json_match.group()
+                    return json.loads(extracted)
+                else:
+                    print(f"!! JSON 패턴을 찾을 수 없습니다.")
+                    return None
+            except Exception as e2:
+                print(f"!! JSON 파싱 오류 1: {e1}")
+                print(f"!! JSON 파싱 오류 2: {e2}")
+                print(f"!! 파싱 시도한 텍스트 전체:\n{text_clean}")
+                return None
