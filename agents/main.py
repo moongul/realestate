@@ -154,6 +154,11 @@ def publish_node(state: AgentState):
     writer = BlogWriter()
     writer.save_post(state['final_post'], state['filename'])
     
+    # 1. 시세 통계 JSON 내보내기 (홈페이지 Market Trends 동기화)
+    db = RealEstateDBManager()
+    db.export_latest_stats()
+
+    # 2. 히스토리 저장
     if state["category"] == "analysis":
         researcher = RealEstateResearcher()
         researcher.save_to_history(state['selected_theme']['news_items'])

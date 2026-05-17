@@ -286,18 +286,51 @@ class RealEstateDBManager:
         conn.close()
         print(f"{target_date} 통계 계산 완료 (매매/전월세 포함)")
 
-    def get_latest_trends(self, days=7):
-        """최근 7일간의 주요 통계 데이터 반환 (에이전트용)"""
+    def export_latest_stats(self, target_path=None):
+        """Astro 프론트엔드에서 사용할 최신 요약 데이터를 JSON으로 내보냄"""
+        if target_path is None:
+            project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            target_path = os.path.join(project_root, "blog/src/data/latest_stats.json")
+            
+        os.makedirs(os.path.dirname(target_path), exist_ok=True)
+        
         conn = sqlite3.connect(self.db_path)
         conn.row_factory = sqlite3.Row
         cur = conn.cursor()
         
-        cur.execute("""
-            SELECT * FROM district_trend 
-            ORDER BY log_date DESC, prev_diff_rate DESC 
-            LIMIT ?
-        """, (days * 25,)) # 25개구 * 일수
+        # 1. 최신 날짜 찾기
+        cur.execute("SELECT MAX(log_date) FROM district_trend")
+        latest_date = cur.fetchone()[0]
         
+        if not latest_date:
+            return False
+            
+        # 2. 최신 날짜의 모든 구 데이터 가져오기
+        cur.execute("SELECT * FROM district_trend WHERE log_date = ? ORDER BY prev_diff_rate DESC", (latest_date,))
         rows = cur.fetchall()
+        districts = [dict(row) for row in rows]
+        
+        # 3. 주요 지표 계산
+        total_trades = sum(d['trade_count'] for d in districts)
+        avg_seoul_price = sum(d['avg_price'] for d in districts) / len(districts) if districts else 0
+        
+        # 상위/하위 3개구
+        top_gainers = districts[:3]
+        top_losers = districts[-3:]
+        
+        data = {
+            "last_updated": latest_date,
+            "total_trades": total_trades,
+            "avg_seoul_price": int(avg_seoul_price),
+            "top_gainers": top_gainers,
+            "top_losers": top_losers,
+            "all_districts": districts
+        }
+        
+        import json
+        with open(target_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+            
+        print(f"최신 통계 JSON 내보내기 완료: {target_path}")
         conn.close()
-        return [dict(row) for row in rows]
+        return True

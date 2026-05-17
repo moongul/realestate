@@ -3,6 +3,11 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import latestStats from '../data/latest_stats.json';
+
+const topGainer = latestStats.top_gainers[0] || { district_name: 'N/A', prev_diff_rate: 0 };
+const avgPrice = latestStats.avg_seoul_price.toLocaleString();
+const totalTrades = latestStats.total_trades;
 ---
 
 <!doctype html>
@@ -43,10 +48,10 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 					<div class="section-header">
 						<div class="header-text">
 							<h2>Market Trends</h2>
-							<p>Q3 2026 Performance Indicators</p>
+							<p>{latestStats.last_updated} Seoul Performance Indicators</p>
 						</div>
-						<a href="#" class="dashboard-link">
-							Live Dashboard <span class="material-symbols-outlined">trending_up</span>
+						<a href="/blog" class="dashboard-link">
+							View Daily Briefings <span class="material-symbols-outlined">trending_up</span>
 						</a>
 					</div>
 					
@@ -54,8 +59,10 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 						<!-- Large Chart Card -->
 						<div class="bento-card large chart-card">
 							<div class="card-header">
-								<h3>Yield Compression Trends</h3>
-								<div class="trend-badge">+1.2% Momentum</div>
+								<h3>Seoul Price Index</h3>
+								<div class="trend-badge">
+									{topGainer.prev_diff_rate > 0 ? '+' : ''}{topGainer.prev_diff_rate.toFixed(2)}% Momentum in {topGainer.district_name}
+								</div>
 							</div>
 							<div class="chart-container">
 								<svg viewBox="0 0 800 250" class="chart-svg">
@@ -65,16 +72,16 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 							</div>
 							<div class="stat-footer">
 								<div class="stat-item">
-									<span class="label">Industrial</span>
-									<span class="value">4.2%</span>
+									<span class="label">Avg Seoul Price</span>
+									<span class="value">₩{avgPrice}만</span>
 								</div>
 								<div class="stat-item">
-									<span class="label">Multifamily</span>
-									<span class="value">3.8%</span>
+									<span class="label">Top Gainer</span>
+									<span class="value">{topGainer.district_name}</span>
 								</div>
 								<div class="stat-item">
-									<span class="label">Office</span>
-									<span class="value">5.4%</span>
+									<span class="label">Market Volume</span>
+									<span class="value">{totalTrades} Trades</span>
 								</div>
 							</div>
 						</div>
@@ -83,33 +90,30 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 						<div class="bento-card medium dark-card">
 							<div class="card-content">
 								<span class="material-symbols-outlined large-icon">location_city</span>
-								<h3>Regional Liquidity</h3>
-								<p>Seoul markets show resilient liquidity despite interest rate fluctuations in major hubs.</p>
+								<h3>Market Liquidity</h3>
+								<p>
+									As of {latestStats.last_updated}, we observed {totalTrades} verified transactions across 25 districts. 
+									The market is showing a {topGainer.prev_diff_rate > 0 ? 'bullish' : 'stable'} trend led by {topGainer.district_name}.
+								</p>
 							</div>
 							<div class="card-footer">
 								<div class="status-indicator">
 									<span class="material-symbols-outlined">check_circle</span>
-									<span>Tier 1 Districts Stable</span>
+									<span>Real-time Data Synced</span>
 								</div>
 							</div>
 						</div>
 
 						<!-- Capital Allocation Card -->
 						<div class="bento-card small">
-							<h4 class="label-md">Capital Allocation</h4>
+							<h4 class="label-md">District Performance</h4>
 							<div class="allocation-stack">
-								<div class="allocation-item">
-									<div class="alloc-label">Core Plus</div>
-									<div class="progress-bar"><div class="progress" style="width: 65%"></div></div>
-								</div>
-								<div class="allocation-item">
-									<div class="alloc-label">Value Add</div>
-									<div class="progress-bar"><div class="progress" style="width: 42%"></div></div>
-								</div>
-								<div class="allocation-item">
-									<div class="alloc-label">Opportunistic</div>
-									<div class="progress-bar"><div class="progress" style="width: 28%"></div></div>
-								</div>
+								{latestStats.top_gainers.slice(0, 3).map((d) => (
+									<div class="allocation-item">
+										<div class="alloc-label">{d.district_name} (+{d.prev_diff_rate.toFixed(1)}%)</div>
+										<div class="progress-bar"><div class="progress" style={`width: ${Math.min(100, d.prev_diff_rate * 10 + 50)}%`}></div></div>
+									</div>
+								))}
 							</div>
 						</div>
 
@@ -119,9 +123,12 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 								<img src="https://images.unsplash.com/photo-1454165833767-027ffea70288?q=80&w=400&h=400&auto=format&fit=crop" alt="Analyst" />
 							</div>
 							<div class="insight-content">
-								<h3>Analyst Insight: Q4 Forecast</h3>
-								<p>Macroeconomic pressures are shifting the risk-reward profile of development projects in secondary markets. Access the full report for detailed sub-sector predictions.</p>
-								<a href="/blog" class="pro-link">Download Pro Report →</a>
+								<h3>Data-Driven Insights</h3>
+								<p>
+									Our AI-driven analysis monitors official MOLIT data to detect shifts in regional demand. 
+									The current focus is on {topGainer.district_name} and other Tier 1 districts showing high liquidity.
+								</p>
+								<a href="/blog" class="pro-link">Explore Detailed Reports →</a>
 							</div>
 						</div>
 					</div>
@@ -144,6 +151,13 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		<Footer />
 
 		<style>
+			/* Container */
+			.container {
+				max-width: 1280px;
+				margin: 0 auto;
+				padding: 0 24px;
+			}
+
 			/* Hero Section */
 			.hero-section {
 				background: var(--primary-container);
@@ -171,9 +185,9 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 			.badge {
 				display: inline-block;
 				background: var(--secondary-container);
-				color: var(--on-secondary-container, var(--primary));
+				color: var(--primary);
 				padding: 4px 12px;
-				border-radius: var(--rounded-default);
+				border-radius: var(--rounded-sm);
 				font-size: 12px;
 				font-weight: 700;
 				text-transform: uppercase;
@@ -184,13 +198,12 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				font-size: 56px;
 				line-height: 1.1;
 				margin-bottom: 24px;
-				color: var(--on-primary);
+				color: white;
 			}
 			.subtitle {
 				font-size: 20px;
 				line-height: 1.5;
-				color: var(--on-primary-container);
-				opacity: 0.9;
+				color: rgba(255, 255, 255, 0.8);
 				margin-bottom: 48px;
 				max-width: 560px;
 			}
@@ -201,31 +214,29 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 			}
 			.btn-primary {
 				background: var(--secondary);
-				color: var(--on-secondary);
+				color: white;
 				padding: 12px 24px;
-				border-radius: var(--rounded-default);
+				border-radius: var(--rounded-sm);
 				font-weight: 600;
 				display: flex;
 				align-items: center;
 				gap: 8px;
 				transition: opacity 0.2s;
+				text-decoration: none;
 			}
 			.btn-primary:hover {
 				opacity: 0.9;
-				text-decoration: none;
-				color: var(--on-secondary);
 			}
 			.btn-outline {
-				border: 1px solid var(--outline-variant);
-				color: var(--on-primary);
+				border: 1px solid rgba(255, 255, 255, 0.3);
+				color: white;
 				padding: 12px 24px;
-				border-radius: var(--rounded-default);
+				border-radius: var(--rounded-sm);
 				font-weight: 600;
+				text-decoration: none;
 			}
 			.btn-outline:hover {
 				background: rgba(255, 255, 255, 0.05);
-				text-decoration: none;
-				color: var(--on-primary);
 			}
 			.hero-image img {
 				width: 100%;
@@ -251,7 +262,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				margin-bottom: 8px;
 			}
 			.header-text p {
-				color: var(--on-surface-variant);
+				color: var(--muted);
 			}
 			.dashboard-link {
 				display: flex;
@@ -260,6 +271,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				color: var(--secondary);
 				font-weight: 600;
 				font-size: 14px;
+				text-decoration: none;
 			}
 
 			/* Bento Grid */
@@ -269,7 +281,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				gap: 24px;
 			}
 			.bento-card {
-				background: var(--surface-container-lowest);
+				background: white;
 				border: 1px solid var(--outline-variant);
 				border-radius: var(--rounded-lg);
 				padding: 32px;
@@ -292,10 +304,10 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				margin-bottom: 24px;
 			}
 			.trend-badge {
-				background: rgba(74, 225, 131, 0.1);
-				color: var(--tertiary-container);
+				background: rgba(0, 166, 86, 0.1);
+				color: var(--tertiary);
 				padding: 4px 8px;
-				border-radius: var(--rounded-default);
+				border-radius: 4px;
 				font-size: 12px;
 				font-weight: 700;
 			}
@@ -311,27 +323,27 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				border-top: 1px solid var(--outline-variant);
 			}
 			.stat-item .label {
-				font-size: 12px;
+				font-size: 11px;
 				text-transform: uppercase;
-				color: var(--on-surface-variant);
-				font-weight: 600;
+				color: var(--muted);
+				font-weight: 700;
 				display: block;
 				margin-bottom: 4px;
 			}
 			.stat-item .value {
-				font-size: 24px;
+				font-size: 20px;
 				font-weight: 700;
 				color: var(--primary);
 			}
 
 			.dark-card {
 				background: var(--primary);
-				color: var(--on-primary);
+				color: white;
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
 			}
-			.dark-card h3 { color: var(--on-primary); }
+			.dark-card h3 { color: white; }
 			.large-icon {
 				font-size: 48px;
 				color: var(--secondary-container);
@@ -341,7 +353,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				display: flex;
 				align-items: center;
 				gap: 8px;
-				color: var(--tertiary-fixed-dim, #4ae183);
+				color: var(--tertiary);
 				font-weight: 600;
 				font-size: 14px;
 			}
@@ -350,15 +362,17 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				margin-top: 24px;
 				display: flex;
 				flex-direction: column;
-				gap: 16px;
+				gap: 20px;
 			}
 			.alloc-label {
-				font-size: 14px;
-				margin-bottom: 4px;
+				font-size: 13px;
+				font-weight: 600;
+				margin-bottom: 8px;
+				color: var(--body);
 			}
 			.progress-bar {
-				height: 8px;
-				background: var(--surface-container);
+				height: 6px;
+				background: var(--surface-variant);
 				border-radius: var(--rounded-full);
 				overflow: hidden;
 			}
@@ -371,57 +385,58 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				display: flex;
 				align-items: center;
 				gap: 32px;
-				background: var(--surface-container-high);
+				background: var(--surface-variant);
 			}
 			.insight-image img {
-				width: 120px;
-				height: 120px;
+				width: 100px;
+				height: 100px;
 				border-radius: 50%;
 				object-fit: cover;
-				border: 4px solid var(--surface-container-lowest);
+				border: 3px solid white;
 			}
 			.pro-link {
 				display: inline-block;
 				margin-top: 16px;
 				font-weight: 700;
 				color: var(--secondary);
+				text-decoration: none;
 			}
 
 			/* Newsletter Section */
 			.newsletter-section {
-				background: var(--surface-container-highest);
-				padding: 64px 0;
+				background: var(--primary);
+				color: white;
+				padding: 80px 0;
 				text-align: center;
 			}
-			.container.narrow {
-				max-width: 720px;
-			}
-			.newsletter-section h2 {
-				font-size: 32px;
-				margin-bottom: 16px;
-			}
-			.newsletter-section p {
-				font-size: 18px;
-				color: var(--on-surface-variant);
-				margin-bottom: 32px;
-			}
+			.newsletter-section h2 { color: white; font-size: 36px; margin-bottom: 16px; }
+			.newsletter-section p { color: rgba(255, 255, 255, 0.7); font-size: 18px; margin-bottom: 40px; }
 			.form-container {
 				display: flex;
-				gap: 16px;
+				gap: 12px;
 				justify-content: center;
 				margin-bottom: 16px;
 			}
 			.form-container input {
 				flex: 1;
-				max-width: 360px;
-				padding: 12px 16px;
-				border: 1px solid var(--outline-variant);
-				border-radius: var(--rounded-default);
+				max-width: 400px;
+				padding: 14px 20px;
+				border: none;
+				border-radius: var(--rounded-sm);
 				font-size: 16px;
 			}
+			.form-container button {
+				background: var(--secondary);
+				color: white;
+				border: none;
+				padding: 0 32px;
+				border-radius: var(--rounded-sm);
+				font-weight: 700;
+				cursor: pointer;
+			}
 			.disclaimer {
-				font-size: 12px !important;
-				margin-bottom: 0 !important;
+				font-size: 12px;
+				color: rgba(255, 255, 255, 0.5);
 			}
 
 			@media (max-width: 1024px) {
