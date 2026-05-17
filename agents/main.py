@@ -128,14 +128,14 @@ def seo_node(state: AgentState):
     slug = "-".join(slug_title.split()[:4])
     filename_base = f"{date_str}-{slug}"
     
-    pub_date = datetime.now().strftime("%Y-%m-%d")
+    pub_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     # Frontmatter 조립
     frontmatter = f"""---
 title: "{title_clean}"
 description: "{desc_clean}"
 category: "{state['category']}"
-pubDate: {pub_date}
+pubDate: "{pub_date}"
 ---"""
     final_post = f"{frontmatter}\n\n{state['edited_post']}"
     

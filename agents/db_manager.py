@@ -286,6 +286,22 @@ class RealEstateDBManager:
         conn.close()
         print(f"{target_date} 통계 계산 완료 (매매/전월세 포함)")
 
+    def get_latest_trends(self, days=7):
+        """최근 7일간의 주요 통계 데이터 반환 (에이전트용)"""
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+        cur = conn.cursor()
+        
+        cur.execute("""
+            SELECT * FROM district_trend 
+            ORDER BY log_date DESC, prev_diff_rate DESC 
+            LIMIT ?
+        """, (days * 25,)) # 25개구 * 일수
+        
+        rows = cur.fetchall()
+        conn.close()
+        return [dict(row) for row in rows]
+
     def export_latest_stats(self, target_path=None):
         """Astro 프론트엔드에서 사용할 최신 요약 데이터를 JSON으로 내보냄"""
         if target_path is None:

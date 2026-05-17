@@ -1,7 +1,7 @@
 {
   "last_updated": "2026-05-17",
-  "total_trades": 123,
-  "avg_seoul_price": 107042,
+  "total_trades": 124,
+  "avg_seoul_price": 106055,
   "history": [
     {
       "date": "2026-05-03",
@@ -33,27 +33,27 @@
     },
     {
       "date": "2026-05-10",
-      "price": 117055
+      "price": 115722
     },
     {
       "date": "2026-05-11",
-      "price": 116447
+      "price": 113962
     },
     {
       "date": "2026-05-12",
-      "price": 114772
+      "price": 111937
     },
     {
       "date": "2026-05-13",
-      "price": 111507
+      "price": 110058
     },
     {
       "date": "2026-05-14",
-      "price": 115393
+      "price": 114805
     },
     {
       "date": "2026-05-15",
-      "price": 104343
+      "price": 103640
     },
     {
       "date": "2026-05-16",
@@ -61,7 +61,7 @@
     },
     {
       "date": "2026-05-17",
-      "price": 107042
+      "price": 106055
     }
   ],
   "top_gainers": [
@@ -86,8 +86,8 @@
       "prev_diff_rate": 6.737548964745388,
       "avg_jeonse": 47644.117647058825,
       "jeonse_count": 17,
-      "avg_wolse": 100.81818181818181,
-      "wolse_count": 11
+      "avg_wolse": 93.16666666666667,
+      "wolse_count": 12
     },
     {
       "log_date": "2026-05-17",
@@ -112,8 +112,8 @@
       "prev_diff_rate": -0.3767329716696744,
       "avg_jeonse": 57426.2,
       "jeonse_count": 50,
-      "avg_wolse": 58.16,
-      "wolse_count": 50
+      "avg_wolse": 56.67307692307692,
+      "wolse_count": 52
     },
     {
       "log_date": "2026-05-17",
@@ -162,8 +162,8 @@
       "prev_diff_rate": 6.737548964745388,
       "avg_jeonse": 47644.117647058825,
       "jeonse_count": 17,
-      "avg_wolse": 100.81818181818181,
-      "wolse_count": 11
+      "avg_wolse": 93.16666666666667,
+      "wolse_count": 12
     },
     {
       "log_date": "2026-05-17",
@@ -184,10 +184,10 @@
       "avg_price": 93236.36363636363,
       "trade_count": 11,
       "prev_diff_rate": 2.752859212676103,
-      "avg_jeonse": 47491.51162790698,
-      "jeonse_count": 43,
-      "avg_wolse": 56.55555555555556,
-      "wolse_count": 36
+      "avg_jeonse": 47376.217391304344,
+      "jeonse_count": 46,
+      "avg_wolse": 60.16216216216216,
+      "wolse_count": 37
     },
     {
       "log_date": "2026-05-17",
@@ -234,8 +234,8 @@
       "prev_diff_rate": 0.0,
       "avg_jeonse": 56316.666666666664,
       "jeonse_count": 9,
-      "avg_wolse": 106.66666666666667,
-      "wolse_count": 12
+      "avg_wolse": 99.6923076923077,
+      "wolse_count": 13
     },
     {
       "log_date": "2026-05-17",
@@ -282,8 +282,8 @@
       "prev_diff_rate": 0.0,
       "avg_jeonse": 58420.37037037037,
       "jeonse_count": 27,
-      "avg_wolse": 110.88888888888889,
-      "wolse_count": 27
+      "avg_wolse": 107.60714285714286,
+      "wolse_count": 28
     },
     {
       "log_date": "2026-05-17",
@@ -318,8 +318,8 @@
       "prev_diff_rate": 0.0,
       "avg_jeonse": 30191.883720930233,
       "jeonse_count": 86,
-      "avg_wolse": 52.734177215189874,
-      "wolse_count": 79
+      "avg_wolse": 50.963855421686745,
+      "wolse_count": 83
     },
     {
       "log_date": "2026-05-17",
@@ -364,8 +364,8 @@
       "avg_price": 273000.0,
       "trade_count": 1,
       "prev_diff_rate": 0.0,
-      "avg_jeonse": 89733.75,
-      "jeonse_count": 64,
+      "avg_jeonse": 90737.84615384616,
+      "jeonse_count": 65,
       "avg_wolse": 177.26666666666668,
       "wolse_count": 45
     },
@@ -385,8 +385,8 @@
       "log_date": "2026-05-17",
       "district_code": "11710",
       "district_name": "송파구",
-      "avg_price": 169500.0,
-      "trade_count": 2,
+      "avg_price": 144833.33333333334,
+      "trade_count": 3,
       "prev_diff_rate": 0.0,
       "avg_jeonse": 86681.64556962025,
       "jeonse_count": 79,
@@ -402,8 +402,8 @@
       "prev_diff_rate": 0.0,
       "avg_jeonse": 58881.68421052631,
       "jeonse_count": 57,
-      "avg_wolse": 55.9009900990099,
-      "wolse_count": 101
+      "avg_wolse": 55.53921568627451,
+      "wolse_count": 102
     },
     {
       "log_date": "2026-05-17",
@@ -414,8 +414,8 @@
       "prev_diff_rate": -0.3767329716696744,
       "avg_jeonse": 57426.2,
       "jeonse_count": 50,
-      "avg_wolse": 58.16,
-      "wolse_count": 50
+      "avg_wolse": 56.67307692307692,
+      "wolse_count": 52
     },
     {
       "log_date": "2026-05-17",
