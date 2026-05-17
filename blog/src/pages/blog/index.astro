@@ -71,7 +71,7 @@ const posts = (await getCollection('blog')).sort((a, b) => {
 				list-style-type: none;
 				margin: 0;
 				padding: 0;
-				border-top: 2px solid var(--primary);
+				border-top: 3px solid var(--primary); /* 두께 미세 조정으로 업데이트 유도 */
 			}
 			.post-item {
 				width: 100%;
@@ -80,12 +80,12 @@ const posts = (await getCollection('blog')).sort((a, b) => {
 				display: flex;
 				flex-direction: row;
 				align-items: center;
-				background: transparent;
+				background: #ffffff;
 				border-bottom: 1px solid var(--outline-variant);
-				padding: 24px 12px;
+				padding: 28px 20px; /* 패딩 미세 조정 */
 				transition: all 0.2s ease;
 				text-decoration: none;
-				gap: 32px;
+				gap: 40px;
 			}
 			.post-card:hover {
 				background: #f1f4f6;
