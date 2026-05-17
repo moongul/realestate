@@ -363,3 +363,40 @@ class RealEstateDBManager:
         print(f"최신 통계 JSON 내보내기 완료: {target_path}")
         conn.close()
         return True
+
+    def export_district_history(self, target_path=None):
+        """25개 구별 전체 역사적 통계 데이터를 JSON으로 내보냄 (팝업 차트용)"""
+        if target_path is None:
+            project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            target_path = os.path.join(project_root, "blog/public/data/district_history.json")
+            
+        os.makedirs(os.path.dirname(target_path), exist_ok=True)
+        
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+        cur = conn.cursor()
+        
+        # 모든 구 목록 가져오기
+        cur.execute("SELECT DISTINCT district_name FROM district_trend")
+        district_names = [r[0] for r in cur.fetchall()]
+        
+        history_data = {}
+        
+        for name in district_names:
+            # 각 구별 전체 시계열 데이터 조회 (날짜순)
+            cur.execute("""
+                SELECT log_date, avg_price, trade_count, prev_diff_rate, avg_jeonse, jeonse_count, avg_wolse, wolse_count
+                FROM district_trend 
+                WHERE district_name = ? 
+                ORDER BY log_date ASC
+            """, (name,))
+            rows = cur.fetchall()
+            history_data[name] = [dict(row) for row in rows]
+            
+        import json
+        with open(target_path, "w", encoding="utf-8") as f:
+            json.dump(history_data, f, ensure_ascii=False, indent=2)
+            
+        print(f"구별 전체 히스토리 JSON 내보내기 완료: {target_path}")
+        conn.close()
+        return True

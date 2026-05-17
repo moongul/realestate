@@ -124,9 +124,14 @@ def seo_node(state: AgentState):
     desc_clean = str(metadata.get('description', '')).replace('"', "'")
     
     date_str = datetime.now().strftime("%Y-%m-%d")
-    slug_title = re.sub(r'[^a-zA-Z0-9가-힣\s]', '', title_clean)
-    slug = "-".join(slug_title.split()[:4])
-    filename_base = f"{date_str}-{slug}"
+    
+    if state["category"] == "market":
+        # 시세 브리핑은 항상 고정된 파일명 사용 (하루에 하나만 존재하도록)
+        filename_base = f"{date_str}-market-briefing"
+    else:
+        slug_title = re.sub(r'[^a-zA-Z0-9가-힣\s]', '', title_clean)
+        slug = "-".join(slug_title.split()[:4])
+        filename_base = f"{date_str}-{slug}"
     
     pub_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
@@ -164,9 +169,10 @@ def publish_node(state: AgentState):
     writer = BlogWriter()
     writer.save_post(state['final_post'], state['filename'])
     
-    # 1. 시세 통계 JSON 내보내기 (홈페이지 Market Trends 동기화)
+    # 1. 시세 통계 JSON 내보내기 (홈페이지 Market Trends 및 팝업 동기화)
     db = RealEstateDBManager()
     db.export_latest_stats()
+    db.export_district_history()
 
     # 2. 히스토리 저장
     if state["category"] == "analysis":
