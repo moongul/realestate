@@ -55,6 +55,7 @@ def market_collect_node(state: AgentState):
     for ym in [prev_ym, current_ym]:
         for code in seoul_districts:
             db.fetch_and_save_trades(code, ym)
+            db.fetch_and_save_rents(code, ym)
     
     # 2. 어제 날짜 통계 계산
     yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")

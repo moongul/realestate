@@ -18,7 +18,7 @@ class RealEstateDBManager:
         conn = sqlite3.connect(self.db_path)
         cur = conn.cursor()
         
-        # 1. 원천 거래 데이터 테이블
+        # 1. 원천 매매 데이터 테이블
         cur.execute("""
             CREATE TABLE IF NOT EXISTS raw_trades (
                 trade_id TEXT PRIMARY KEY,
@@ -32,8 +32,23 @@ class RealEstateDBManager:
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """)
+
+        # 2. 원천 전월세 데이터 테이블
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS raw_rents (
+                rent_id TEXT PRIMARY KEY,
+                district_code TEXT,
+                apt_name TEXT,
+                exclusive_area REAL,
+                deposit INTEGER,
+                monthly_rent INTEGER,
+                trade_date TEXT,
+                rent_type TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
         
-        # 2. 구 단위 일일 통계 테이블
+        # 3. 구 단위 일일 통계 테이블
         cur.execute("""
             CREATE TABLE IF NOT EXISTS district_trend (
                 log_date TEXT,
@@ -42,6 +57,10 @@ class RealEstateDBManager:
                 avg_price REAL,
                 trade_count INTEGER,
                 prev_diff_rate REAL,
+                avg_jeonse REAL,
+                jeonse_count INTEGER,
+                avg_wolse REAL,
+                wolse_count INTEGER,
                 PRIMARY KEY (log_date, district_code)
             )
         """)
@@ -50,14 +69,13 @@ class RealEstateDBManager:
         conn.close()
 
     def fetch_and_save_trades(self, district_code, ym):
-        """특정 구, 특정 월의 실거래 데이터를 가져와 저장"""
-        # 사용자가 요청한 표준 아파트 매매 실거래가 API 주소
+        """특정 구, 특정 월의 매매 실거래 데이터를 가져와 저장"""
         service_name = "RTMSDataSvcAptTrade"
         endpoint = "getRTMSDataSvcAptTrade" 
         url = f"http://apis.data.go.kr/1613000/{service_name}/{endpoint}"
         
-        # 인코딩된 키 직접 사용 (double-encoding 방지)
-        query_url = f"{url}?serviceKey={self.api_key}&LAWD_CD={district_code}&DEAL_YMD={ym}"
+        # numOfRows=10000 추가하여 누락 없이 수집
+        query_url = f"{url}?serviceKey={self.api_key}&LAWD_CD={district_code}&DEAL_YMD={ym}&numOfRows=10000"
         
         try:
             response = requests.get(query_url, timeout=15)
@@ -65,7 +83,6 @@ class RealEstateDBManager:
                 print(f"API 호출 실패 (HTTP {response.status_code})")
                 return False
             
-            # 응답 내용 확인 (에러 메시지 체크용)
             content = response.content.decode('utf-8')
             if "<resultMsg>" in content and "OK" not in content:
                 print(f"API 에러 응답: {content}")
@@ -75,8 +92,7 @@ class RealEstateDBManager:
             items = root.findall('.//item')
             
             if not items:
-                # 데이터가 없는 경우 (정상일 수 있음)
-                print(f"[{ym}] {district_code}: 검색된 데이터 없음")
+                print(f"[매매 {ym}] {district_code}: 검색된 데이터 없음")
                 return True
 
             conn = sqlite3.connect(self.db_path)
@@ -84,7 +100,6 @@ class RealEstateDBManager:
             
             count = 0
             for item in items:
-                # 데이터 파싱 (영어 필드명 대응)
                 apt_name = item.findtext('aptNm', '').strip()
                 amount_str = item.findtext('dealAmount', '0').replace(',', '')
                 amount = int(amount_str) if amount_str else 0
@@ -99,13 +114,10 @@ class RealEstateDBManager:
                     continue
                     
                 trade_date = f"{y}-{m.zfill(2)}-{d.zfill(2)}"
-                
-                # 취소 여부 (cdealType: 'O'가 취소)
                 cancel_type = item.findtext('cdealType', '').strip()
                 cancel_yn = 'Y' if cancel_type == 'O' else 'N'
                 cancel_date = item.findtext('cdealDay', '').strip()
                 
-                # 중복 방지를 위한 고유 ID 생성 (거래일+단지명+금액+면적)
                 trade_id = f"{trade_date}_{apt_name}_{amount}_{area}"
                 
                 cur.execute("""
@@ -119,15 +131,86 @@ class RealEstateDBManager:
             
             conn.commit()
             conn.close()
-            print(f"[{ym}] 구 코드 {district_code}: {count}건 저장 완료")
+            print(f"[매매 {ym}] 구 코드 {district_code}: {count}건 저장 완료")
             return True
             
         except Exception as e:
-            print(f"데이터 수집 중 오류 발생: {e}")
+            print(f"매매 데이터 수집 중 오류 발생: {e}")
+            return False
+
+    def fetch_and_save_rents(self, district_code, ym):
+        """특정 구, 특정 월의 전월세 실거래 데이터를 가져와 저장"""
+        service_name = "RTMSDataSvcAptRent"
+        endpoint = "getRTMSDataSvcAptRent" 
+        url = f"http://apis.data.go.kr/1613000/{service_name}/{endpoint}"
+        
+        # numOfRows=10000 추가하여 누락 없이 수집
+        query_url = f"{url}?serviceKey={self.api_key}&LAWD_CD={district_code}&DEAL_YMD={ym}&numOfRows=10000"
+        
+        try:
+            response = requests.get(query_url, timeout=15)
+            if response.status_code != 200:
+                print(f"API 호출 실패 (HTTP {response.status_code})")
+                return False
+            
+            content = response.content.decode('utf-8')
+            if "<resultMsg>" in content and "OK" not in content:
+                print(f"API 에러 응답: {content}")
+                return False
+                
+            root = ET.fromstring(response.content)
+            items = root.findall('.//item')
+            
+            if not items:
+                print(f"[전월세 {ym}] {district_code}: 검색된 데이터 없음")
+                return True
+
+            conn = sqlite3.connect(self.db_path)
+            cur = conn.cursor()
+            
+            count = 0
+            for item in items:
+                apt_name = item.findtext('aptNm', '').strip()
+                deposit_str = item.findtext('deposit', '0').replace(',', '')
+                deposit = int(deposit_str) if deposit_str else 0
+                rent_str = item.findtext('monthlyRent', '0').replace(',', '')
+                monthly_rent = int(rent_str) if rent_str else 0
+                area_str = item.findtext('excluUseAr', '0')
+                area = float(area_str) if area_str else 0.0
+                
+                y = item.findtext('dealYear')
+                m = item.findtext('dealMonth')
+                d = item.findtext('dealDay')
+                
+                if not all([y, m, d]):
+                    continue
+                    
+                trade_date = f"{y}-{m.zfill(2)}-{d.zfill(2)}"
+                
+                # 전월세 구분 (월세가 0이면 전세)
+                rent_type = '월세' if monthly_rent > 0 else '전세'
+                
+                # 중복 방지를 위한 고유 ID 생성 (거래일+단지명+보증금+월세+면적)
+                rent_id = f"{trade_date}_{apt_name}_{deposit}_{monthly_rent}_{area}"
+                
+                cur.execute("""
+                    INSERT INTO raw_rents (rent_id, district_code, apt_name, exclusive_area, deposit, monthly_rent, trade_date, rent_type)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                    ON CONFLICT(rent_id) DO NOTHING
+                """, (rent_id, district_code, apt_name, area, deposit, monthly_rent, trade_date, rent_type))
+                count += 1
+            
+            conn.commit()
+            conn.close()
+            print(f"[전월세 {ym}] 구 코드 {district_code}: {count}건 저장 완료")
+            return True
+            
+        except Exception as e:
+            print(f"전월세 데이터 수집 중 오류 발생: {e}")
             return False
 
     def calculate_daily_stats(self, target_date=None):
-        """특정 날짜의 구별 통계를 계산하여 trend 테이블에 저장 (7일 이동평균 적용하여 변동성 완화)"""
+        """특정 날짜의 구별 통계를 계산하여 trend 테이블에 저장 (7일 이동평균 적용)"""
         if target_date is None:
             target_date = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
             
@@ -144,45 +227,64 @@ class RealEstateDBManager:
             "11740": "강동구"
         }
         
-        # 날짜 형식 변환
         end_dt = datetime.strptime(target_date, "%Y-%m-%d")
-        # 7일간의 데이터를 합산하여 평균 계산 (표본 부족으로 인한 왜곡 방지)
         start_date = (end_dt - timedelta(days=6)).strftime("%Y-%m-%d")
 
         for code, name in seoul_districts.items():
-            # 1. 7일 이동 평균가 및 거래건수 계산 (이상치 방지를 위해 너무 크거나 작은 값 제외 필터링 추가 가능)
-            # 여기서는 50억 이상의 특수 거래(통건물 등)는 아파트 평균가 계산에서 제외하여 왜곡 방지
+            # 1. 매매 통계
             cur.execute("""
                 SELECT AVG(trade_amount), COUNT(*) FROM raw_trades
-                WHERE district_code = ? 
-                AND trade_date BETWEEN ? AND ? 
-                AND cancel_yn != 'Y'
-                AND trade_amount < 500000 
+                WHERE district_code = ? AND trade_date BETWEEN ? AND ? 
+                AND cancel_yn != 'Y' AND trade_amount < 500000 
             """, (code, start_date, target_date))
+            avg_price, trade_count = cur.fetchone()
+            avg_price = avg_price if avg_price else 0
+            trade_count = trade_count if trade_count else 0
             
-            avg_price, count = cur.fetchone()
+            # 2. 전세 통계
+            cur.execute("""
+                SELECT AVG(deposit), COUNT(*) FROM raw_rents
+                WHERE district_code = ? AND trade_date BETWEEN ? AND ? 
+                AND rent_type = '전세'
+            """, (code, start_date, target_date))
+            avg_jeonse, jeonse_count = cur.fetchone()
+            avg_jeonse = avg_jeonse if avg_jeonse else 0
+            jeonse_count = jeonse_count if jeonse_count else 0
+
+            # 3. 월세 통계 (보증금 제외하고 순수 월세 평균)
+            cur.execute("""
+                SELECT AVG(monthly_rent), COUNT(*) FROM raw_rents
+                WHERE district_code = ? AND trade_date BETWEEN ? AND ? 
+                AND rent_type = '월세'
+            """, (code, start_date, target_date))
+            avg_wolse, wolse_count = cur.fetchone()
+            avg_wolse = avg_wolse if avg_wolse else 0
+            wolse_count = wolse_count if wolse_count else 0
             
-            if count > 0:
-                # 2. 전일(의 7일 이동평균) 대비 변동률 계산
+            # 4. 변동률 및 저장
+            if trade_count > 0 or jeonse_count > 0 or wolse_count > 0:
                 prev_date = (end_dt - timedelta(days=1)).strftime("%Y-%m-%d")
                 cur.execute("SELECT avg_price FROM district_trend WHERE log_date = ? AND district_code = ?", (prev_date, code))
                 prev_row = cur.fetchone()
                 prev_avg = prev_row[0] if prev_row else avg_price
-                
                 diff_rate = ((avg_price - prev_avg) / prev_avg * 100) if prev_avg > 0 else 0
                 
                 cur.execute("""
-                    INSERT INTO district_trend (log_date, district_code, district_name, avg_price, trade_count, prev_diff_rate)
-                    VALUES (?, ?, ?, ?, ?, ?)
+                    INSERT INTO district_trend (log_date, district_code, district_name, avg_price, trade_count, prev_diff_rate, avg_jeonse, jeonse_count, avg_wolse, wolse_count)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     ON CONFLICT(log_date, district_code) DO UPDATE SET
                         avg_price = excluded.avg_price,
                         trade_count = excluded.trade_count,
-                        prev_diff_rate = excluded.prev_diff_rate
-                """, (target_date, code, name, avg_price, count, diff_rate))
+                        prev_diff_rate = excluded.prev_diff_rate,
+                        avg_jeonse = excluded.avg_jeonse,
+                        jeonse_count = excluded.jeonse_count,
+                        avg_wolse = excluded.avg_wolse,
+                        wolse_count = excluded.wolse_count
+                """, (target_date, code, name, avg_price, trade_count, diff_rate, avg_jeonse, jeonse_count, avg_wolse, wolse_count))
                 
         conn.commit()
         conn.close()
-        print(f"{target_date} 통계 계산 완료 (7일 이동평균 적용)")
+        print(f"{target_date} 통계 계산 완료 (매매/전월세 포함)")
 
     def get_latest_trends(self, days=7):
         """최근 7일간의 주요 통계 데이터 반환 (에이전트용)"""

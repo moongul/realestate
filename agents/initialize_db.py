@@ -26,9 +26,10 @@ def initialize():
     for ym in months_to_fetch:
         print(f"\n[월: {ym}] 수집 중...")
         for code in seoul_districts:
-            success = db.fetch_and_save_trades(code, ym)
-            if not success:
-                print(f"!! 구 코드 {code} 수집 중 오류 발생 (키 확인 필요)")
+            # 매매 데이터 수집
+            db.fetch_and_save_trades(code, ym)
+            # 전월세 데이터 수집
+            db.fetch_and_save_rents(code, ym)
             time.sleep(0.1) # API 부하 방지
             
     print("\n--- 통계 데이터 계산 중... ---")

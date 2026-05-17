@@ -14,154 +14,218 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		<Header />
 		<main>
 			<!-- Hero Section -->
-			<section class="hero">
-				<div class="hero-content">
-					<span class="badge">Institutional Grade Analysis</span>
-					<h1>Data-Driven Real Estate Insights</h1>
-					<p class="subtitle">
-						Unlocking institutional-quality market data and predictive analytics for professional real estate investors. Navigate complex global markets with vetted research.
-					</p>
-					<div class="hero-actions">
-						<a href="/blog" class="btn-primary">
-							Latest Reports
-							<span class="material-symbols-outlined">arrow_forward</span>
-						</a>
-						<a href="/about" class="btn-secondary">Our Methodology</a>
+			<section class="hero-section">
+				<div class="hero-overlay"></div>
+				<div class="container hero-container">
+					<div class="hero-content">
+						<span class="badge">Institutional Grade Analysis</span>
+						<h1>Data-Driven Real Estate Insights</h1>
+						<p class="subtitle">
+							Unlocking institutional-quality market data and predictive analytics for professional real estate investors. Navigate complex global markets with vetted research.
+						</p>
+						<div class="hero-actions">
+							<a href="/blog" class="btn-primary">
+								Latest Reports
+								<span class="material-symbols-outlined">arrow_forward</span>
+							</a>
+							<a href="/about" class="btn-outline">Our Methodology</a>
+						</div>
 					</div>
-				</div>
-				<div class="hero-image">
-					<img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&h=800&auto=format&fit=crop" alt="Modern Architecture" />
+					<div class="hero-image">
+						<img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&h=800&auto=format&fit=crop" alt="Modern Architecture" />
+					</div>
 				</div>
 			</section>
 
-			<!-- Bento Features Section -->
-			<section class="features">
-				<div class="section-header">
-					<h2>Market Trends</h2>
-					<p>Performance Indicators & AI Insights</p>
-				</div>
-				
-				<div class="bento-grid">
-					<div class="bento-item large">
-						<div class="bento-header">
-							<h3>Yield Compression Trends</h3>
-							<span class="trend-tag">+1.2% Momentum</span>
+			<!-- Market Trends Section -->
+			<section class="trends-section">
+				<div class="container">
+					<div class="section-header">
+						<div class="header-text">
+							<h2>Market Trends</h2>
+							<p>Q3 2026 Performance Indicators</p>
 						</div>
-						<div class="mock-chart">
-							<svg viewBox="0 0 800 200">
-								<path d="M0,150 Q150,130 250,100 T500,50 T800,20" fill="none" stroke="var(--secondary)" stroke-width="3" />
-							</svg>
-						</div>
-						<div class="stat-grid">
-							<div class="stat-item">
-								<span class="label">Industrial</span>
-								<span class="value">4.2%</span>
-							</div>
-							<div class="stat-item">
-								<span class="label">Multifamily</span>
-								<span class="value">3.8%</span>
-							</div>
-							<div class="stat-item">
-								<span class="label">Office</span>
-								<span class="value">5.4%</span>
-							</div>
-						</div>
+						<a href="#" class="dashboard-link">
+							Live Dashboard <span class="material-symbols-outlined">trending_up</span>
+						</a>
 					</div>
 					
-					<div class="bento-item dark">
-						<span class="material-symbols-outlined icon">location_city</span>
-						<h3>Regional Liquidity</h3>
-						<p>Seoul markets show resilient liquidity despite interest rate fluctuations in major hubs.</p>
-						<div class="status">
-							<span class="material-symbols-outlined">check_circle</span>
-							<span>Tier 1 Districts Stable</span>
+					<div class="bento-grid">
+						<!-- Large Chart Card -->
+						<div class="bento-card large chart-card">
+							<div class="card-header">
+								<h3>Yield Compression Trends</h3>
+								<div class="trend-badge">+1.2% Momentum</div>
+							</div>
+							<div class="chart-container">
+								<svg viewBox="0 0 800 250" class="chart-svg">
+									<path d="M0,200 Q150,180 250,150 T500,80 T800,20" fill="none" stroke="var(--secondary)" stroke-width="3" />
+									<path d="M0,200 Q150,180 250,150 T500,80 T800,20 L800,250 L0,250 Z" fill="var(--secondary)" opacity="0.05" />
+								</svg>
+							</div>
+							<div class="stat-footer">
+								<div class="stat-item">
+									<span class="label">Industrial</span>
+									<span class="value">4.2%</span>
+								</div>
+								<div class="stat-item">
+									<span class="label">Multifamily</span>
+									<span class="value">3.8%</span>
+								</div>
+								<div class="stat-item">
+									<span class="label">Office</span>
+									<span class="value">5.4%</span>
+								</div>
+							</div>
 						</div>
-					</div>
 
-					<div class="bento-item high">
-						<img src="https://images.unsplash.com/photo-1454165833767-027ffea70288?q=80&w=400&h=400&auto=format&fit=crop" alt="Analyst" />
-						<div class="item-content">
-							<h3>Analyst Insight</h3>
-							<p>Macroeconomic pressures are shifting the risk-reward profile.</p>
-							<a href="/blog">Read Q4 Forecast →</a>
+						<!-- Regional Liquidity Card -->
+						<div class="bento-card medium dark-card">
+							<div class="card-content">
+								<span class="material-symbols-outlined large-icon">location_city</span>
+								<h3>Regional Liquidity</h3>
+								<p>Seoul markets show resilient liquidity despite interest rate fluctuations in major hubs.</p>
+							</div>
+							<div class="card-footer">
+								<div class="status-indicator">
+									<span class="material-symbols-outlined">check_circle</span>
+									<span>Tier 1 Districts Stable</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Capital Allocation Card -->
+						<div class="bento-card small">
+							<h4 class="label-md">Capital Allocation</h4>
+							<div class="allocation-stack">
+								<div class="allocation-item">
+									<div class="alloc-label">Core Plus</div>
+									<div class="progress-bar"><div class="progress" style="width: 65%"></div></div>
+								</div>
+								<div class="allocation-item">
+									<div class="alloc-label">Value Add</div>
+									<div class="progress-bar"><div class="progress" style="width: 42%"></div></div>
+								</div>
+								<div class="allocation-item">
+									<div class="alloc-label">Opportunistic</div>
+									<div class="progress-bar"><div class="progress" style="width: 28%"></div></div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Analyst Insight Card -->
+						<div class="bento-card wide insight-card">
+							<div class="insight-image">
+								<img src="https://images.unsplash.com/photo-1454165833767-027ffea70288?q=80&w=400&h=400&auto=format&fit=crop" alt="Analyst" />
+							</div>
+							<div class="insight-content">
+								<h3>Analyst Insight: Q4 Forecast</h3>
+								<p>Macroeconomic pressures are shifting the risk-reward profile of development projects in secondary markets. Access the full report for detailed sub-sector predictions.</p>
+								<a href="/blog" class="pro-link">Download Pro Report →</a>
+							</div>
 						</div>
 					</div>
+				</div>
+			</section>
+
+			<!-- Newsletter Section -->
+			<section class="newsletter-section">
+				<div class="container narrow">
+					<h2>Get the Intelligence.</h2>
+					<p>Join 50,000+ institutional investors who receive our weekly deep-dive on market movements and regulatory shifts.</p>
+					<div class="form-container">
+						<input type="email" placeholder="professional@company.com" />
+						<button class="btn-primary">Subscribe</button>
+					</div>
+					<p class="disclaimer">We respect your privacy. Professional data only.</p>
 				</div>
 			</section>
 		</main>
+		<Footer />
 
 		<style>
 			/* Hero Section */
-			.hero {
+			.hero-section {
 				background: var(--primary-container);
-				padding: 96px 24px;
+				position: relative;
+				padding: 96px 0;
+				overflow: hidden;
+				color: var(--on-primary);
+			}
+			.hero-overlay {
+				position: absolute;
+				inset: 0;
+				opacity: 0.1;
+				background-image: radial-gradient(circle at 2px 2px, #8192a7 1px, transparent 0);
+				background-size: 40px 40px;
+				pointer-events: none;
+			}
+			.hero-container {
 				display: grid;
 				grid-template-columns: 1fr 1fr;
 				gap: 64px;
 				align-items: center;
-				max-width: 1280px;
-				margin: 0 auto;
-				border-radius: 0 0 var(--rounded-lg) var(--rounded-lg);
-				position: relative;
-				overflow: hidden;
-			}
-			.hero::before {
-				content: '';
-				position: absolute;
-				inset: 0;
-				opacity: 0.05;
-				background-image: radial-gradient(circle at 2px 2px, #ffffff 1px, transparent 0);
-				background-size: 40px 40px;
-			}
-			.hero-content {
 				position: relative;
 				z-index: 10;
 			}
 			.badge {
 				display: inline-block;
 				background: var(--secondary-container);
-				color: var(--primary);
+				color: var(--on-secondary-container, var(--primary));
 				padding: 4px 12px;
-				border-radius: var(--rounded-sm);
+				border-radius: var(--rounded-default);
 				font-size: 12px;
-				font-weight: 800;
+				font-weight: 700;
 				text-transform: uppercase;
-				letter-spacing: 0.1em;
+				letter-spacing: 0.05em;
 				margin-bottom: 24px;
 			}
-			.hero h1 {
+			.hero-content h1 {
 				font-size: 56px;
-				color: white;
-				margin-bottom: 24px;
 				line-height: 1.1;
+				margin-bottom: 24px;
+				color: var(--on-primary);
 			}
 			.subtitle {
 				font-size: 20px;
-				color: rgba(255, 255, 255, 0.7);
 				line-height: 1.5;
+				color: var(--on-primary-container);
+				opacity: 0.9;
 				margin-bottom: 48px;
 				max-width: 560px;
 			}
 			.hero-actions {
 				display: flex;
 				gap: 16px;
+				flex-wrap: wrap;
 			}
 			.btn-primary {
 				background: var(--secondary);
-				color: white;
-				padding: 14px 28px;
-				border-radius: var(--rounded-sm);
+				color: var(--on-secondary);
+				padding: 12px 24px;
+				border-radius: var(--rounded-default);
 				font-weight: 600;
 				display: flex;
 				align-items: center;
 				gap: 8px;
+				transition: opacity 0.2s;
 			}
-			.btn-secondary {
-				border: 1px solid rgba(255, 255, 255, 0.3);
-				color: white;
-				padding: 14px 28px;
-				border-radius: var(--rounded-sm);
+			.btn-primary:hover {
+				opacity: 0.9;
+				text-decoration: none;
+				color: var(--on-secondary);
+			}
+			.btn-outline {
+				border: 1px solid var(--outline-variant);
+				color: var(--on-primary);
+				padding: 12px 24px;
+				border-radius: var(--rounded-default);
 				font-weight: 600;
+			}
+			.btn-outline:hover {
+				background: rgba(255, 255, 255, 0.05);
+				text-decoration: none;
+				color: var(--on-primary);
 			}
 			.hero-image img {
 				width: 100%;
@@ -172,102 +236,84 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				border: 1px solid rgba(255, 255, 255, 0.1);
 			}
 
-			/* Features Bento Grid */
-			.features {
-				max-width: 1280px;
-				margin: 96px auto;
-				padding: 0 24px;
+			/* Trends Section */
+			.trends-section {
+				padding: 96px 0;
 			}
 			.section-header {
-				margin-bottom: 48px;
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-end;
+				margin-bottom: 40px;
 			}
-			.section-header h2 {
+			.header-text h2 {
 				font-size: 32px;
 				margin-bottom: 8px;
 			}
-			.section-header p {
-				color: var(--muted);
-				font-weight: 500;
+			.header-text p {
+				color: var(--on-surface-variant);
+			}
+			.dashboard-link {
+				display: flex;
+				align-items: center;
+				gap: 4px;
+				color: var(--secondary);
+				font-weight: 600;
+				font-size: 14px;
 			}
 
+			/* Bento Grid */
 			.bento-grid {
 				display: grid;
 				grid-template-columns: repeat(12, 1fr);
 				gap: 24px;
 			}
-			.bento-item {
-				background: white;
+			.bento-card {
+				background: var(--surface-container-lowest);
 				border: 1px solid var(--outline-variant);
 				border-radius: var(--rounded-lg);
 				padding: 32px;
 				box-shadow: var(--shadow-sm);
 			}
-			.bento-item.large {
-				grid-column: span 8;
+			.bento-card.large { grid-column: span 8; }
+			.bento-card.medium { grid-column: span 4; }
+			.bento-card.small { grid-column: span 4; }
+			.bento-card.wide { grid-column: span 8; }
+
+			.chart-card {
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
 			}
-			.bento-item.dark {
-				grid-column: span 4;
-				background: var(--primary);
-				color: white;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				gap: 24px;
-			}
-			.bento-item.dark h3 { color: white; }
-			.bento-item.dark .icon { font-size: 48px; color: var(--secondary-container); }
-			.bento-item.dark .status { 
-				display: flex; 
-				align-items: center; 
-				gap: 8px; 
-				color: var(--tertiary);
-				font-weight: 600;
-				font-size: 14px;
-			}
-
-			.bento-item.high {
-				grid-column: span 12;
-				display: flex;
-				align-items: center;
-				gap: 32px;
-				background: var(--surface-variant);
-			}
-			.bento-item.high img {
-				width: 120px;
-				height: 120px;
-				border-radius: 50%;
-				object-fit: cover;
-				border: 4px solid white;
-			}
-
-			.bento-header {
+			.card-header {
 				display: flex;
 				justify-content: space-between;
 				align-items: flex-start;
-				margin-bottom: 32px;
+				margin-bottom: 24px;
 			}
-			.trend-tag {
-				background: rgba(0, 166, 86, 0.1);
-				color: var(--tertiary);
+			.trend-badge {
+				background: rgba(74, 225, 131, 0.1);
+				color: var(--tertiary-container);
 				padding: 4px 8px;
-				border-radius: 4px;
+				border-radius: var(--rounded-default);
 				font-size: 12px;
 				font-weight: 700;
 			}
-			.stat-grid {
+			.chart-container {
+				height: 200px;
+				margin-bottom: 24px;
+			}
+			.stat-footer {
 				display: grid;
 				grid-template-columns: repeat(3, 1fr);
-				gap: 24px;
+				gap: 16px;
 				padding-top: 24px;
 				border-top: 1px solid var(--outline-variant);
 			}
 			.stat-item .label {
 				font-size: 12px;
 				text-transform: uppercase;
-				color: var(--muted);
+				color: var(--on-surface-variant);
 				font-weight: 600;
 				display: block;
 				margin-bottom: 4px;
@@ -278,12 +324,115 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				color: var(--primary);
 			}
 
+			.dark-card {
+				background: var(--primary);
+				color: var(--on-primary);
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			}
+			.dark-card h3 { color: var(--on-primary); }
+			.large-icon {
+				font-size: 48px;
+				color: var(--secondary-container);
+				margin-bottom: 24px;
+			}
+			.status-indicator {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				color: var(--tertiary-fixed-dim, #4ae183);
+				font-weight: 600;
+				font-size: 14px;
+			}
+
+			.allocation-stack {
+				margin-top: 24px;
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+			.alloc-label {
+				font-size: 14px;
+				margin-bottom: 4px;
+			}
+			.progress-bar {
+				height: 8px;
+				background: var(--surface-container);
+				border-radius: var(--rounded-full);
+				overflow: hidden;
+			}
+			.progress {
+				height: 100%;
+				background: var(--secondary);
+			}
+
+			.insight-card {
+				display: flex;
+				align-items: center;
+				gap: 32px;
+				background: var(--surface-container-high);
+			}
+			.insight-image img {
+				width: 120px;
+				height: 120px;
+				border-radius: 50%;
+				object-fit: cover;
+				border: 4px solid var(--surface-container-lowest);
+			}
+			.pro-link {
+				display: inline-block;
+				margin-top: 16px;
+				font-weight: 700;
+				color: var(--secondary);
+			}
+
+			/* Newsletter Section */
+			.newsletter-section {
+				background: var(--surface-container-highest);
+				padding: 64px 0;
+				text-align: center;
+			}
+			.container.narrow {
+				max-width: 720px;
+			}
+			.newsletter-section h2 {
+				font-size: 32px;
+				margin-bottom: 16px;
+			}
+			.newsletter-section p {
+				font-size: 18px;
+				color: var(--on-surface-variant);
+				margin-bottom: 32px;
+			}
+			.form-container {
+				display: flex;
+				gap: 16px;
+				justify-content: center;
+				margin-bottom: 16px;
+			}
+			.form-container input {
+				flex: 1;
+				max-width: 360px;
+				padding: 12px 16px;
+				border: 1px solid var(--outline-variant);
+				border-radius: var(--rounded-default);
+				font-size: 16px;
+			}
+			.disclaimer {
+				font-size: 12px !important;
+				margin-bottom: 0 !important;
+			}
+
 			@media (max-width: 1024px) {
-				.hero { grid-template-columns: 1fr; }
+				.hero-container { grid-template-columns: 1fr; }
 				.hero-image { display: none; }
-				.bento-item.large, .bento-item.dark { grid-column: span 12; }
+				.bento-card.large, .bento-card.medium, .bento-card.small, .bento-card.wide { grid-column: span 12; }
+			}
+			@media (max-width: 640px) {
+				.form-container { flex-direction: column; align-items: stretch; }
+				.form-container input { max-width: none; }
 			}
 		</style>
-		<Footer />
 	</body>
 </html>

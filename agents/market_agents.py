@@ -28,14 +28,17 @@ class SeoulMarketCollector:
             return None
 
         # 2. 데이터를 텍스트로 요약하여 LLM에게 분석 요청 (통찰 도출용)
-        # 모든 데이터를 다 주면 토큰이 낭비되므로, 변동률이 큰 상위/하위 지역 위주로 전달
+        # 매매, 전세, 월세 데이터를 모두 포함
         summary_text = "\n".join([
-            f"- {t['log_date']} {t['district_name']}: 평균 {int(t['avg_price']):,}만원 (전일대비 {t['prev_diff_rate']:.2f}%)"
-            for t in trends[:50] # 최근 데이터 중 일부 전달
+            f"- {t['log_date']} {t['district_name']}: "
+            f"매매 {int(t['avg_price']):,}만원(건수 {t['trade_count']}, 전일대비 {t['prev_diff_rate']:.2f}%), "
+            f"전세 {int(t['avg_jeonse']):,}만원(건수 {t['jeonse_count']}), "
+            f"월세 {int(t['avg_wolse']):,}만원(건수 {t['wolse_count']})"
+            for t in trends[:50] 
         ])
         
         prompt = f"""
-        당신은 부동산 데이터 분석가입니다. 아래 제공된 최근 7일간의 서울시 구별 실거래 통계 데이터를 분석하여 요약 보고서를 JSON으로 작성하세요.
+        당신은 부동산 데이터 분석가입니다. 아래 제공된 최근 7일간의 서울시 구별 실거래 통계 데이터(매매/전세/월세)를 분석하여 요약 보고서를 JSON으로 작성하세요.
         
         [실거래 통계 데이터]
         {summary_text}
@@ -48,12 +51,13 @@ class SeoulMarketCollector:
                     "name": "구이름",
                     "sale_trend": "상승/하락/보합",
                     "sale_price": "최근 평균가 정보",
-                    "jeonse_price": "데이터 없음(실거래 기반)",
-                    "status": "변동 원인 추정 및 특징 1줄"
+                    "jeonse_price": "최근 전세 평균가 정보",
+                    "wolse_price": "최근 월세 평균가 정보",
+                    "status": "매매 및 임대차 시장 특징 1줄 요약"
                 }}
             ],
-            "hot_spot": "변동률이 가장 두드러진 지역",
-            "summary": "현재 서울 시장의 지배적인 분위기 요약"
+            "hot_spot": "변동률이 크거나 거래가 활발한 지역",
+            "summary": "현재 서울 매매 및 임대차 시장의 지배적인 분위기 요약"
         }}
         """
         
@@ -75,11 +79,11 @@ class MarketWriter:
         print(f"[Market Writer] 서울 시세 브리핑 포스트 생성 중...")
         
         prompt = f"""
-        당신은 부동산 시세 분석 전문가입니다. 아래 수집된 서울시 구별 시세 데이터를 바탕으로 
+        당신은 부동산 시세 분석 전문가입니다. 아래 수집된 서울시 구별 시세 데이터(매매 및 전월세)를 바탕으로 
         시민들이 매일 읽기 좋은 '일일 시세 브리핑' 블로그 포스트를 마크다운으로 작성하세요.
         
         [중요 지시사항]
-        - **응답에는 오직 마크다운 본문만 포함하세요.** 스타일 태그(<style>)는 이미 적용되어 있으므로 절대 포함하지 마세요.
+        - **응답에는 오직 마크다운 본문만 포함하세요.**
         - 인사말 등 서론 없이 바로 리포트 제목(#)부터 시작하세요.
         
         [수집 데이터]:
@@ -87,9 +91,10 @@ class MarketWriter:
         
         [작성 가이드]
         1. **시각적 강조**: 상승(▲), 하락(▼), 보합(—) 이모지를 적절히 사용하여 시세 변동을 한눈에 보여주세요.
-        2. **표(Table) 활용**: 구별 시세 정보를 깔끔한 마크다운 표로 정리하세요.
-        3. **브랜드 톤앤매너**: Airbnb 스타일의 세련된 디자인을 위해 넉넉한 여백과 구조화된 섹션을 사용하세요.
-        [데이터 카드]: 상단에 아래 HTML 구조를 사용하여 오늘의 요약을 보여주세요 (2행 구조).
+        2. **표(Table) 활용**: 구별 시세 정보(매매, 전세, 월세)를 깔끔한 마크다운 표로 정리하세요.
+        3. **분석 내용**: 단순히 수치만 나열하지 말고, 매매가 대비 전세가 추이나 특정 지역의 임대차 시장 특이점을 한두 문장 덧붙여주세요.
+        4. **디자인 요소**: EstateIntel의 신뢰감 있는 스타일을 위해 구조화된 섹션과 굵은 글씨를 활용하세요.
+        [데이터 카드]: 상단에 아래 HTML 구조를 사용하여 오늘의 요약을 보여주세요.
            <div class="data-card-grid-rows">
              <div class="data-card"><div class="label">🎯 오늘의 핫스팟</div><div class="value">{market_data.get('hot_spot')}</div></div>
              <div class="data-card"><div class="label">📊 서울 전체 동향</div><div class="value">{market_data.get('summary')}</div></div>
