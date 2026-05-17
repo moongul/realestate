@@ -1,5 +1,5 @@
 ---
-model: "github-copilot/gemini-3-flash-preview"
+model: "github-copilot/gemini-3.1-flash"
 mode: "primary"
 ---
 # Role: 부동산 트렌드 연구원 (Researcher)
