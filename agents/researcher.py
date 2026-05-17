@@ -49,19 +49,43 @@ class RealEstateResearcher:
                     })
         return raw_news
 
+    def _get_existing_titles(self):
+        """기존 블로그 포스트들의 제목을 가져와 중복 주제 방지"""
+        project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        blog_dir = os.path.join(project_root, "blog/src/content/blog")
+        titles = []
+        if os.path.exists(blog_dir):
+            for f in os.listdir(blog_dir):
+                if f.endswith(".md"):
+                    # 파일명에서 날짜를 제외한 제목 키워드 추출
+                    titles.append(f)
+        return titles[-5:] # 최근 5개 정도만 참고
+
     def group_and_select_best_theme(self, topics):
-        """뉴스들을 분석하여 연관된 뉴스들을 하나의 '테마'로 묶음"""
+        """뉴스들을 분석하여 최근 주제와 겹치지 않는 새로운 '테마'를 선정"""
         if not topics: return None
         
-        titles = "\n".join([f"- {t['title']}" for t in topics])
-        prompt = f"""
-        다음 부동산 뉴스 목록을 분석하여, 오늘 가장 중요하게 다뤄야 할 '하나의 핵심 주제'를 정하고, 
-        그 주제와 직접적으로 연관된 뉴스들을 최대 3-4개 골라 JSON으로 응답하세요.
-        반드시 다음 형식을 지키세요:
-        {{ "theme_title": "핵심 주제 제목", "related_indices": [0, 2, 5] }}
+        recent_titles = self._get_existing_titles()
+        titles_text = "\n".join([f"- {t['title']}" for t in topics])
+        history_text = "\n".join([f"- {t}" for t in recent_titles])
         
-        뉴스 목록:
-        {titles}
+        prompt = f"""
+        당신은 트렌드에 민감한 부동산 연구원입니다. 
+        아래 '신규 뉴스 목록'을 분석하여 오늘 블로그에 발행할 '하나의 핵심 주제'를 선정하세요.
+        
+        [최근 발행된 주제들 (가급적 피할 것)]:
+        {history_text}
+        
+        [신규 뉴스 목록]:
+        {titles_text}
+        
+        [선정 가이드라인]
+        1. **신선함**: 최근 발행된 주제들과 핵심 키워드가 겹치지 않는 '새로운 각도'의 뉴스를 우선적으로 고려하세요.
+        2. **영향력**: 신선하면서도 시장에 미치는 영향이 큰 주제를 선정하세요.
+        3. **구조화**: 선정된 주제와 직접적으로 연관된 뉴스들(최대 4개)을 골라 JSON으로 응답하세요.
+        
+        응답 형식 (JSON):
+        {{ "theme_title": "신선하고 매력적인 주제 제목", "related_indices": [인덱스 번호들] }}
         """
         
         response = self.client.models.generate_content(model=self.model_lite, contents=prompt).text

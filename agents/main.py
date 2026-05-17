@@ -76,9 +76,18 @@ def analyze_node(state: AgentState):
 
 def write_node(state: AgentState):
     if state.get("category") == "analysis":
-        if not state.get("selected_theme") or not state.get("analyzed_data"): 
-            print("집필할 데이터가 부족하여 중단합니다.")
+        if not state.get("selected_theme"):
+            print("집필할 테마가 없습니다.")
             return state
+            
+        # analyzed_data가 없거나 비어있는 경우를 위한 폴백 로직
+        if not state.get("analyzed_data"):
+            print("!! 분석 데이터(JSON)가 부족합니다. 뉴스 원문을 기반으로 직접 집필을 시도합니다.")
+            # 빈 분석 데이터 객체 생성하여 에러 방지
+            state["analyzed_data"] = {
+                "market_vibe": "분석 중", "key_factors": "뉴스 참조", "attention_level": "관망",
+                "regional_data": [], "expert_insight": "뉴스 원문 데이터를 확인해 주세요."
+            }
     else:
         if not state.get("market_data"): 
             print("시세 데이터가 부족하여 중단합니다.")
