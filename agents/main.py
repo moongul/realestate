@@ -16,7 +16,6 @@ class AgentState(TypedDict):
     category: str # 'analysis' or 'market'
     topics: List[dict]
     selected_theme: dict
-    analyzed_data: dict
     market_data: dict
     draft_post: str
     edited_post: str
@@ -42,24 +41,26 @@ def research_node(state: AgentState):
 
 def market_collect_node(state: AgentState):
     if state.get("category") != "market": return state
-    print("\n[Node: Market Collector] 최신 실거래 데이터 업데이트 및 통계 추출 중...")
+    print("\n[Node: Market Collector] 최신 실거래 데이터 동기화 및 통계 추출 중...")
     
     db = RealEstateDBManager()
     
-    # 1. 오늘 기준 최신 데이터 업데이트
+    # 1. 증분 데이터 업데이트 (현재 월과 지난 달 데이터만 동기화하여 지연 신고분 반영)
+    # 이미 저장된 데이터는 DB의 'ON CONFLICT' 로직에 의해 자동으로 스킵됩니다.
     current_ym = datetime.now().strftime("%Y%m")
     prev_ym = (datetime.now().replace(day=1) - timedelta(days=1)).strftime("%Y%m")
     
     seoul_districts = ["11110", "11140", "11170", "11200", "11215", "11230", "11260", "11290", "11305", "11320", "11350", "11380", "11410", "11440", "11470", "11500", "11530", "11545", "11560", "11590", "11620", "11650", "11680", "11710", "11740"]
     
+    print(f"대상 기간: {prev_ym}, {current_ym} (신규 데이터만 누적 적재)")
     for ym in [prev_ym, current_ym]:
         for code in seoul_districts:
             db.fetch_and_save_trades(code, ym)
-            db.fetch_and_save_rents(code, ym)
     
-    # 2. 어제 날짜 통계 계산
-    yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
-    db.calculate_daily_stats(yesterday)
+    # 2. 통계 업데이트 (최근 7일치 재계산하여 이동평균 최신화)
+    for i in range(7, -1, -1):
+        target_date = (datetime.now() - timedelta(days=i)).strftime("%Y-%m-%d")
+        db.calculate_daily_stats(target_date)
     
     # 3. 데이터 분석 에이전트 실행
     collector = SeoulMarketCollector()
