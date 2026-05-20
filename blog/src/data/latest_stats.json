@@ -1,12 +1,8 @@
 {
-  "last_updated": "2026-05-20",
-  "total_trades": 187,
-  "avg_seoul_price": 120979,
+  "last_updated": "2026-05-21",
+  "total_trades": 201,
+  "avg_seoul_price": 124101,
   "history": [
-    {
-      "date": "2026-05-06",
-      "price": 121055
-    },
     {
       "date": "2026-05-07",
       "price": 117378
@@ -37,409 +33,413 @@
     },
     {
       "date": "2026-05-14",
-      "price": 115147
+      "price": 115710
     },
     {
       "date": "2026-05-15",
-      "price": 110940
+      "price": 114732
     },
     {
       "date": "2026-05-16",
-      "price": 113490
+      "price": 117261
     },
     {
       "date": "2026-05-17",
-      "price": 114127
+      "price": 117008
     },
     {
       "date": "2026-05-18",
-      "price": 119020
+      "price": 120038
     },
     {
       "date": "2026-05-19",
-      "price": 123848
+      "price": 120175
     },
     {
       "date": "2026-05-20",
-      "price": 120979
+      "price": 120501
+    },
+    {
+      "date": "2026-05-21",
+      "price": 124101
     }
   ],
   "top_gainers": [
     {
-      "log_date": "2026-05-20",
-      "district_code": "11110",
-      "district_name": "종로구",
-      "avg_price": 65000.0,
-      "trade_count": 1,
-      "prev_diff_rate": 39.48497854077253,
-      "avg_jeonse": 33500.0,
-      "jeonse_count": 1,
-      "avg_wolse": 10.0,
-      "wolse_count": 1
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11740",
-      "district_name": "강동구",
-      "avg_price": 177290.0,
-      "trade_count": 2,
-      "prev_diff_rate": 37.299292684186064,
-      "avg_jeonse": 57894.59090909091,
-      "jeonse_count": 22,
-      "avg_wolse": 62.0,
-      "wolse_count": 42
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11320",
-      "district_name": "도봉구",
-      "avg_price": 63000.0,
-      "trade_count": 1,
-      "prev_diff_rate": 33.07984790874524,
-      "avg_jeonse": 33050.0,
-      "jeonse_count": 8,
-      "avg_wolse": 117.8,
-      "wolse_count": 5
-    }
-  ],
-  "top_losers": [
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11680",
-      "district_name": "강남구",
-      "avg_price": 236875.0,
-      "trade_count": 4,
-      "prev_diff_rate": -19.92957746478873,
-      "avg_jeonse": 69176.31578947368,
-      "jeonse_count": 38,
-      "avg_wolse": 81.8936170212766,
-      "wolse_count": 47
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11710",
-      "district_name": "송파구",
-      "avg_price": 94250.0,
-      "trade_count": 2,
-      "prev_diff_rate": -34.92520138089758,
-      "avg_jeonse": 81802.87096774194,
-      "jeonse_count": 31,
-      "avg_wolse": 149.33333333333334,
-      "wolse_count": 21
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11305",
-      "district_name": "강북구",
-      "avg_price": 0.0,
-      "trade_count": 0,
-      "prev_diff_rate": -100.0,
-      "avg_jeonse": 36500.0,
-      "jeonse_count": 2,
-      "avg_wolse": 66.0,
-      "wolse_count": 4
-    }
-  ],
-  "all_districts": [
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11110",
-      "district_name": "종로구",
-      "avg_price": 65000.0,
-      "trade_count": 1,
-      "prev_diff_rate": 39.48497854077253,
-      "avg_jeonse": 33500.0,
-      "jeonse_count": 1,
-      "avg_wolse": 10.0,
-      "wolse_count": 1
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11740",
-      "district_name": "강동구",
-      "avg_price": 177290.0,
-      "trade_count": 2,
-      "prev_diff_rate": 37.299292684186064,
-      "avg_jeonse": 57894.59090909091,
-      "jeonse_count": 22,
-      "avg_wolse": 62.0,
-      "wolse_count": 42
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11320",
-      "district_name": "도봉구",
-      "avg_price": 63000.0,
-      "trade_count": 1,
-      "prev_diff_rate": 33.07984790874524,
-      "avg_jeonse": 33050.0,
-      "jeonse_count": 8,
-      "avg_wolse": 117.8,
-      "wolse_count": 5
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11560",
-      "district_name": "영등포구",
-      "avg_price": 222583.0,
-      "trade_count": 2,
-      "prev_diff_rate": 18.255570549670068,
-      "avg_jeonse": 60356.25,
-      "jeonse_count": 16,
-      "avg_wolse": 26.0,
-      "wolse_count": 1
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11230",
-      "district_name": "동대문구",
-      "avg_price": 84833.33333333333,
-      "trade_count": 3,
-      "prev_diff_rate": 8.502344844387588,
-      "avg_jeonse": 64292.857142857145,
-      "jeonse_count": 7,
-      "avg_wolse": 109.28571428571429,
-      "wolse_count": 7
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11500",
-      "district_name": "강서구",
-      "avg_price": 90933.33333333333,
-      "trade_count": 12,
-      "prev_diff_rate": 4.852503122898043,
-      "avg_jeonse": 47104.545454545456,
-      "jeonse_count": 11,
-      "avg_wolse": 62.30769230769231,
-      "wolse_count": 13
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11440",
-      "district_name": "마포구",
-      "avg_price": 142800.0,
-      "trade_count": 5,
-      "prev_diff_rate": 4.828711256117458,
-      "avg_jeonse": 67237.5,
-      "jeonse_count": 8,
-      "avg_wolse": 85.57142857142857,
-      "wolse_count": 14
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11470",
-      "district_name": "양천구",
-      "avg_price": 120230.0,
-      "trade_count": 10,
-      "prev_diff_rate": 3.541063180145615,
-      "avg_jeonse": 51390.35294117647,
-      "jeonse_count": 17,
-      "avg_wolse": 94.9375,
-      "wolse_count": 16
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11350",
-      "district_name": "노원구",
-      "avg_price": 60900.0,
-      "trade_count": 15,
-      "prev_diff_rate": 3.5080562920660823,
-      "avg_jeonse": 28770.25806451613,
-      "jeonse_count": 31,
-      "avg_wolse": 54.416666666666664,
-      "wolse_count": 24
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11410",
-      "district_name": "서대문구",
-      "avg_price": 97080.0,
-      "trade_count": 10,
-      "prev_diff_rate": 2.6018447348193643,
-      "avg_jeonse": 60500.0,
-      "jeonse_count": 2,
-      "avg_wolse": 151.5,
-      "wolse_count": 6
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11260",
-      "district_name": "중랑구",
-      "avg_price": 65613.63636363637,
-      "trade_count": 22,
-      "prev_diff_rate": 0.9130057884287412,
-      "avg_jeonse": 35544.75,
-      "jeonse_count": 12,
-      "avg_wolse": 52.0,
-      "wolse_count": 8
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11140",
-      "district_name": "중구",
-      "avg_price": 186375.0,
-      "trade_count": 4,
-      "prev_diff_rate": 0.0,
-      "avg_jeonse": 65125.0,
-      "jeonse_count": 6,
-      "avg_wolse": 46.833333333333336,
-      "wolse_count": 6
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11170",
-      "district_name": "용산구",
-      "avg_price": 290095.0,
-      "trade_count": 2,
-      "prev_diff_rate": 0.0,
-      "avg_jeonse": 97375.0,
-      "jeonse_count": 4,
-      "avg_wolse": 86.22222222222223,
-      "wolse_count": 9
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11545",
-      "district_name": "금천구",
-      "avg_price": 49000.0,
-      "trade_count": 1,
-      "prev_diff_rate": 0.0,
-      "avg_jeonse": 29918.285714285714,
-      "jeonse_count": 7,
-      "avg_wolse": 52.8,
-      "wolse_count": 5
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11590",
-      "district_name": "동작구",
-      "avg_price": 118000.0,
-      "trade_count": 2,
-      "prev_diff_rate": 0.0,
-      "avg_jeonse": 61333.333333333336,
-      "jeonse_count": 6,
-      "avg_wolse": 92.0909090909091,
-      "wolse_count": 11
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11290",
-      "district_name": "성북구",
-      "avg_price": 84608.82352941176,
-      "trade_count": 17,
-      "prev_diff_rate": -0.2221755475866101,
-      "avg_jeonse": 56608.333333333336,
-      "jeonse_count": 6,
-      "avg_wolse": 89.3,
-      "wolse_count": 10
-    },
-    {
-      "log_date": "2026-05-20",
+      "log_date": "2026-05-21",
       "district_code": "11620",
       "district_name": "관악구",
-      "avg_price": 56197.619047619046,
-      "trade_count": 42,
-      "prev_diff_rate": -0.40400531477480645,
-      "avg_jeonse": 39991.666666666664,
-      "jeonse_count": 6,
+      "avg_price": 81000.0,
+      "trade_count": 19,
+      "prev_diff_rate": 33.24604693322591,
+      "avg_jeonse": 43500.0,
+      "jeonse_count": 4,
       "avg_wolse": 110.0,
       "wolse_count": 2
     },
     {
-      "log_date": "2026-05-20",
+      "log_date": "2026-05-21",
       "district_code": "11215",
       "district_name": "광진구",
-      "avg_price": 165250.0,
-      "trade_count": 2,
-      "prev_diff_rate": -0.7507507507507507,
-      "avg_jeonse": 49409.333333333336,
+      "avg_price": 149000.0,
+      "trade_count": 1,
+      "prev_diff_rate": 22.971114167812924,
+      "avg_jeonse": 45000.0,
+      "jeonse_count": 1,
+      "avg_wolse": 38.5,
+      "wolse_count": 2
+    },
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11680",
+      "district_name": "강남구",
+      "avg_price": 288500.0,
+      "trade_count": 5,
+      "prev_diff_rate": 19.004124926340605,
+      "avg_jeonse": 60848.0,
+      "jeonse_count": 15,
+      "avg_wolse": 102.5625,
+      "wolse_count": 16
+    }
+  ],
+  "top_losers": [
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11530",
+      "district_name": "구로구",
+      "avg_price": 59075.0,
+      "trade_count": 8,
+      "prev_diff_rate": -9.443775320267159,
+      "avg_jeonse": 39125.0,
+      "jeonse_count": 4,
+      "avg_wolse": 41.285714285714285,
+      "wolse_count": 7
+    },
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11560",
+      "district_name": "영등포구",
+      "avg_price": 100971.42857142857,
+      "trade_count": 7,
+      "prev_diff_rate": -30.27561703854858,
+      "avg_jeonse": 72425.0,
+      "jeonse_count": 4,
+      "avg_wolse": 26.0,
+      "wolse_count": 1
+    },
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11320",
+      "district_name": "도봉구",
+      "avg_price": 0.0,
+      "trade_count": 0,
+      "prev_diff_rate": -100.0,
+      "avg_jeonse": 39333.333333333336,
       "jeonse_count": 3,
-      "avg_wolse": 67.2,
+      "avg_wolse": 79.5,
+      "wolse_count": 2
+    }
+  ],
+  "all_districts": [
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11620",
+      "district_name": "관악구",
+      "avg_price": 81000.0,
+      "trade_count": 19,
+      "prev_diff_rate": 33.24604693322591,
+      "avg_jeonse": 43500.0,
+      "jeonse_count": 4,
+      "avg_wolse": 110.0,
+      "wolse_count": 2
+    },
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11215",
+      "district_name": "광진구",
+      "avg_price": 149000.0,
+      "trade_count": 1,
+      "prev_diff_rate": 22.971114167812924,
+      "avg_jeonse": 45000.0,
+      "jeonse_count": 1,
+      "avg_wolse": 38.5,
+      "wolse_count": 2
+    },
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11680",
+      "district_name": "강남구",
+      "avg_price": 288500.0,
+      "trade_count": 5,
+      "prev_diff_rate": 19.004124926340605,
+      "avg_jeonse": 60848.0,
+      "jeonse_count": 15,
+      "avg_wolse": 102.5625,
+      "wolse_count": 16
+    },
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11590",
+      "district_name": "동작구",
+      "avg_price": 136000.0,
+      "trade_count": 1,
+      "prev_diff_rate": 18.647764449291166,
+      "avg_jeonse": 47000.0,
+      "jeonse_count": 1,
+      "avg_wolse": 128.6,
       "wolse_count": 5
     },
     {
-      "log_date": "2026-05-20",
-      "district_code": "11380",
-      "district_name": "은평구",
-      "avg_price": 83060.0,
-      "trade_count": 15,
-      "prev_diff_rate": -1.085403198366784,
-      "avg_jeonse": 50592.11111111111,
-      "jeonse_count": 9,
-      "avg_wolse": 73.18181818181819,
-      "wolse_count": 11
+      "log_date": "2026-05-21",
+      "district_code": "11650",
+      "district_name": "서초구",
+      "avg_price": 238500.0,
+      "trade_count": 2,
+      "prev_diff_rate": 17.77777777777778,
+      "avg_jeonse": 97848.86666666667,
+      "jeonse_count": 15,
+      "avg_wolse": 71.6,
+      "wolse_count": 5
     },
     {
-      "log_date": "2026-05-20",
+      "log_date": "2026-05-21",
+      "district_code": "11170",
+      "district_name": "용산구",
+      "avg_price": 250595.0,
+      "trade_count": 2,
+      "prev_diff_rate": 16.883813492125192,
+      "avg_jeonse": 80000.0,
+      "jeonse_count": 2,
+      "avg_wolse": 107.5,
+      "wolse_count": 4
+    },
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11710",
+      "district_name": "송파구",
+      "avg_price": 243714.2857142857,
+      "trade_count": 7,
+      "prev_diff_rate": 8.227270925022797,
+      "avg_jeonse": 85681.53846153847,
+      "jeonse_count": 13,
+      "avg_wolse": 126.83333333333333,
+      "wolse_count": 6
+    },
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11500",
+      "district_name": "강서구",
+      "avg_price": 104433.33333333333,
+      "trade_count": 15,
+      "prev_diff_rate": 7.045237119037852,
+      "avg_jeonse": 56516.666666666664,
+      "jeonse_count": 6,
+      "avg_wolse": 76.5,
+      "wolse_count": 4
+    },
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11230",
+      "district_name": "동대문구",
+      "avg_price": 83266.66666666667,
+      "trade_count": 3,
+      "prev_diff_rate": 4.8038598699391715,
+      "avg_jeonse": 57500.0,
+      "jeonse_count": 3,
+      "avg_wolse": 148.25,
+      "wolse_count": 4
+    },
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11260",
+      "district_name": "중랑구",
+      "avg_price": 68856.52173913043,
+      "trade_count": 23,
+      "prev_diff_rate": 1.6082465407728883,
+      "avg_jeonse": 34893.0,
+      "jeonse_count": 9,
+      "avg_wolse": 30.857142857142858,
+      "wolse_count": 7
+    },
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11350",
+      "district_name": "노원구",
+      "avg_price": 60524.0,
+      "trade_count": 25,
+      "prev_diff_rate": 0.14830135994622268,
+      "avg_jeonse": 24155.0,
+      "jeonse_count": 11,
+      "avg_wolse": 58.333333333333336,
+      "wolse_count": 9
+    },
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11110",
+      "district_name": "종로구",
+      "avg_price": 65000.0,
+      "trade_count": 1,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 33500.0,
+      "jeonse_count": 1,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-05-21",
       "district_code": "11200",
       "district_name": "성동구",
       "avg_price": 197750.0,
       "trade_count": 4,
-      "prev_diff_rate": -3.1586679725759055,
-      "avg_jeonse": 90809.28571428571,
-      "jeonse_count": 14,
-      "avg_wolse": 148.33333333333334,
-      "wolse_count": 9
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 81240.0,
+      "jeonse_count": 5,
+      "avg_wolse": 129.16666666666666,
+      "wolse_count": 6
     },
     {
-      "log_date": "2026-05-20",
-      "district_code": "11650",
-      "district_name": "서초구",
-      "avg_price": 205000.0,
-      "trade_count": 3,
-      "prev_diff_rate": -7.657657657657657,
-      "avg_jeonse": 86635.44,
-      "jeonse_count": 25,
-      "avg_wolse": 83.16666666666667,
+      "log_date": "2026-05-21",
+      "district_code": "11305",
+      "district_name": "강북구",
+      "avg_price": 102000.0,
+      "trade_count": 1,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 49000.0,
+      "jeonse_count": 1,
+      "avg_wolse": 98.0,
+      "wolse_count": 2
+    },
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11440",
+      "district_name": "마포구",
+      "avg_price": 142800.0,
+      "trade_count": 5,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 55000.0,
+      "jeonse_count": 1,
+      "avg_wolse": 77.0,
+      "wolse_count": 3
+    },
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11545",
+      "district_name": "금천구",
+      "avg_price": 45500.0,
+      "trade_count": 2,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 36607.0,
+      "jeonse_count": 4,
+      "avg_wolse": 66.0,
+      "wolse_count": 1
+    },
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11740",
+      "district_name": "강동구",
+      "avg_price": 156070.0,
+      "trade_count": 4,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 51348.9,
+      "jeonse_count": 10,
+      "avg_wolse": 89.16666666666667,
       "wolse_count": 12
     },
     {
-      "log_date": "2026-05-20",
+      "log_date": "2026-05-21",
+      "district_code": "11140",
+      "district_name": "중구",
+      "avg_price": 166166.66666666666,
+      "trade_count": 6,
+      "prev_diff_rate": -0.07159221076747684,
+      "avg_jeonse": 45500.0,
+      "jeonse_count": 2,
+      "avg_wolse": 51.25,
+      "wolse_count": 4
+    },
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11380",
+      "district_name": "은평구",
+      "avg_price": 82377.77777777778,
+      "trade_count": 18,
+      "prev_diff_rate": -0.9287098282888984,
+      "avg_jeonse": 59437.5,
+      "jeonse_count": 4,
+      "avg_wolse": 28.0,
+      "wolse_count": 2
+    },
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11410",
+      "district_name": "서대문구",
+      "avg_price": 97572.72727272728,
+      "trade_count": 11,
+      "prev_diff_rate": -1.617509148727634,
+      "avg_jeonse": 60500.0,
+      "jeonse_count": 2,
+      "avg_wolse": 63.0,
+      "wolse_count": 1
+    },
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11290",
+      "district_name": "성북구",
+      "avg_price": 81217.5,
+      "trade_count": 20,
+      "prev_diff_rate": -4.711576065701989,
+      "avg_jeonse": 68000.0,
+      "jeonse_count": 1,
+      "avg_wolse": 101.66666666666667,
+      "wolse_count": 3
+    },
+    {
+      "log_date": "2026-05-21",
+      "district_code": "11470",
+      "district_name": "양천구",
+      "avg_price": 101645.45454545454,
+      "trade_count": 11,
+      "prev_diff_rate": -7.78067762061022,
+      "avg_jeonse": 51827.083333333336,
+      "jeonse_count": 12,
+      "avg_wolse": 63.142857142857146,
+      "wolse_count": 7
+    },
+    {
+      "log_date": "2026-05-21",
       "district_code": "11530",
       "district_name": "구로구",
-      "avg_price": 67766.66666666667,
-      "trade_count": 6,
-      "prev_diff_rate": -8.626280137404079,
-      "avg_jeonse": 31645.444444444445,
-      "jeonse_count": 9,
-      "avg_wolse": 42.388888888888886,
-      "wolse_count": 18
+      "avg_price": 59075.0,
+      "trade_count": 8,
+      "prev_diff_rate": -9.443775320267159,
+      "avg_jeonse": 39125.0,
+      "jeonse_count": 4,
+      "avg_wolse": 41.285714285714285,
+      "wolse_count": 7
     },
     {
-      "log_date": "2026-05-20",
-      "district_code": "11680",
-      "district_name": "강남구",
-      "avg_price": 236875.0,
-      "trade_count": 4,
-      "prev_diff_rate": -19.92957746478873,
-      "avg_jeonse": 69176.31578947368,
-      "jeonse_count": 38,
-      "avg_wolse": 81.8936170212766,
-      "wolse_count": 47
+      "log_date": "2026-05-21",
+      "district_code": "11560",
+      "district_name": "영등포구",
+      "avg_price": 100971.42857142857,
+      "trade_count": 7,
+      "prev_diff_rate": -30.27561703854858,
+      "avg_jeonse": 72425.0,
+      "jeonse_count": 4,
+      "avg_wolse": 26.0,
+      "wolse_count": 1
     },
     {
-      "log_date": "2026-05-20",
-      "district_code": "11710",
-      "district_name": "송파구",
-      "avg_price": 94250.0,
-      "trade_count": 2,
-      "prev_diff_rate": -34.92520138089758,
-      "avg_jeonse": 81802.87096774194,
-      "jeonse_count": 31,
-      "avg_wolse": 149.33333333333334,
-      "wolse_count": 21
-    },
-    {
-      "log_date": "2026-05-20",
-      "district_code": "11305",
-      "district_name": "강북구",
+      "log_date": "2026-05-21",
+      "district_code": "11320",
+      "district_name": "도봉구",
       "avg_price": 0.0,
       "trade_count": 0,
       "prev_diff_rate": -100.0,
-      "avg_jeonse": 36500.0,
-      "jeonse_count": 2,
-      "avg_wolse": 66.0,
-      "wolse_count": 4
+      "avg_jeonse": 39333.333333333336,
+      "jeonse_count": 3,
+      "avg_wolse": 79.5,
+      "wolse_count": 2
     }
   ]
 }
