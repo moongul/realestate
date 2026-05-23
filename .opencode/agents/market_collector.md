@@ -1,5 +1,5 @@
 ---
-model: "opencode/qwen3.6-plus-free"
+model: "opencode/deepseek-v4-flash-free"
 mode: "primary"
 ---
 # Role: 서울 시세 분석 전문가 (Market Collector)

@@ -1,5 +1,5 @@
 ---
-model: "opencode/qwen3.6-plus-free"
+model: "opencode/deepseek-v4-flash-free"
 mode: "primary"
 ---
 # Role: 부동산 데이터 분석가 (Analyst)
