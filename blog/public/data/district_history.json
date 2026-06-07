@@ -509,6 +509,26 @@
       "jeonse_count": 0,
       "avg_wolse": 0.0,
       "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
+      "avg_price": 62000.0,
+      "trade_count": 1,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-08",
+      "avg_price": 62000.0,
+      "trade_count": 1,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
     }
   ],
   "중구": [
@@ -2005,6 +2025,16 @@
       "jeonse_count": 0,
       "avg_wolse": 0.0,
       "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
+      "avg_price": 158000.0,
+      "trade_count": 1,
+      "prev_diff_rate": -18.974358974358974,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
     }
   ],
   "광진구": [
@@ -2513,6 +2543,26 @@
       "avg_price": 63500.0,
       "trade_count": 2,
       "prev_diff_rate": -37.947882736156345,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
+      "avg_price": 63500.0,
+      "trade_count": 2,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-08",
+      "avg_price": 65500.0,
+      "trade_count": 1,
+      "prev_diff_rate": 3.149606299212598,
       "avg_jeonse": 0.0,
       "jeonse_count": 0,
       "avg_wolse": 0.0,
@@ -3029,6 +3079,26 @@
       "jeonse_count": 0,
       "avg_wolse": 0.0,
       "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
+      "avg_price": 107833.33333333333,
+      "trade_count": 6,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-08",
+      "avg_price": 109500.0,
+      "trade_count": 4,
+      "prev_diff_rate": 1.5455950540958314,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
     }
   ],
   "중랑구": [
@@ -3537,6 +3607,26 @@
       "avg_price": 54387.5,
       "trade_count": 8,
       "prev_diff_rate": -3.156160968660968,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
+      "avg_price": 54387.5,
+      "trade_count": 8,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-08",
+      "avg_price": 58100.0,
+      "trade_count": 5,
+      "prev_diff_rate": 6.826017007584463,
       "avg_jeonse": 0.0,
       "jeonse_count": 0,
       "avg_wolse": 0.0,
@@ -4053,6 +4143,26 @@
       "jeonse_count": 0,
       "avg_wolse": 0.0,
       "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
+      "avg_price": 68357.14285714286,
+      "trade_count": 14,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-08",
+      "avg_price": 64833.333333333336,
+      "trade_count": 12,
+      "prev_diff_rate": -5.154998258446527,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
     }
   ],
   "강북구": [
@@ -4561,6 +4671,26 @@
       "avg_price": 78433.33333333333,
       "trade_count": 3,
       "prev_diff_rate": 0.0637890708058686,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
+      "avg_price": 78433.33333333333,
+      "trade_count": 3,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-08",
+      "avg_price": 75650.0,
+      "trade_count": 2,
+      "prev_diff_rate": -3.548661283467908,
       "avg_jeonse": 0.0,
       "jeonse_count": 0,
       "avg_wolse": 0.0,
@@ -5077,6 +5207,26 @@
       "jeonse_count": 0,
       "avg_wolse": 0.0,
       "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
+      "avg_price": 59422.22222222222,
+      "trade_count": 9,
+      "prev_diff_rate": 4.139891731900138,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-08",
+      "avg_price": 66616.66666666667,
+      "trade_count": 6,
+      "prev_diff_rate": 12.107329842931952,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
     }
   ],
   "노원구": [
@@ -5589,6 +5739,26 @@
       "jeonse_count": 0,
       "avg_wolse": 0.0,
       "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
+      "avg_price": 50000.0,
+      "trade_count": 2,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-08",
+      "avg_price": 50000.0,
+      "trade_count": 2,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
     }
   ],
   "은평구": [
@@ -6064,9 +6234,9 @@
     },
     {
       "log_date": "2026-06-03",
-      "avg_price": 88329.62962962964,
-      "trade_count": 27,
-      "prev_diff_rate": -1.2467998280866897,
+      "avg_price": 87148.21428571429,
+      "trade_count": 28,
+      "prev_diff_rate": -2.5676312006741067,
       "avg_jeonse": 0.0,
       "jeonse_count": 0,
       "avg_wolse": 0.0,
@@ -6074,9 +6244,9 @@
     },
     {
       "log_date": "2026-06-04",
-      "avg_price": 82582.60869565218,
-      "trade_count": 23,
-      "prev_diff_rate": -6.50633423696555,
+      "avg_price": 81443.75,
+      "trade_count": 24,
+      "prev_diff_rate": -6.545704157531304,
       "avg_jeonse": 0.0,
       "jeonse_count": 0,
       "avg_wolse": 0.0,
@@ -6084,9 +6254,9 @@
     },
     {
       "log_date": "2026-06-05",
-      "avg_price": 84562.5,
-      "trade_count": 16,
-      "prev_diff_rate": 2.3974676213541093,
+      "avg_price": 82838.23529411765,
+      "trade_count": 17,
+      "prev_diff_rate": 1.712206638468453,
       "avg_jeonse": 0.0,
       "jeonse_count": 0,
       "avg_wolse": 0.0,
@@ -6094,9 +6264,29 @@
     },
     {
       "log_date": "2026-06-06",
-      "avg_price": 73681.81818181818,
-      "trade_count": 11,
-      "prev_diff_rate": -12.867029496741257,
+      "avg_price": 72145.83333333333,
+      "trade_count": 12,
+      "prev_diff_rate": -12.907568495177237,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
+      "avg_price": 71475.0,
+      "trade_count": 10,
+      "prev_diff_rate": -0.9298296274906084,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-08",
+      "avg_price": 73218.75,
+      "trade_count": 8,
+      "prev_diff_rate": 2.439664218258132,
       "avg_jeonse": 0.0,
       "jeonse_count": 0,
       "avg_wolse": 0.0,
@@ -6609,6 +6799,26 @@
       "avg_price": 116750.0,
       "trade_count": 2,
       "prev_diff_rate": 7.802400738688828,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
+      "avg_price": 116750.0,
+      "trade_count": 2,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-08",
+      "avg_price": 133500.0,
+      "trade_count": 1,
+      "prev_diff_rate": 14.346895074946467,
       "avg_jeonse": 0.0,
       "jeonse_count": 0,
       "avg_wolse": 0.0,
@@ -7607,6 +7817,26 @@
       "jeonse_count": 0,
       "avg_wolse": 0.0,
       "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
+      "avg_price": 118141.66666666667,
+      "trade_count": 12,
+      "prev_diff_rate": 3.7483168432761635,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-08",
+      "avg_price": 127062.5,
+      "trade_count": 8,
+      "prev_diff_rate": 7.550962827114335,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
     }
   ],
   "강서구": [
@@ -8115,6 +8345,26 @@
       "avg_price": 95077.77777777778,
       "trade_count": 9,
       "prev_diff_rate": -3.186024936075851,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
+      "avg_price": 99587.5,
+      "trade_count": 8,
+      "prev_diff_rate": 4.743192707724667,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-08",
+      "avg_price": 139000.0,
+      "trade_count": 1,
+      "prev_diff_rate": 39.57574996862056,
       "avg_jeonse": 0.0,
       "jeonse_count": 0,
       "avg_wolse": 0.0,
@@ -8631,6 +8881,16 @@
       "jeonse_count": 0,
       "avg_wolse": 0.0,
       "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
+      "avg_price": 13500.0,
+      "trade_count": 1,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
     }
   ],
   "금천구": [
@@ -9139,6 +9399,26 @@
       "avg_price": 107250.0,
       "trade_count": 2,
       "prev_diff_rate": 0.0,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
+      "avg_price": 107250.0,
+      "trade_count": 2,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-08",
+      "avg_price": 115000.0,
+      "trade_count": 1,
+      "prev_diff_rate": 7.226107226107226,
       "avg_jeonse": 0.0,
       "jeonse_count": 0,
       "avg_wolse": 0.0,
@@ -10100,9 +10380,9 @@
     },
     {
       "log_date": "2026-06-01",
-      "avg_price": 138570.0,
-      "trade_count": 10,
-      "prev_diff_rate": 1.7998824566558917,
+      "avg_price": 132084.61538461538,
+      "trade_count": 13,
+      "prev_diff_rate": -2.9645787653428037,
       "avg_jeonse": 0.0,
       "jeonse_count": 0,
       "avg_wolse": 0.0,
@@ -10110,9 +10390,9 @@
     },
     {
       "log_date": "2026-06-02",
-      "avg_price": 125671.42857142857,
-      "trade_count": 7,
-      "prev_diff_rate": -9.308343384983354,
+      "avg_price": 117966.66666666667,
+      "trade_count": 9,
+      "prev_diff_rate": -10.688564051792742,
       "avg_jeonse": 0.0,
       "jeonse_count": 0,
       "avg_wolse": 0.0,
@@ -10122,7 +10402,7 @@
       "log_date": "2026-06-03",
       "avg_price": 103960.0,
       "trade_count": 5,
-      "prev_diff_rate": -17.27634420825281,
+      "prev_diff_rate": -11.873410567957054,
       "avg_jeonse": 0.0,
       "jeonse_count": 0,
       "avg_wolse": 0.0,
@@ -10153,6 +10433,16 @@
       "avg_price": 164000.0,
       "trade_count": 2,
       "prev_diff_rate": 10.313901345291487,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
+      "avg_price": 164000.0,
+      "trade_count": 2,
+      "prev_diff_rate": 0.0,
       "avg_jeonse": 0.0,
       "jeonse_count": 0,
       "avg_wolse": 0.0,
@@ -10665,6 +10955,26 @@
       "avg_price": 79375.0,
       "trade_count": 4,
       "prev_diff_rate": 13.901345291479823,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
+      "avg_price": 79375.0,
+      "trade_count": 4,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-08",
+      "avg_price": 67000.0,
+      "trade_count": 1,
+      "prev_diff_rate": -15.590551181102363,
       "avg_jeonse": 0.0,
       "jeonse_count": 0,
       "avg_wolse": 0.0,
@@ -11673,6 +11983,26 @@
       "jeonse_count": 0,
       "avg_wolse": 0.0,
       "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
+      "avg_price": 319000.0,
+      "trade_count": 4,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-08",
+      "avg_price": 340333.3333333333,
+      "trade_count": 3,
+      "prev_diff_rate": 6.687565308254957,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
     }
   ],
   "송파구": [
@@ -12185,6 +12515,26 @@
       "jeonse_count": 0,
       "avg_wolse": 0.0,
       "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
+      "avg_price": 216071.42857142858,
+      "trade_count": 7,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-08",
+      "avg_price": 284333.3333333333,
+      "trade_count": 3,
+      "prev_diff_rate": 31.592286501377398,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
     }
   ],
   "강동구": [
@@ -12690,6 +13040,16 @@
     },
     {
       "log_date": "2026-06-06",
+      "avg_price": 30000.0,
+      "trade_count": 1,
+      "prev_diff_rate": 0.0,
+      "avg_jeonse": 0.0,
+      "jeonse_count": 0,
+      "avg_wolse": 0.0,
+      "wolse_count": 0
+    },
+    {
+      "log_date": "2026-06-07",
       "avg_price": 30000.0,
       "trade_count": 1,
       "prev_diff_rate": 0.0,
